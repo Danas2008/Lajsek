@@ -24,6 +24,9 @@ ALLOWED_HOSTS = [
 # Application definition
 
 INSTALLED_APPS = [
+    # Musí být před django.contrib.admin, jinak se šablony nepřepíšou.
+    'jazzmin',
+
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -135,3 +138,88 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # Site settings used across templates / SEO
 SITE_NAME = 'Oldřich Lajsek'
 SITE_DOMAIN = os.environ.get('DJANGO_SITE_DOMAIN', 'lajsek.cz')
+
+
+# ---------------------------------------------------------------------------
+# Admin (Jazzmin)
+# Správu vede netechnický uživatel, proto je menu seřazené podle toho,
+# jak s obsahem reálně pracuje: obrazy → kategorie → výstavy → tisk → zprávy.
+# ---------------------------------------------------------------------------
+
+JAZZMIN_SETTINGS = {
+    'site_title': 'Lajsek — správa',
+    'site_header': 'Oldřich Lajsek',
+    'site_brand': 'Lajsek Admin',
+    'welcome_sign': 'Správa díla Oldřicha Lajska',
+    'copyright': 'Rodina Lajskova',
+
+    # Autorův podpis; v tmavé liště se převrací do bílé (viz admin.css).
+    'site_logo': 'img/admin-logo.png',
+    'site_logo_classes': 'img-size-50',
+    'site_icon': 'img/favicon.png',
+    'login_logo': 'img/admin-logo.png',
+
+    'order_with_respect_to': [
+        'gallery',
+        'gallery.painting',
+        'gallery.category',
+        'core',
+        'core.exhibition',
+        'core.pressmention',
+        'core.externallink',
+        'core.contactmessage',
+        'auth',
+    ],
+
+    'icons': {
+        'gallery.painting': 'fas fa-palette',
+        'gallery.category': 'fas fa-tags',
+        'core.exhibition': 'fas fa-landmark',
+        'core.pressmention': 'fas fa-newspaper',
+        'core.externallink': 'fas fa-link',
+        'core.contactmessage': 'fas fa-envelope',
+        'auth.user': 'fas fa-user',
+        'auth.group': 'fas fa-users',
+    },
+    'default_icon_parents': 'fas fa-chevron-circle-right',
+    'default_icon_children': 'fas fa-circle',
+
+    # Odkaz zpět na veřejný web přímo z horní lišty.
+    'topmenu_links': [
+        {'name': 'Zobrazit web', 'url': '/', 'new_window': True},
+        {'model': 'auth.user'},
+    ],
+
+    'show_ui_builder': False,
+    'related_modal_active': True,
+    'changeform_format': 'horizontal_tabs',
+    'changeform_format_overrides': {
+        'auth.user': 'collapsible',
+        'auth.group': 'vertical_tabs',
+    },
+    'custom_css': 'css/admin.css',
+    'language_chooser': False,
+}
+
+JAZZMIN_UI_TWEAKS = {
+    'theme': 'flatly',
+    # Jazzmin 3 řídí světlý/tmavý režim přes data-bs-theme.
+    'default_theme_mode': 'light',
+    'navbar': 'navbar-dark',
+    'accent': 'accent-warning',
+    'brand_colour': 'navbar-dark',
+    'sidebar': 'sidebar-dark-warning',
+    'sidebar_nav_flat_style': True,
+    'no_navbar_border': True,
+    'body_small_text': False,
+    'navbar_small_text': False,
+    'sidebar_nav_small_text': False,
+    'actions_sticky_top': True,
+}
+
+# Dlouhá relace: správce edituje desítky obrazů v jednom sezení a nesmí ho
+# admin odhlásit uprostřed práce.
+SESSION_COOKIE_AGE = 60 * 60 * 12          # 12 hodin
+SESSION_SAVE_EVERY_REQUEST = True          # každá akce platnost prodlouží
+SESSION_EXPIRE_AT_BROWSER_CLOSE = False
+CSRF_COOKIE_AGE = 60 * 60 * 24 * 7         # týden, ať nevyprší formulář

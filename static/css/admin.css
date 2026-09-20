@@ -1,0 +1,166 @@
+/* Doladění Jazzminu (v3, Bootstrap 5) do teplé palety veřejného webu.
+   Selektory míří na skutečný markup: #jazzy-sidebar, #jazzy-navbar,
+   .app-content — ne na starší AdminLTE třídy. */
+
+:root {
+    --adm-paper: #f7f3ec;
+    --adm-paper-deep: #efe9de;
+    --adm-ink: #2b2620;
+    --adm-gold: #b08d57;
+    --adm-gold-deep: #8d6e41;
+    --adm-line: #ded4c4;
+}
+
+/* ---------- Plochy ---------- */
+body.bg-body-tertiary,
+.app-wrapper,
+.app-main,
+.app-content {
+    background-color: var(--adm-paper) !important;
+}
+
+/* ---------- Postranní menu ---------- */
+#jazzy-sidebar.app-sidebar {
+    background-color: #322c25 !important;
+}
+
+#jazzy-sidebar .sidebar-brand {
+    border-bottom: 1px solid rgba(176, 141, 87, 0.35);
+}
+
+/* Podpis autora je tmavý na průhledném pozadí — v tmavé liště
+   a na přihlašovací obrazovce se proto převrací do bílé. */
+#jazzy-logo .brand-image,
+.login-logo img,
+.login-box img {
+    filter: brightness(0) invert(1);
+    opacity: 0.92 !important;
+    max-height: 40px;
+    width: auto;
+}
+
+#jazzy-sidebar .nav-link.active {
+    background-color: var(--adm-gold) !important;
+    color: #fff !important;
+    box-shadow: none !important;
+}
+
+#jazzy-sidebar .nav-link:hover {
+    background-color: rgba(176, 141, 87, 0.2) !important;
+}
+
+#jazzy-sidebar .nav-icon {
+    color: var(--adm-gold);
+}
+
+#jazzy-sidebar .nav-link.active .nav-icon {
+    color: #fff;
+}
+
+/* ---------- Horní lišta ---------- */
+#jazzy-navbar {
+    background-color: var(--adm-ink) !important;
+}
+
+#jazzy-navbar .nav-link,
+#jazzy-navbar .nav-link i {
+    color: rgba(247, 243, 236, 0.85) !important;
+}
+
+#jazzy-navbar .nav-link:hover { color: #fff !important; }
+
+/* ---------- Karty ---------- */
+.card {
+    border: 1px solid var(--adm-line);
+    box-shadow: 0 1px 3px rgba(43, 38, 32, 0.07);
+}
+
+.card-header {
+    background-color: var(--adm-paper-deep);
+    border-bottom: 1px solid var(--adm-line);
+}
+
+/* ---------- Tlačítka ---------- */
+.btn-primary,
+.btn-warning,
+.btn-info {
+    background-color: var(--adm-gold);
+    border-color: var(--adm-gold-deep);
+    color: #fff;
+}
+
+.btn-primary:hover,
+.btn-warning:hover,
+.btn-info:hover,
+.btn-primary:focus,
+.btn-info:focus {
+    background-color: var(--adm-gold-deep);
+    border-color: var(--adm-gold-deep);
+    color: #fff;
+}
+
+a { color: var(--adm-gold-deep); }
+a:hover { color: var(--adm-ink); }
+
+/* ---------- Výpis záznamů ---------- */
+#result_list td,
+#result_list th {
+    vertical-align: middle;
+    padding: 9px 10px;
+}
+
+#result_list thead th {
+    background: var(--adm-paper-deep);
+    border-bottom: 1px solid var(--adm-line);
+}
+
+#result_list tbody tr:hover { background: #fbf8f3; }
+
+/* Pole editovatelná přímo v seznamu ať jsou na první pohled odlišená */
+#result_list td input[type="text"],
+#result_list td input[type="number"],
+#result_list td select {
+    border: 1px solid var(--adm-line);
+    background: #fffdf9;
+    padding: 4px 7px;
+    border-radius: 3px;
+    max-width: 240px;
+}
+
+#result_list td input[type="text"]:focus,
+#result_list td input[type="number"]:focus,
+#result_list td select:focus {
+    border-color: var(--adm-gold);
+    box-shadow: 0 0 0 2px rgba(176, 141, 87, 0.18);
+    outline: none;
+}
+
+/* Řádek s tlačítkem Uložit pod hromadnou editací */
+.submit-row .default,
+#changelist-form .btn-success {
+    background-color: var(--adm-gold);
+    border-color: var(--adm-gold-deep);
+}
+
+/* ---------- Nápovědy ----------
+   Pro netechnického správce klíčové — ať nezanikají v šedi. */
+.help-block,
+.helptext,
+.form-text {
+    color: #6c6355 !important;
+    font-size: 0.86rem;
+}
+
+/* Popisky celých sekcí ve formuláři */
+.card-body > .description,
+fieldset > .description {
+    background: var(--adm-paper-deep);
+    border-left: 3px solid var(--adm-gold);
+    padding: 10px 14px;
+    margin-bottom: 16px;
+    font-size: 0.88rem;
+    color: #574f44;
+}
+
+/* Nepřečtená zpráva v inboxu */
+.field-is_read input[type="checkbox"] { transform: scale(1.25); }
