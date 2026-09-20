@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% load i18n lajsek_tags %}
+
+{% block content %}
+<section class="wrap page page-narrow">
+    <h1 class="page-title">{% trans "Výstavy" %}</h1>
+    <p class="page-lead">{% trans "Samostatné i společné výstavy doma a v zahraničí." %}</p>
+
+    {% if exhibitions %}
+        {% regroup exhibitions by place as groups %}
+        {% for group in groups %}
+            {% if group.grouper %}<h2 class="section-heading">{{ group.grouper }}</h2>{% endif %}
+            <ul class="list-plain exhibitions">
+            {% for exhibition in group.list %}
+                <li>
+                    <span class="exhibition-year">{{ exhibition.year|default:"—" }}</span>
+                    <span>
+                        {{ exhibition.title }}
+                        {% if exhibition.description %}
+                            <br><span class="muted">{% translated exhibition 'description' %}</span>
+                        {% endif %}
+                    </span>
+                </li>
+            {% endfor %}
+            </ul>
+        {% endfor %}
+    {% else %}
+        <p>{% trans "Zatím nejsou přidány žádné výstavy." %}</p>
+    {% endif %}
+</section>
+{% endblock %}

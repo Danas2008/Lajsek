@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% load i18n lajsek_tags %}
+
+{% block content %}
+<section class="wrap page page-narrow">
+    <h1 class="page-title">{% trans "Napsali o něm" %}</h1>
+    <p class="page-lead">{% trans "Hlasy teoretiků umění a bibliografie k autorovu dílu." %}</p>
+
+    {% if quotes %}
+    <h2 class="section-heading">{% trans "Citáty" %}</h2>
+    {% for mention in quotes %}
+        {% is_untranslated mention 'text' as needs_translation %}
+        <blockquote class="quote">
+            <p>{% translated mention 'text' %}</p>
+            <footer>{{ mention.source }}</footer>
+            {% if needs_translation %}
+                <p class="translation-note">{% trans "The English version of this text is coming soon. Below is the Czech original." %}</p>
+            {% endif %}
+            {% if mention.link %}
+                <a href="{{ mention.link }}" target="_blank" rel="noopener">{% trans "Odkaz na zdroj" %}</a>
+            {% endif %}
+        </blockquote>
+    {% endfor %}
+    {% endif %}
+
+    {% if publications %}
+    <h2 class="section-heading">{% trans "Publikace" %}</h2>
+    <ul class="list-plain publications">
+        {% for mention in publications %}
+        <li>
+            {% translated mention 'text' %}
+            {% if mention.link %}
+                <a href="{{ mention.link }}" target="_blank" rel="noopener">{% trans "Odkaz" %}</a>
+            {% endif %}
+        </li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+
+    {% if not quotes and not publications %}
+        <p>{% trans "Zatím zde nejsou žádné zmínky." %}</p>
+    {% endif %}
+</section>
+{% endblock %}

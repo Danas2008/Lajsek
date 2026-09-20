@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block content %}
+<section class="wrap page page-narrow">
+    <h1 class="page-title">{% trans "Kontakt" %}</h1>
+
+    {% if untranslated %}
+        <p class="translation-note">{% trans "The English version of this text is coming soon. Below is the Czech original." %}</p>
+    {% endif %}
+
+    {% for paragraph in paragraphs %}<p class="contact-intro">{{ paragraph }}</p>{% endfor %}
+
+    <form method="post" class="contact-form" novalidate>
+        {% csrf_token %}
+        {% for field in form %}
+            <div class="form-row">
+                <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                {{ field }}
+                {% if field.errors %}
+                    <p class="field-error">{{ field.errors|striptags }}</p>
+                {% endif %}
+            </div>
+        {% endfor %}
+        <button type="submit" class="btn">{% trans "Odeslat zprávu" %}</button>
+    </form>
+</section>
+{% endblock %}

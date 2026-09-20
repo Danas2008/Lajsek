@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block content %}
+<section class="wrap page">
+    <nav class="subnav" aria-label="{% trans 'O autorovi' %}">
+        <a href="{% url 'core:life' %}">{% trans "Život" %}</a>
+        <a class="active" href="{% url 'core:work' %}">{% trans "Dílo" %}</a>
+        <a href="{% url 'core:catalog' %}">{% trans "Katalog" %}</a>
+    </nav>
+
+    <h1 class="page-title">{% trans "Dílo" %}</h1>
+    <p class="page-lead">{% trans "Zhruba 3000 malířských a grafických děl" %}</p>
+
+    {% if untranslated %}
+        <p class="translation-note">{% trans "The English version of this text is coming soon. Below is the Czech original." %}</p>
+    {% endif %}
+
+    <div class="bio-layout">
+        <article class="prose">
+            {% for paragraph in paragraphs %}<p>{{ paragraph }}</p>{% endfor %}
+        </article>
+
+        {% if images %}
+        <aside class="bio-figures">
+            {% for image in images %}
+            <figure>
+                <img src="{{ MEDIA_URL }}{{ image.image }}" alt="{{ image.caption }}" loading="lazy">
+                {% if image.caption %}<figcaption>{{ image.caption }}</figcaption>{% endif %}
+            </figure>
+            {% endfor %}
+        </aside>
+        {% endif %}
+    </div>
+</section>
+{% endblock %}

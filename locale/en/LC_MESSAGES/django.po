@@ -1,0 +1,278 @@
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: lajsek 1.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-09-20 17:53+0000\n"
+"PO-Revision-Date: 2026-09-20 17:53+0000\n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+msgid "Jméno"
+msgstr "Name"
+
+msgid "E-mail"
+msgstr "E-mail"
+
+msgid "Zpráva"
+msgstr "Message"
+
+msgid "Vaše jméno"
+msgstr "Your name"
+
+msgid "Váš e-mail"
+msgstr "Your e-mail"
+
+msgid "Vaše zpráva"
+msgstr "Your message"
+
+msgid "Oldřich Lajsek — český malíř (1925–2001)"
+msgstr "Oldřich Lajsek — Czech painter (1925–2001)"
+
+msgid ""
+"Prezentace celoživotního díla českého malíře Oldřicha Lajska (1925–2001). "
+"Krajinomalba, abstrakce, realismus a květinová zátiší."
+msgstr ""
+"A presentation of the life's work of Czech painter Oldřich Lajsek "
+"(1925–2001). Landscape painting, abstraction, realism and floral still "
+"lifes."
+
+msgid "O autorovi"
+msgstr "About the artist"
+
+msgid "Život, dílo a katalog malíře Oldřicha Lajska."
+msgstr "The life, work and catalogue of the painter Oldřich Lajsek."
+
+msgid "Život"
+msgstr "Life"
+
+msgid ""
+"Životopis českého malíře Oldřicha Lajska (1925–2001) — od rodných Křesetic "
+"po pražskou Ořechovku."
+msgstr ""
+"A biography of the Czech painter Oldřich Lajsek (1925–2001) — from his "
+"native Křesetice to the Ořechovka quarter of Prague."
+
+msgid "Dílo"
+msgstr "Work"
+
+msgid "Tvorba, žánry a umělecký rukopis malíře Oldřicha Lajska."
+msgstr ""
+"The work, genres and artistic signature of the painter Oldřich Lajsek."
+
+msgid "Katalog"
+msgstr "Catalogue"
+
+msgid "Katalog děl Oldřicha Lajska ke stažení ve formátu PDF."
+msgstr ""
+"The catalogue of works by Oldřich Lajsek, available as a PDF download."
+
+msgid "Výstavy"
+msgstr "Exhibitions"
+
+msgid ""
+"Přehled samostatných i společných výstav Oldřicha Lajska v Česku i v "
+"zahraničí."
+msgstr ""
+"An overview of solo and group exhibitions of Oldřich Lajsek in Czechia and "
+"abroad."
+
+msgid "Napsali o něm"
+msgstr "What was written about him"
+
+msgid "Citáty výtvarných teoretiků a bibliografie k dílu Oldřicha Lajska."
+msgstr ""
+"Quotations by art theorists and a bibliography of the work of Oldřich "
+"Lajsek."
+
+msgid "Odkazy"
+msgstr "Links"
+
+msgid ""
+"Galerie, katalogy a databáze, v nichž je dílo Oldřicha Lajska zastoupeno."
+msgstr ""
+"Galleries, catalogues and databases holding the work of Oldřich Lajsek."
+
+msgid ""
+"Dobrý den,\n"
+"mám zájem o obraz s kódem „%(code)s“. Prosím o zaslání bližších informací."
+msgstr ""
+"Hello,\n"
+"I am interested in the painting with the code “%(code)s”. Please send me further information."
+
+msgid "Děkujeme za zprávu, ozveme se vám co nejdříve."
+msgstr ""
+"Thank you for your message, we will get back to you as soon as possible."
+
+msgid "Kontakt"
+msgstr "Contact"
+
+msgid ""
+"Kontakt pro zájemce o dílo Oldřicha Lajska — syn malíře JUDr. Jan Lajsek."
+msgstr ""
+"Contact for those interested in the work of Oldřich Lajsek — the painter's "
+"son, JUDr. Jan Lajsek."
+
+msgid "Oldřich Lajsek — český malíř, grafik, designér a pedagog."
+msgstr "Oldřich Lajsek — Czech painter, graphic artist, designer and teacher."
+
+msgid "Osudy malíře od rodných Křesetic po pražskou Ořechovku."
+msgstr ""
+"The painter's life from his native Křesetice to the Ořechovka quarter of "
+"Prague."
+
+msgid "Tvorba, žánry a umělecký rukopis."
+msgstr "His work, genres and artistic signature."
+
+msgid "Katalog děl ke stažení v PDF."
+msgstr "The catalogue of works, available as a PDF download."
+
+msgid "Katalog děl Oldřicha Lajska ke stažení."
+msgstr "The catalogue of works by Oldřich Lajsek, available for download."
+
+msgid "Stáhnout katalog (PDF)"
+msgstr "Download the catalogue (PDF)"
+
+msgid ""
+"The English version of this text is coming soon. Below is the Czech "
+"original."
+msgstr ""
+"The English version of this text is coming soon. Below is the Czech "
+"original."
+
+msgid "Odeslat zprávu"
+msgstr "Send message"
+
+msgid "Samostatné i společné výstavy doma a v zahraničí."
+msgstr "Solo and group exhibitions at home and abroad."
+
+msgid "Zatím nejsou přidány žádné výstavy."
+msgstr "No exhibitions have been added yet."
+
+msgid "Portrét Oldřicha Lajska"
+msgstr "Portrait of Oldřich Lajsek"
+
+msgid "český malíř"
+msgstr "Czech painter"
+
+msgid "Prohlédnout dílo"
+msgstr "View the work"
+
+msgid "Obrazy"
+msgstr "Paintings"
+
+msgid "Krajinomalba, abstrakce, realismus a květinová zátiší."
+msgstr "Landscape painting, abstraction, realism and floral still lifes."
+
+msgid "Přehled výstav doma i v zahraničí."
+msgstr "An overview of exhibitions at home and abroad."
+
+msgid "Citáty teoretiků umění a bibliografie."
+msgstr "Quotations by art theorists and a bibliography."
+
+msgid "Galerie, katalogy a databáze, v nichž je dílo zastoupeno."
+msgstr "Galleries, catalogues and databases holding his work."
+
+msgid "Zatím zde nejsou žádné odkazy."
+msgstr "There are no links here yet."
+
+msgid "Hlasy teoretiků umění a bibliografie k autorovu dílu."
+msgstr "Voices of art theorists and a bibliography of the artist's work."
+
+msgid "Citáty"
+msgstr "Quotations"
+
+msgid "Odkaz na zdroj"
+msgstr "Link to the source"
+
+msgid "Publikace"
+msgstr "Publications"
+
+msgid "Odkaz"
+msgstr "Link"
+
+msgid "Zatím zde nejsou žádné zmínky."
+msgstr "There are no mentions here yet."
+
+msgid "Zhruba 3000 malířských a grafických děl"
+msgstr "Roughly 3,000 paintings and prints"
+
+msgid "Obrazy z kategorie %(category)s v díle českého malíře Oldřicha Lajska."
+msgstr ""
+"Paintings from the %(category)s category in the work of the Czech painter "
+"Oldřich Lajsek."
+
+msgid "Nabídka obrazů"
+msgstr "Paintings for sale"
+
+msgid ""
+"Přehled obrazů Oldřicha Lajska — krajinomalba, abstrakce, realismus a "
+"květinová zátiší."
+msgstr ""
+"An overview of paintings by Oldřich Lajsek — landscape painting, "
+"abstraction, realism and floral still lifes."
+
+msgid "Obraz %(title)s od českého malíře Oldřicha Lajska (1925–2001)."
+msgstr ""
+"The painting %(title)s by the Czech painter Oldřich Lajsek (1925–2001)."
+
+msgid "Kód díla"
+msgstr "Work code"
+
+msgid "Rok vzniku"
+msgstr "Year"
+
+msgid "Rozměry"
+msgstr "Dimensions"
+
+msgid "Technika"
+msgstr "Technique"
+
+msgid "Dostupnost"
+msgstr "Availability"
+
+msgid "Mám zájem"
+msgstr "I am interested"
+
+msgid "Další díla z této kategorie"
+msgstr "More works from this category"
+
+msgid "kód"
+msgstr "code"
+
+msgid "Kategorie obrazů"
+msgstr "Painting categories"
+
+msgid "Vše"
+msgstr "All"
+
+msgid "V této kategorii zatím nejsou žádné obrazy."
+msgstr "There are no paintings in this category yet."
+
+msgid ""
+"Obrazy z pozůstalosti malíře. V případě zájmu je při poptávce potřeba uvést "
+"kód díla."
+msgstr ""
+"Paintings from the painter's estate. When enquiring, please quote the code "
+"of the work."
+
+msgid "Přejít k obsahu"
+msgstr "Skip to content"
+
+msgid "Menu"
+msgstr "Menu"
+
+msgid "Hlavní navigace"
+msgstr "Main navigation"
+
+msgid "Podpis Oldřicha Lajska"
+msgstr "Signature of Oldřich Lajsek"
+
+msgid "Patička"
+msgstr "Footer"
+
+msgid "dílo Oldřicha Lajska"
+msgstr "the work of Oldřich Lajsek"

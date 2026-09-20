@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block content %}
+<section class="wrap page">
+    <h1 class="page-title">{% trans "O autorovi" %}</h1>
+    <p class="page-lead">{% trans "Oldřich Lajsek — český malíř, grafik, designér a pedagog." %}</p>
+
+    <div class="section-links" style="padding-left:0;padding-right:0">
+        <a class="tile" href="{% url 'core:life' %}">
+            <h2>{% trans "Život" %}</h2>
+            <p>{% trans "Osudy malíře od rodných Křesetic po pražskou Ořechovku." %}</p>
+        </a>
+        <a class="tile" href="{% url 'core:work' %}">
+            <h2>{% trans "Dílo" %}</h2>
+            <p>{% trans "Tvorba, žánry a umělecký rukopis." %}</p>
+        </a>
+        <a class="tile" href="{% url 'core:catalog' %}">
+            <h2>{% trans "Katalog" %}</h2>
+            <p>{% trans "Katalog děl ke stažení v PDF." %}</p>
+        </a>
+    </div>
+</section>
+{% endblock %}

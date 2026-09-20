@@ -1,0 +1,100 @@
+{% extends "base.html" %}
+{% load i18n lajsek_tags %}
+
+{% block og_type %}article{% endblock %}
+
+{% block structured_data %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "VisualArtwork",
+  "name": "{{ painting.public_title|escapejs }}",
+  "identifier": "{{ painting.title|escapejs }}",
+  "image": "{{ request.scheme }}://{{ request.get_host }}{{ painting.image.url }}",
+  "url": "{{ request.scheme }}://{{ request.get_host }}{{ painting.get_absolute_url }}",
+  "creator": {
+    "@type": "Person",
+    "name": "Oldřich Lajsek",
+    "birthDate": "1925-02-08",
+    "deathDate": "2001-10-02"
+  },
+  "artform": "{{ painting.category.display_name|escapejs }}"{% if painting.year %},
+  "dateCreated": "{{ painting.year|escapejs }}"{% endif %}{% if painting.technique %},
+  "artMedium": "{{ painting.technique|escapejs }}"{% endif %}{% if painting.dimensions %},
+  "size": "{{ painting.dimensions|escapejs }}"{% endif %}{% if painting.description %},
+  "description": "{{ painting.description|escapejs }}"{% endif %}
+}
+</script>
+{% endblock %}
+
+{% block content %}
+<section class="wrap page painting-detail">
+    <a class="back-link" href="{{ painting.category.get_absolute_url }}">
+        &larr; {{ painting.category.display_name }}
+    </a>
+
+    <div class="painting-detail-grid">
+        <div class="painting-image">
+            <img src="{{ painting.image.url }}" alt="{{ painting.image_alt }}">
+        </div>
+
+        <div class="painting-info">
+            <h1>{{ painting.public_title }}</h1>
+            <p class="painting-category">{{ painting.category.display_name }}</p>
+
+            <dl class="painting-meta">
+                <div>
+                    <dt>{% trans "Kód díla" %}</dt>
+                    <dd>{{ painting.title }}</dd>
+                </div>
+                {% if painting.year %}
+                <div><dt>{% trans "Rok vzniku" %}</dt><dd>{{ painting.year }}</dd></div>
+                {% endif %}
+                {% if painting.dimensions %}
+                <div><dt>{% trans "Rozměry" %}</dt><dd>{{ painting.dimensions }}</dd></div>
+                {% endif %}
+                {% if painting.technique %}
+                <div><dt>{% trans "Technika" %}</dt><dd>{{ painting.technique }}</dd></div>
+                {% endif %}
+                <div>
+                    <dt>{% trans "Dostupnost" %}</dt>
+                    <dd>{{ painting.get_availability_display }}</dd>
+                </div>
+            </dl>
+
+            {% if painting.description %}
+                {% is_untranslated painting 'description' as needs_translation %}
+                {% if needs_translation %}
+                    <p class="translation-note">{% trans "The English version of this text is coming soon. Below is the Czech original." %}</p>
+                {% endif %}
+                <p>{% translated painting 'description' %}</p>
+            {% endif %}
+
+            {% if painting.availability != 'not_for_sale' %}
+                <a class="btn" href="{% url 'core:contact' %}?obraz={{ painting.title|urlencode }}">
+                    {% trans "Mám zájem" %}
+                </a>
+            {% endif %}
+        </div>
+    </div>
+
+    {% if related %}
+    <div class="related">
+        <h2 class="section-heading">{% trans "Další díla z této kategorie" %}</h2>
+        <div class="gallery-grid">
+            {% for item in related %}
+            <a class="gallery-item" href="{{ item.get_absolute_url }}">
+                <div class="frame">
+                    <img src="{{ item.image.url }}" alt="{{ item.image_alt }}" loading="lazy">
+                </div>
+                <div class="gallery-item-info">
+                    <h2>{{ item.public_title }}</h2>
+                    <p class="gallery-item-code">{% trans "kód" %} {{ item.title }}</p>
+                </div>
+            </a>
+            {% endfor %}
+        </div>
+    </div>
+    {% endif %}
+</section>
+{% endblock %}

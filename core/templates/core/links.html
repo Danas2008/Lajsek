@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block content %}
+<section class="wrap page page-narrow">
+    <h1 class="page-title">{% trans "Odkazy" %}</h1>
+    <p class="page-lead">{% trans "Galerie, katalogy a databáze, v nichž je dílo zastoupeno." %}</p>
+
+    {% if links %}
+        <ul class="list-plain">
+        {% for link in links %}
+            <li>
+                <a href="{{ link.url }}" target="_blank" rel="noopener">{{ link.title }}</a>
+                {% if link.description %}<p class="muted">{{ link.description }}</p>{% endif %}
+            </li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>{% trans "Zatím zde nejsou žádné odkazy." %}</p>
+    {% endif %}
+</section>
+{% endblock %}

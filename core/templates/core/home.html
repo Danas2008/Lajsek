@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+{% load static i18n lajsek_tags %}
+
+{% block structured_data %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Oldřich Lajsek",
+  "birthDate": "1925-02-08",
+  "deathDate": "2001-10-02",
+  "birthPlace": {"@type": "Place", "name": "Křesetice"},
+  "deathPlace": {"@type": "Place", "name": "Praha"},
+  "nationality": {"@type": "Country", "name": "Česká republika"},
+  "jobTitle": {% if current_language == 'en' %}"Painter"{% else %}"Malíř"{% endif %},
+  "description": {% if current_language == 'en' %}"Czech painter, graphic artist, designer and teacher (1925–2001)."{% else %}"Český malíř, grafik, designér a pedagog (1925–2001)."{% endif %},
+  "url": "{{ request.scheme }}://{{ request.get_host }}{% url 'core:home' %}"{% if hero_image %},
+  "image": "{{ request.scheme }}://{{ request.get_host }}{{ MEDIA_URL }}{{ hero_image.image }}"{% endif %}
+}
+</script>
+{% endblock %}
+
+{% block content %}
+<section class="hero">
+    <div class="wrap hero-inner">
+        {% if hero_image %}
+        <div class="hero-portrait">
+            <img src="{{ MEDIA_URL }}{{ hero_image.image }}" alt="{% trans 'Portrét Oldřicha Lajska' %}">
+        </div>
+        {% endif %}
+
+        <div class="hero-text">
+            <h1>Oldřich Lajsek</h1>
+            <p class="hero-sub">{% trans "český malíř" %} &middot; 1925—2001</p>
+
+            {% if motto %}
+                <blockquote class="hero-motto">{% translated motto 'text' %}</blockquote>
+                <p class="hero-motto-source">{{ motto.source }}</p>
+            {% endif %}
+
+            <a class="btn" href="{% url 'gallery:painting_list' %}">{% trans "Prohlédnout dílo" %}</a>
+        </div>
+    </div>
+</section>
+
+<section class="wrap section-links">
+    <a class="tile" href="{% url 'core:life' %}">
+        <h2>{% trans "Život" %}</h2>
+        <p>{% trans "Osudy malíře od rodných Křesetic po pražskou Ořechovku." %}</p>
+    </a>
+    <a class="tile" href="{% url 'gallery:painting_list' %}">
+        <h2>{% trans "Obrazy" %}</h2>
+        <p>{% trans "Krajinomalba, abstrakce, realismus a květinová zátiší." %}</p>
+    </a>
+    <a class="tile" href="{% url 'core:exhibitions' %}">
+        <h2>{% trans "Výstavy" %}</h2>
+        <p>{% trans "Přehled výstav doma i v zahraničí." %}</p>
+    </a>
+    <a class="tile" href="{% url 'core:press' %}">
+        <h2>{% trans "Napsali o něm" %}</h2>
+        <p>{% trans "Citáty teoretiků umění a bibliografie." %}</p>
+    </a>
+</section>
+{% endblock %}

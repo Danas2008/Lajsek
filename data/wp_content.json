@@ -1,0 +1,659 @@
+{
+ "categories": [
+  {
+   "name": "Krajinomalba",
+   "slug": "krajinomalba",
+   "paintings": [
+    {
+     "title": "K1",
+     "image": "paintings/krajinomalba/IMG_9761.jpg"
+    },
+    {
+     "title": "K2",
+     "image": "paintings/krajinomalba/IMG_9760.jpg"
+    },
+    {
+     "title": "K3",
+     "image": "paintings/krajinomalba/IMG_9741.jpg"
+    },
+    {
+     "title": "K4",
+     "image": "paintings/krajinomalba/IMG_9354.jpg"
+    },
+    {
+     "title": "K5",
+     "image": "paintings/krajinomalba/IMG_9351.jpg"
+    },
+    {
+     "title": "K6",
+     "image": "paintings/krajinomalba/IMG_9349.jpg"
+    },
+    {
+     "title": "K7",
+     "image": "paintings/krajinomalba/IMG_9141.jpg"
+    },
+    {
+     "title": "K8",
+     "image": "paintings/krajinomalba/IMG_9078.jpg"
+    },
+    {
+     "title": "K9",
+     "image": "paintings/krajinomalba/IMG_9036.jpg"
+    },
+    {
+     "title": "K10",
+     "image": "paintings/krajinomalba/IMG_9002.jpg"
+    },
+    {
+     "title": "K11",
+     "image": "paintings/krajinomalba/IMG_8998.jpg"
+    },
+    {
+     "title": "K12",
+     "image": "paintings/krajinomalba/IMG_8950.jpg"
+    },
+    {
+     "title": "K13",
+     "image": "paintings/krajinomalba/IMG_8938.jpg"
+    },
+    {
+     "title": "K14",
+     "image": "paintings/krajinomalba/IMG_8931.jpg"
+    },
+    {
+     "title": "K15",
+     "image": "paintings/krajinomalba/IMG_8924.jpg"
+    },
+    {
+     "title": "K16",
+     "image": "paintings/krajinomalba/IMG_8922.jpg"
+    },
+    {
+     "title": "K17",
+     "image": "paintings/krajinomalba/IMG_8918.jpg"
+    },
+    {
+     "title": "K18",
+     "image": "paintings/krajinomalba/IMG_8889.jpg"
+    },
+    {
+     "title": "K19",
+     "image": "paintings/krajinomalba/IMG_8886.jpg"
+    },
+    {
+     "title": "K20",
+     "image": "paintings/krajinomalba/IMG_8864.jpg"
+    },
+    {
+     "title": "K21",
+     "image": "paintings/krajinomalba/IMG_8856.jpg"
+    },
+    {
+     "title": "K22",
+     "image": "paintings/krajinomalba/IMG_8851.jpg"
+    },
+    {
+     "title": "K23",
+     "image": "paintings/krajinomalba/IMG_8848.jpg"
+    },
+    {
+     "title": "K24",
+     "image": "paintings/krajinomalba/IMG_8845.jpg"
+    },
+    {
+     "title": "K25",
+     "image": "paintings/krajinomalba/IMG_8844.jpg"
+    },
+    {
+     "title": "K26",
+     "image": "paintings/krajinomalba/IMG_8838.jpg"
+    },
+    {
+     "title": "K27",
+     "image": "paintings/krajinomalba/IMG_8835.jpg"
+    },
+    {
+     "title": "K28",
+     "image": "paintings/krajinomalba/IMG_8828.jpg"
+    },
+    {
+     "title": "K29",
+     "image": "paintings/krajinomalba/IMG_8819.jpg"
+    },
+    {
+     "title": "K30",
+     "image": "paintings/krajinomalba/IMG_8814.jpg"
+    },
+    {
+     "title": "K31",
+     "image": "paintings/krajinomalba/IMG_8795.jpg"
+    },
+    {
+     "title": "K32",
+     "image": "paintings/krajinomalba/IMG_8794.jpg"
+    },
+    {
+     "title": "K33",
+     "image": "paintings/krajinomalba/IMG_8792.jpg"
+    },
+    {
+     "title": "K34",
+     "image": "paintings/krajinomalba/Krkonoše-2.jpg"
+    },
+    {
+     "title": "K35",
+     "image": "paintings/krajinomalba/Ještěd.jpg"
+    }
+   ]
+  },
+  {
+   "name": "Abstrakce",
+   "slug": "abstrakce",
+   "paintings": [
+    {
+     "title": "A1",
+     "image": "paintings/abstrakce/IMG_9893.jpg"
+    },
+    {
+     "title": "A2",
+     "image": "paintings/abstrakce/IMG_9775.jpg"
+    },
+    {
+     "title": "A3",
+     "image": "paintings/abstrakce/IMG_9774.jpg"
+    },
+    {
+     "title": "A4",
+     "image": "paintings/abstrakce/IMG_9773.jpg"
+    },
+    {
+     "title": "A5",
+     "image": "paintings/abstrakce/IMG_9743.jpg"
+    },
+    {
+     "title": "A6",
+     "image": "paintings/abstrakce/IMG_9152.jpg"
+    },
+    {
+     "title": "A7",
+     "image": "paintings/abstrakce/IMG_9115.jpg"
+    },
+    {
+     "title": "A8",
+     "image": "paintings/abstrakce/IMG_9114.jpg"
+    },
+    {
+     "title": "A9",
+     "image": "paintings/abstrakce/IMG_9111.jpg"
+    },
+    {
+     "title": "A10",
+     "image": "paintings/abstrakce/IMG_9107.jpg"
+    },
+    {
+     "title": "A11",
+     "image": "paintings/abstrakce/IMG_9105.jpg"
+    },
+    {
+     "title": "A12",
+     "image": "paintings/abstrakce/IMG_9102.jpg"
+    },
+    {
+     "title": "A13",
+     "image": "paintings/abstrakce/IMG_9101.jpg"
+    },
+    {
+     "title": "A14",
+     "image": "paintings/abstrakce/IMG_9100.jpg"
+    },
+    {
+     "title": "A15",
+     "image": "paintings/abstrakce/IMG_9099.jpg"
+    },
+    {
+     "title": "A16",
+     "image": "paintings/abstrakce/IMG_9096.jpg"
+    },
+    {
+     "title": "A17",
+     "image": "paintings/abstrakce/IMG_9095.jpg"
+    },
+    {
+     "title": "A18",
+     "image": "paintings/abstrakce/IMG_8970-1.jpg"
+    },
+    {
+     "title": "A19",
+     "image": "paintings/abstrakce/IMG_8810.jpg"
+    },
+    {
+     "title": "A20",
+     "image": "paintings/abstrakce/IMG_8807.jpg"
+    }
+   ]
+  },
+  {
+   "name": "Realismus",
+   "slug": "realismus",
+   "paintings": [
+    {
+     "title": "R1",
+     "image": "paintings/realismus/IMG_9886.jpg"
+    },
+    {
+     "title": "R2",
+     "image": "paintings/realismus/IMG_9691.jpg"
+    },
+    {
+     "title": "R3",
+     "image": "paintings/realismus/IMG_9690.jpg"
+    },
+    {
+     "title": "R4",
+     "image": "paintings/realismus/IMG_9689.jpg"
+    },
+    {
+     "title": "R5",
+     "image": "paintings/realismus/IMG_9687.jpg"
+    },
+    {
+     "title": "R6",
+     "image": "paintings/realismus/IMG_9613.jpg"
+    },
+    {
+     "title": "R7",
+     "image": "paintings/realismus/IMG_9611.jpg"
+    },
+    {
+     "title": "R8",
+     "image": "paintings/realismus/IMG_9600.jpg"
+    },
+    {
+     "title": "R9",
+     "image": "paintings/realismus/IMG_9532.jpg"
+    },
+    {
+     "title": "R10",
+     "image": "paintings/realismus/IMG_8860.jpg"
+    },
+    {
+     "title": "img_8832",
+     "image": "paintings/realismus/IMG_8832.jpg"
+    },
+    {
+     "title": "R12",
+     "image": "paintings/realismus/IMG_8822.jpg"
+    },
+    {
+     "title": "R13",
+     "image": "paintings/realismus/IMG_8821.jpg"
+    },
+    {
+     "title": "R14",
+     "image": "paintings/realismus/IMG_9559.jpg"
+    },
+    {
+     "title": "R15",
+     "image": "paintings/realismus/IMG_8884.jpg"
+    }
+   ]
+  },
+  {
+   "name": "Květinová zátiší",
+   "slug": "kvetinova-zatisi",
+   "paintings": [
+    {
+     "title": "V1",
+     "image": "paintings/kvetinova-zatisi/IMG_9883.jpg"
+    },
+    {
+     "title": "V2",
+     "image": "paintings/kvetinova-zatisi/IMG_9768.jpg"
+    },
+    {
+     "title": "V3",
+     "image": "paintings/kvetinova-zatisi/IMG_9543.jpg"
+    },
+    {
+     "title": "V4",
+     "image": "paintings/kvetinova-zatisi/IMG_9427.jpg"
+    },
+    {
+     "title": "V5",
+     "image": "paintings/kvetinova-zatisi/IMG_9426.jpg"
+    },
+    {
+     "title": "V6",
+     "image": "paintings/kvetinova-zatisi/IMG_9406.jpg"
+    },
+    {
+     "title": "V7",
+     "image": "paintings/kvetinova-zatisi/IMG_9405.jpg"
+    },
+    {
+     "title": "V8",
+     "image": "paintings/kvetinova-zatisi/IMG_9393.jpg"
+    },
+    {
+     "title": "V9",
+     "image": "paintings/kvetinova-zatisi/IMG_9341.jpg"
+    },
+    {
+     "title": "V10",
+     "image": "paintings/kvetinova-zatisi/IMG_9209.jpg"
+    },
+    {
+     "title": "V11",
+     "image": "paintings/kvetinova-zatisi/IMG_8946.jpg"
+    },
+    {
+     "title": "V12",
+     "image": "paintings/kvetinova-zatisi/IMG_8945.jpg"
+    },
+    {
+     "title": "V13",
+     "image": "paintings/kvetinova-zatisi/IMG_8944.jpg"
+    },
+    {
+     "title": "V14",
+     "image": "paintings/kvetinova-zatisi/IMG_8943.jpg"
+    },
+    {
+     "title": "V15",
+     "image": "paintings/kvetinova-zatisi/IMG_8942.jpg"
+    },
+    {
+     "title": "V16",
+     "image": "paintings/kvetinova-zatisi/IMG_8941.jpg"
+    },
+    {
+     "title": "V17",
+     "image": "paintings/kvetinova-zatisi/IMG_8940.jpg"
+    },
+    {
+     "title": "V18",
+     "image": "paintings/kvetinova-zatisi/IMG_8939.jpg"
+    },
+    {
+     "title": "V19",
+     "image": "paintings/kvetinova-zatisi/IMG_8932.jpg"
+    },
+    {
+     "title": "V20",
+     "image": "paintings/kvetinova-zatisi/IMG_8802.jpg"
+    }
+   ]
+  }
+ ],
+ "exhibitions": [
+  {
+   "year": "1956",
+   "title": "Kutná Hora",
+   "place": "Účast na výstavách v České republice"
+  },
+  {
+   "year": "1957",
+   "title": "Praha",
+   "place": "Účast na výstavách v České republice"
+  },
+  {
+   "year": "1958",
+   "title": "Bratislava",
+   "place": "Účast na výstavách v České republice"
+  },
+  {
+   "year": "1962",
+   "title": "Praha",
+   "place": "Účast na výstavách v České republice"
+  },
+  {
+   "year": "1964",
+   "title": "Praha, Komorní divadlo",
+   "place": "Účast na výstavách v České republice"
+  },
+  {
+   "year": "1967",
+   "title": "Praha, projektový ústav, Kostelní ulice",
+   "place": "Účast na výstavách v České republice"
+  },
+  {
+   "year": "1972",
+   "title": "Praha, výstavní síň nakladatelství Svoboda, grafika",
+   "place": "Účast na výstavách v České republice"
+  },
+  {
+   "year": "1973",
+   "title": "Praha, Ústřední klub školství a vědy, Na Příkopě",
+   "place": "Účast na výstavách v České republice"
+  },
+  {
+   "year": "1980",
+   "title": "Praha, Galerie Čs. spisovatel",
+   "place": "Účast na výstavách v České republice"
+  },
+  {
+   "year": "1981",
+   "title": "Praha, galerie Díla, Vodičkova ulice",
+   "place": "Účast na výstavách v České republice"
+  },
+  {
+   "year": "1983",
+   "title": "Benešov nad Ploučnicí, výstavní síň v zámku",
+   "place": "Účast na výstavách v České republice"
+  },
+  {
+   "year": "1984",
+   "title": "Čelákovice, výstavní síň v muzeu",
+   "place": "Účast na výstavách v České republice"
+  },
+  {
+   "year": "1985",
+   "title": "Kutná Hora",
+   "place": "Účast na výstavách v České republice"
+  },
+  {
+   "year": "1991",
+   "title": "Praha, výstavní síň v ul. 28 října",
+   "place": "Účast na výstavách v České republice"
+  },
+  {
+   "year": "2013",
+   "title": "Praha, Senovážné náměstí",
+   "place": "Účast na výstavách v České republice"
+  },
+  {
+   "year": "2016",
+   "title": "Kutná Hora, Sankturinovský dům",
+   "place": "Účast na výstavách v České republice"
+  },
+  {
+   "year": "",
+   "title": "Přehlídky výtvarného umění v Jízdárně Pražského hradu, Pražské salóny",
+   "place": "Účast na výstavách v České republice"
+  },
+  {
+   "year": "",
+   "title": "Kolektivní výstavy v Galerii Vincence Kramáře",
+   "place": "Účast na výstavách v České republice"
+  },
+  {
+   "year": "",
+   "title": "Účast na výstavě Vyznání životu a míru 1985",
+   "place": "Účast na výstavách v České republice"
+  },
+  {
+   "year": "",
+   "title": "Lodž, Katovice",
+   "place": "Samostatné výstavy v zahraničí"
+  },
+  {
+   "year": "",
+   "title": "Paříž, výstava grafiků z Prahy 6",
+   "place": "Účast na společné výstavě v zahraničí"
+  }
+ ],
+ "press": [
+  {
+   "kind": "quote",
+   "source": "prof. Ilja Bojanovský (býv. rektor AMU)",
+   "text": "„Oldřich Lajsek je uměleckou osobností charakterizovanou vyzrálostí tvůrčího stylu a neobyčejnou zkušeností. Jeho tvorba prozrazuje hluboký cit k přírodě, pramenící z lásky k lidem  a k naší vlasti.“"
+  },
+  {
+   "kind": "quote",
+   "source": "Vlastimil Vinter (člen Jednoty umělců výtvarných)",
+   "text": "„Mezi přední představitele soudobé české krajinomalby patři i akademicky malíř Oldřich Lajsek […] krajinář vyzrálého uměleckého profilu a svébytného pojetí i výrazu. [S]hledáváme, že v plynulé vývojové linii své tvorby dále upevnil specifické rysy svého umění: nalézat v zobrazované krajině nejen vnější vzhledovou charakteristiku, nýbrž i trvalou podstatu, vyjádřit proměnlivou působivost okamžiku i vnitřní duchovní atmosféru.“"
+  },
+  {
+   "kind": "quote",
+   "source": "prof. Ilja Bojanovský (býv. rektor AMU)",
+   "text": "„Jeho nejoblíbenější ateliér je pod širou klenbou oblohy a zde nalézá v každém koutku krajinného prostředí krásu, kterou svým talentem v senzitivní vnímavosti umocňuje do nevšedních dojmů a emocí na plátnech svých děl. Má neobyčejný smysl nejen pro zvládnutí dekorativnosti exteriérového prostředí, ale postihuje i pro nás nepostižitelné kouzlo a pomíjející okamžiky světelné skutečnosti.“"
+  },
+  {
+   "kind": "quote",
+   "source": "Vlastimil Vinter (člen Jednoty umělců výtvarných)",
+   "text": "„Je pozoruhodné, jak v obrazech Oldřicha Lajska básnivý anebo zas dramatický ráz jednotlivých maleb je organicky sladěn s povahou a obsahem motivu.“"
+  },
+  {
+   "kind": "publication",
+   "source": "Boučková, J.",
+   "text": "Boučková, J.: Nové tendence v tvorbě mladých českých výtvarníků . Pardubice: Východočeská galerie v Pardubicích, 1968."
+  },
+  {
+   "kind": "publication",
+   "source": "Boučková, J.",
+   "text": "Boučková, J.: Soudobá česká krajina . Pardubice: Východočeská galerie v Pardubicích, 1968."
+  },
+  {
+   "kind": "publication",
+   "source": "Hlaváček, J.",
+   "text": "Hlaváček, J.: 8 výtvarníků . Galerie ČFVU – Purkyně. Praha: Český fond výtvarných umění, 1960."
+  },
+  {
+   "kind": "publication",
+   "source": "Vinter, V.",
+   "text": "Vinter, V.: Krajiny Oldřicha Lajska. Květy , 5. 2. 1987, str. 46-47, ISSN 0023-5649."
+  },
+  {
+   "kind": "publication",
+   "source": "Vinter, V.",
+   "text": "Vinter, V.: Oldřich Lajsek . Praha: Svaz českých výtvarných umělců, 1986."
+  },
+  {
+   "kind": "publication",
+   "source": "Štorkán, K.",
+   "text": "Štorkán, K.: Oldřich Lajsek – obrazy . Praha: Podnik českého fondu výtvarných umění, 1981."
+  }
+ ],
+ "links": [
+  {
+   "title": "Bibliothek des Kunstgewerbemuseums",
+   "url": "http://katalog.upm.cz/cgi-bin/k6?ST=03&L=03&KOD=02&PZ=02&KDE=016&JAK=L&ADR=0019059646"
+  },
+  {
+   "title": "Článek o Oldřichu Lajskovi na české Wikipedii",
+   "url": "http://cs.wikipedia.org/wiki/Old%C5%99ich_Lajsek"
+  },
+  {
+   "title": "Elektronický katalog obrazů Oldřicha Lajska",
+   "url": "http://www.phsoft.cz/lajsek.html"
+  },
+  {
+   "title": "Galerie výtvarného umění v Ostravě",
+   "url": "http://gvuostrava.knihovny.net/katalog/l.dll?cll~9110"
+  },
+  {
+   "title": "Signatury malířů",
+   "url": "http://www.signaturymaliru.cz/painter/601.php"
+  },
+  {
+   "title": "Východočeská galerie v Pardubicích",
+   "url": "http://www.vcg.cz/databaze.html?kat=1&autor=L&PHPSES"
+  }
+ ],
+ "texts": {
+  "zivot": [
+   "Oldřich Lajsek byl významný český malíř, grafik, designér a pedagog. Narodil se dne 8. února 1925 v Křeseticích nedaleko Kutné Hory v rodině obchodníka. V Kutné Hoře vychodil obecnou i měšťanskou školu a roku 1944 maturoval na tamní Vyšší průmyslové škole strojnické. Během 2. světové války se aktivně účastnil odboje proti nacistické okupaci v organizaci Pěst. V odbojové činnosti mohl poprvé využít svého výtvarného talentu a středoškolského technického vzdělání – v konstrukční kanceláři vždy tajně vyhotovoval kopie výkresové dokumentace k vojenským zbraním, na jejichž základě posléze dopomáhal k vyzbrojování partyzánů. Později byl ale odhalen; popravě se vyhnul jen díky blížícímu se konci války. Za svoji odbojovou činnost se posléze stal členem Českého svazu bojovníků za svobodu.",
+   "Po válce se přestěhoval do Prahy, kde krátce působil ve Svazu československého průmyslu. Na základě bezprostředně poválečných poměrů po osvobození republiky se stejně jako mnoho dalších osobností nechal strhnout myšlenkou komunistické ideologie a vstoupil do komunistické strany. Vzápětí však v návaznosti na realitu z těchto ideálů procitnul a své politické postoje značně přehodnotil. Své členství ve straně později považoval za jednu z největších životních chyb, na kterou podle svých slov „rozhodně nebyl hrdý“.",
+   "V roce 1946 zahájil svá studia na Pedagogické fakultě Univerzity Karlovy v Praze, kde se konečně sblížil s uměleckou tvorbou. Na tamní Katedře výtvarné výchovy a deskriptivní geometrie měl možnost učit se od slavných profesorů, jakými byli např. Karel Lidický, Cyril Bouda, Martin Salcman či Josef Sejpka, s nimiž dokonce navázal přátelské vztahy. Fakultu absolvoval v roce 1950, a pak působil jako pedagog. Svoji kvalifikaci ještě rozšířil o ekonomii, když z ní v roce 1966 obdržel v Praze titul Ing. V roce 1951 se oženil s Emilií Veselou, dcerou vyhlášeného obchodníka s cukrovinkami. Spolu s ní později zakoupil rodinnou vilu na pražské Ořechovce, kde žil až do své smrti.",
+   "Malířství se zpočátku věnoval jen víceméně soukromě. Prosazovat se však začal již poměrně rychle, když byl v roce 1953 přijat do Spolku Štursa, později do VI. střediska. Zúčastnil se také soutěže na úpravu prostor Národního divadla v Praze a Jiráskovské soutěže. Od roku 1954 byl členem Svazu československých výtvarných umělců. V roce 1955 se potom stal profesorem na Střední uměleckoprůmyslové škole v Praze.",
+   "V roce 1960 byl vůdčí osobností při založení výtvarného tělesa nazvaného Skupina osmi výtvarníků, od roku 1962 přejmenované na Směr, v níž od začátku působil jako vedoucí. Cílem této skupiny bylo zejména pořádání výtvarně výchovných akcí mimo zavedená kulturní střediska, hlavně na vesnicích a v menších městech a zároveň hledání nových možností pro pořádání výstav. Díky této skupině dodal své činnosti i jistý sociální rozměr.",
+   "V roce 1979 utrpěl těžkou zlomeninu stehenní kosti při vážné dopravní autonehodě, při níž zahynuli všichni jeho spolucestující v osobním automobilu, včetně řidiče. Toto vážné zranění značně ovlivnilo jeho pohyblivost a tvorbu. Zejména od druhé pol. 80. let 20. stol. musel kvůli svému zdravotnímu stavu svoji práci i výstavy svých děl podstatně omezit. Přesto však s tvorbou nehodlal skončit úplně, a tak tvořil v omezené míře dál až do pozdních 90. let.",
+   "Za veškerý přínos a rozvoj kultury mu bylo v roce 1985 prezidentem republiky propůjčeno státní vyznamenání Za vynikající práci.",
+   "Zemřel 2. října 2001 v Praze ve věku 76 let."
+  ],
+  "dilo": [
+   "Oldřich Lajsek se kromě volné tvorby (malba, grafika) věnoval také užité grafice (plakáty, poutače, propagační katalogy a brožury) a designu. Za svůj život vytvořil zhruba 3000 malířských nebo grafických děl, z nichž více než 1800 skončilo v soukromých sbírkách. Mezi sběratele jeho tvorby se řadily i některé významné osobnosti jeho doby, jako např. herec Radovan Lukavský, či spisovatel Karel Štorkán. Jeho dílo je možné nalézt také v mnoha zahraničních galeriích, zejména v Německu, Francii a v Polsku. Z českých síní lze zmínit např. Galerii Mánes, Východočeskou galerii v Pardubicích či Galerii výtvarného umění v Ostravě.",
+   "Ve své tvorbě se vyznačoval poměrně velkou žánrovou i technickou všestranností. Dílo však velice poznamenala zejména doba, ve které Oldřich Lajsek žil a tvořil, neboť tehdejší totalitní ideologie nebyla zdaleka nakloněna všem žánrům. Např. v době uvolnění za éry „zlatých šedesátých let“ patřil k průkopníkům abstraktní malby, která je mezi sběrateli jeho díla velice oblíbená obzvláště v dnešních dobách. Ovšem kvůli jejímu následnému zákazu musel tuto tvorbu v dalších letech společně např. s ikonografií značně omezit. Často tak byl s mnohými dalšími nucen hledat ideologicky „nezávadné“ žánry jako jistou formu „úniku“. Proto mezi rozsáhlé tvorby patří např. jeho realistická díla či květinová zátiší. Bezesporu nejvíce se však proslavil díky krajinomalbě, v níž dokonce patřil mezi nejvýznamnější tvůrce své doby.",
+   "Inspiraci čerpal hlavně ve Středočeském kraji, zejména pak ve svém rodném kutnohorském regionu. Dále často maloval krajiny z okolí hory Říp, z Polabí a z Českého středohoří. Četná jsou i díla z pražského prostředí, kde rád zachycoval jedinečnost okamžiku v ulicích. Zajímavou součástí jeho tvorby jsou také obrazy ze zahraničních cest, zejména z Řecka, kde mu učarovaly např. architektonické vykopávky v okolí Delf, nebo scenérie z četných výjezdů do Jugoslávie.",
+   "Autorova tvorba je charakteristická díky osobitému uměleckému rukopisu. Typická je zejména pevná výstavba kompozice a zároveň i mírné abstrahování."
+  ],
+  "katalog": [
+   "katalog"
+  ],
+  "nabidka": [
+   "V nabídce uvedené níže je možné prohlížet obrazy Oldřicha Lajska. V  případě zájmu lze obrazy také zakoupit. V takovém případě je však nutné uvést příslušný kód obrazu (např. K1). Další informace je možné získat přes Kontakt ."
+  ],
+  "kontakt": [
+   "V případě zájmu o informace nebo o koupi obrazu (je třeba uvést vždy příslušný kód obrazu) kontaktujte syna malíře JUDr. Jana Lajska na 43688@centrum.cz ."
+  ]
+ },
+ "page_images": {
+  "uvod": [
+   {
+    "caption": "oldrich-lajsek",
+    "image": "pages/Oldřich-Lajsek.jpg"
+   }
+  ],
+  "zivot": [
+   {
+    "caption": "ol_1",
+    "image": "pages/OL_1.jpg"
+   },
+   {
+    "caption": "Křesetice",
+    "image": "pages/Křesetice.jpg"
+   },
+   {
+    "caption": "Svaz československých výtvarných umělců",
+    "image": "pages/scvu.jpg"
+   },
+   {
+    "caption": "Pedagogická fakulta UK",
+    "image": "pages/peďák.jpg"
+   },
+   {
+    "caption": "Střední uměleckoprůmyslová škola v Praze",
+    "image": "pages/80a56281c8308b3df1a2a05144e58926_640x478.jpg"
+   },
+   {
+    "caption": "Vyznamenání Za vynikající práci",
+    "image": "pages/2904-01.jpg"
+   }
+  ],
+  "dilo": [
+   {
+    "caption": "Galerie Mánes",
+    "image": "pages/Mánes.jpg"
+   },
+   {
+    "caption": "Ráno v Praze - příklad z realistické tvorby",
+    "image": "pages/Oldřich-Lajsek-Ráno-v-Praze.jpg"
+   },
+   {
+    "caption": "Zrcadlo - přiklad z abstraktní tvorby",
+    "image": "pages/Zrcadlo-1.jpg"
+   },
+   {
+    "caption": "Mosty",
+    "image": "pages/IMG_9817.jpg"
+   }
+  ]
+ },
+ "texts_en": {
+  "zivot": [],
+  "dilo": [],
+  "katalog": [],
+  "nabidka": [],
+  "kontakt": []
+ }
+}

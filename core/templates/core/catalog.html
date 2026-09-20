@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block content %}
+<section class="wrap page page-narrow">
+    <nav class="subnav" aria-label="{% trans 'O autorovi' %}">
+        <a href="{% url 'core:life' %}">{% trans "Život" %}</a>
+        <a href="{% url 'core:work' %}">{% trans "Dílo" %}</a>
+        <a class="active" href="{% url 'core:catalog' %}">{% trans "Katalog" %}</a>
+    </nav>
+
+    <h1 class="page-title">{% trans "Katalog" %}</h1>
+    <p class="page-lead">{% trans "Katalog děl Oldřicha Lajska ke stažení." %}</p>
+
+    <article class="prose" style="text-align:center">
+        <p>
+            <a class="btn" href="{{ MEDIA_URL }}pages/Katalog.pdf" target="_blank" rel="noopener">
+                {% trans "Stáhnout katalog (PDF)" %}
+            </a>
+        </p>
+    </article>
+</section>
+{% endblock %}

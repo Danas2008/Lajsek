@@ -1,0 +1,861 @@
+/* =========================================================
+   Oldřich Lajsek — galerijní prezentace
+   Vizuální směr: teplý, tradiční memoriál. Pozadí a typografie
+   ustupují do pozadí, barevným prvkem stránky jsou obrazy.
+   ========================================================= */
+
+:root {
+    /* Papír, ne bílá — podklad starého katalogu */
+    --paper: #f7f3ec;
+    --paper-deep: #f1ebe0;
+    --mat: #fffdf9;          /* pasparta pod obrazem */
+
+    /* Uhlově hnědá místo černé — měkčí kontrast */
+    --ink: #2b2620;
+    --ink-soft: #5c5449;
+    --muted: #857b6c;
+
+    /* Tlumená bronz — rám obrazu */
+    --gold: #b08d57;
+    --gold-deep: #8d6e41;
+    --line: #ded4c4;
+    --line-soft: #e8e0d3;
+
+    --serif-display: "Cormorant Garamond", "Georgia", serif;
+    --serif-text: "Source Serif 4", "Georgia", serif;
+    --sans-ui: "Inter", system-ui, sans-serif;
+
+    --max-width: 1240px;
+    --shadow-frame: 0 1px 2px rgba(43, 38, 32, 0.06),
+                    0 8px 24px rgba(43, 38, 32, 0.09);
+    --shadow-frame-hover: 0 2px 4px rgba(43, 38, 32, 0.08),
+                          0 16px 40px rgba(43, 38, 32, 0.14);
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+    margin: 0;
+    font-family: var(--serif-text);
+    font-size: 1.0625rem;
+    line-height: 1.75;
+    color: var(--ink);
+    background-color: var(--paper);
+    /* Jemná papírová zrnitost — SVG šum, žádný těžký bitmapový podklad */
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+    -webkit-font-smoothing: antialiased;
+}
+
+.wrap {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 40px;
+}
+
+a {
+    color: var(--ink);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+a:hover { color: var(--gold-deep); }
+
+h1, h2, h3 {
+    font-family: var(--serif-display);
+    font-weight: 500;
+    letter-spacing: 0.01em;
+    line-height: 1.2;
+    color: var(--ink);
+}
+
+h1 { font-size: 2.75rem; margin: 0 0 0.4em; }
+h2 { font-size: 1.85rem; }
+
+p { margin: 0 0 1.2em; }
+
+.muted { color: var(--muted); }
+
+.skip-link {
+    position: absolute;
+    left: -9999px;
+    top: 0;
+    background: var(--ink);
+    color: var(--paper);
+    padding: 10px 18px;
+    z-index: 100;
+}
+
+.skip-link:focus { left: 0; }
+
+::selection { background: rgba(176, 141, 87, 0.22); }
+
+/* ================= Hlavička ================= */
+.site-header {
+    background: rgba(247, 243, 236, 0.94);
+    backdrop-filter: blur(6px);
+    border-bottom: 1px solid var(--line);
+    position: sticky;
+    top: 0;
+    z-index: 30;
+}
+
+.header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 32px;
+    padding-top: 22px;
+    padding-bottom: 22px;
+}
+
+.brand { display: flex; flex-direction: column; line-height: 1.15; }
+
+.brand-name {
+    font-family: var(--serif-display);
+    font-size: 1.5rem;
+    letter-spacing: 0.04em;
+}
+
+.brand-years {
+    font-family: var(--sans-ui);
+    font-size: 0.68rem;
+    letter-spacing: 0.22em;
+    color: var(--gold-deep);
+    margin-top: 3px;
+}
+
+.main-nav {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.main-nav > a,
+.has-sub > a {
+    font-family: var(--sans-ui);
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.13em;
+    color: var(--ink-soft);
+    padding: 6px 0;
+    border-bottom: 1px solid transparent;
+}
+
+.main-nav > a:hover,
+.has-sub > a:hover {
+    color: var(--ink);
+    border-bottom-color: var(--gold);
+}
+
+/* Rozbalovací podmenu */
+.has-sub { position: relative; }
+
+.submenu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: -18px;
+    min-width: 215px;
+    padding: 10px 0;
+    background: var(--paper);
+    border: 1px solid var(--line);
+    box-shadow: var(--shadow-frame);
+    z-index: 40;
+}
+
+.has-sub:hover .submenu,
+.has-sub:focus-within .submenu { display: block; }
+
+.submenu a {
+    display: block;
+    padding: 9px 22px;
+    font-family: var(--serif-text);
+    font-size: 0.95rem;
+    color: var(--ink-soft);
+}
+
+.submenu a:hover {
+    background: var(--paper-deep);
+    color: var(--gold-deep);
+}
+
+/* Přepínač jazyka */
+.lang-switch {
+    display: flex;
+    gap: 8px;
+    padding-left: 22px;
+    border-left: 1px solid var(--line);
+}
+
+.lang-switch a {
+    font-family: var(--sans-ui);
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+    padding: 3px 5px;
+}
+
+.lang-switch a.active {
+    color: var(--gold-deep);
+    border-bottom: 1px solid var(--gold);
+}
+
+.nav-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 34px;
+    height: 34px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+}
+
+.nav-toggle span {
+    display: block;
+    height: 1px;
+    width: 100%;
+    background: var(--ink);
+}
+
+/* ================= Hero ================= */
+.hero {
+    padding: 96px 0 88px;
+    border-bottom: 1px solid var(--line-soft);
+}
+
+.hero-inner {
+    display: grid;
+    grid-template-columns: 380px 1fr;
+    gap: 72px;
+    align-items: center;
+}
+
+/* Portrét v paspartě — jako zarámovaná fotografie */
+.hero-portrait {
+    background: var(--mat);
+    padding: 16px;
+    border: 1px solid var(--line);
+    box-shadow: var(--shadow-frame);
+}
+
+.hero-portrait img {
+    width: 100%;
+    display: block;
+}
+
+.hero h1 {
+    font-size: 4rem;
+    font-weight: 400;
+    margin: 0 0 6px;
+}
+
+.hero-sub {
+    font-family: var(--sans-ui);
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.24em;
+    color: var(--gold-deep);
+    margin-bottom: 34px;
+}
+
+/* Motto místo agresivní výzvy k akci */
+.hero-motto {
+    font-family: var(--serif-display);
+    font-size: 1.5rem;
+    font-style: italic;
+    line-height: 1.5;
+    color: var(--ink-soft);
+    margin: 0 0 18px;
+    padding-left: 26px;
+    border-left: 2px solid var(--gold);
+}
+
+.hero-motto-source {
+    font-family: var(--sans-ui);
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    padding-left: 28px;
+    margin-bottom: 36px;
+}
+
+/* ================= Tlačítka ================= */
+.btn {
+    display: inline-block;
+    font-family: var(--sans-ui);
+    padding: 13px 32px;
+    border: 1px solid var(--gold);
+    color: var(--gold-deep);
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    letter-spacing: 0.16em;
+    background: transparent;
+    cursor: pointer;
+    transition: background 0.25s ease, color 0.25s ease;
+}
+
+.btn:hover {
+    background: var(--gold);
+    color: #fff;
+}
+
+.btn-quiet {
+    border-color: var(--line);
+    color: var(--ink-soft);
+}
+
+.btn-quiet:hover {
+    background: var(--ink);
+    border-color: var(--ink);
+    color: var(--paper);
+}
+
+/* ================= Obecná stránka ================= */
+.page { padding: 72px 40px 90px; }
+
+.page-narrow { max-width: 780px; }
+
+.page-title {
+    text-align: center;
+    margin-bottom: 8px;
+}
+
+/* Ozdobný bronzový oddělovač pod nadpisem */
+.page-title::after {
+    content: "";
+    display: block;
+    width: 56px;
+    height: 1px;
+    background: var(--gold);
+    margin: 22px auto 0;
+}
+
+.page-lead {
+    text-align: center;
+    color: var(--muted);
+    font-size: 1.05rem;
+    max-width: 640px;
+    margin: 0 auto 56px;
+}
+
+.section-heading {
+    font-family: var(--sans-ui);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--muted);
+    margin: 56px 0 24px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--line-soft);
+}
+
+.prose p { text-align: justify; hyphens: auto; }
+
+.prose p:first-of-type::first-letter {
+    font-family: var(--serif-display);
+    font-size: 3.4rem;
+    line-height: 0.9;
+    float: left;
+    margin: 6px 10px 0 0;
+    color: var(--gold-deep);
+}
+
+/* Poznámka u nepřeloženého obsahu */
+.translation-note {
+    font-family: var(--sans-ui);
+    font-size: 0.82rem;
+    color: var(--muted);
+    background: var(--paper-deep);
+    border-left: 2px solid var(--gold);
+    padding: 12px 18px;
+    margin-bottom: 32px;
+}
+
+.list-plain { list-style: none; padding: 0; margin: 0; }
+
+.list-plain li {
+    padding: 18px 0;
+    border-bottom: 1px solid var(--line-soft);
+}
+
+/* ================= Rozcestníkové dlaždice ================= */
+.section-links {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 30px;
+    padding: 80px 40px;
+}
+
+.tile {
+    border: 1px solid var(--line);
+    background: rgba(255, 253, 249, 0.6);
+    padding: 34px 30px;
+    transition: border-color 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
+}
+
+.tile:hover {
+    border-color: var(--gold);
+    box-shadow: var(--shadow-frame);
+    transform: translateY(-2px);
+}
+
+.tile h2 {
+    font-size: 1.3rem;
+    margin: 0 0 10px;
+}
+
+.tile p {
+    margin: 0;
+    color: var(--muted);
+    font-size: 0.95rem;
+}
+
+/* ================= Galerie obrazů ================= */
+.filters {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+    margin-bottom: 60px;
+    font-family: var(--sans-ui);
+    font-size: 0.76rem;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+}
+
+.filters a {
+    color: var(--muted);
+    padding-bottom: 6px;
+    border-bottom: 1px solid transparent;
+}
+
+.filters a.active,
+.filters a:hover {
+    color: var(--gold-deep);
+    border-bottom-color: var(--gold);
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 56px 44px;
+}
+
+/* Pasparta + rám: obraz nikdy nevyplňuje plochu na doraz */
+.gallery-item .frame {
+    background: var(--mat);
+    padding: 18px;
+    border: 1px solid var(--line);
+    box-shadow: var(--shadow-frame);
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.gallery-item:hover .frame {
+    box-shadow: var(--shadow-frame-hover);
+    transform: translateY(-3px);
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 310px;
+    object-fit: contain;
+    display: block;
+}
+
+.gallery-item-info {
+    padding: 18px 4px 0;
+    text-align: center;
+}
+
+.gallery-item-info h2 {
+    font-size: 1.15rem;
+    margin: 0 0 4px;
+    font-weight: 400;
+}
+
+.gallery-item-code {
+    font-family: var(--sans-ui);
+    font-size: 0.7rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--muted);
+}
+
+/* ================= Detail obrazu ================= */
+.painting-detail-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 2.1fr) minmax(280px, 0.9fr);
+    gap: 64px;
+    align-items: start;
+    margin-top: 16px;
+}
+
+.painting-image {
+    background: var(--mat);
+    padding: 26px;
+    border: 1px solid var(--line);
+    box-shadow: var(--shadow-frame);
+}
+
+.painting-image img {
+    width: 100%;
+    max-height: 78vh;
+    object-fit: contain;
+    display: block;
+}
+
+/* Informace v postranním panelu, ne přes celou šířku */
+.painting-info {
+    position: sticky;
+    top: 120px;
+}
+
+.painting-info h1 {
+    font-size: 2.1rem;
+    margin-bottom: 6px;
+}
+
+.painting-category {
+    font-family: var(--sans-ui);
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--gold-deep);
+    margin-bottom: 26px;
+}
+
+.painting-meta {
+    margin: 0 0 30px;
+    border-top: 1px solid var(--line-soft);
+}
+
+.painting-meta div {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 11px 0;
+    border-bottom: 1px solid var(--line-soft);
+}
+
+.painting-meta dt {
+    font-family: var(--sans-ui);
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+}
+
+.painting-meta dd {
+    margin: 0;
+    text-align: right;
+}
+
+.back-link {
+    display: inline-block;
+    margin-bottom: 26px;
+    font-family: var(--sans-ui);
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+}
+
+.related { margin-top: 96px; }
+
+.related .gallery-grid {
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 34px;
+}
+
+.related .gallery-item img { height: 200px; }
+
+/* ================= Životopis ================= */
+.bio-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 300px;
+    gap: 64px;
+    align-items: start;
+}
+
+.bio-figures figure {
+    margin: 0 0 30px;
+}
+
+.bio-figures img {
+    width: 100%;
+    display: block;
+    background: var(--mat);
+    padding: 10px;
+    border: 1px solid var(--line);
+    box-shadow: var(--shadow-frame);
+}
+
+.bio-figures figcaption {
+    font-family: var(--sans-ui);
+    font-size: 0.78rem;
+    color: var(--muted);
+    margin-top: 10px;
+    line-height: 1.5;
+}
+
+.subnav {
+    display: flex;
+    justify-content: center;
+    gap: 32px;
+    margin-bottom: 44px;
+    font-family: var(--sans-ui);
+    font-size: 0.76rem;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+}
+
+.subnav a {
+    color: var(--muted);
+    padding-bottom: 6px;
+    border-bottom: 1px solid transparent;
+}
+
+.subnav a.active,
+.subnav a:hover {
+    color: var(--gold-deep);
+    border-bottom-color: var(--gold);
+}
+
+/* ================= Citáty a výstavy ================= */
+.quote {
+    margin: 0 0 44px;
+    padding-left: 32px;
+    border-left: 2px solid var(--gold);
+}
+
+.quote p {
+    font-family: var(--serif-display);
+    font-size: 1.32rem;
+    font-style: italic;
+    line-height: 1.6;
+    color: var(--ink-soft);
+    margin-bottom: 14px;
+}
+
+.quote footer {
+    font-family: var(--sans-ui);
+    font-size: 0.76rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+}
+
+.publications li { font-size: 0.98rem; }
+
+.exhibitions li {
+    display: flex;
+    gap: 26px;
+    align-items: baseline;
+    padding: 14px 0;
+}
+
+.exhibition-year {
+    font-family: var(--sans-ui);
+    font-size: 0.8rem;
+    letter-spacing: 0.1em;
+    color: var(--gold-deep);
+    min-width: 56px;
+}
+
+/* ================= Formulář ================= */
+.contact-intro {
+    color: var(--ink-soft);
+    margin-bottom: 36px;
+}
+
+.contact-form .form-row {
+    margin-bottom: 24px;
+    display: flex;
+    flex-direction: column;
+}
+
+.contact-form label {
+    margin-bottom: 8px;
+    font-family: var(--sans-ui);
+    font-size: 0.74rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--muted);
+}
+
+.contact-form input,
+.contact-form textarea {
+    padding: 13px 16px;
+    border: 1px solid var(--line);
+    background: var(--mat);
+    font-family: var(--serif-text);
+    font-size: 1rem;
+    color: var(--ink);
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    outline: none;
+    border-color: var(--gold);
+}
+
+.field-error {
+    color: #9c3a2e;
+    font-size: 0.85rem;
+    margin: 6px 0 0;
+}
+
+.messages { margin: 26px auto 0; }
+
+.message {
+    padding: 14px 20px;
+    background: var(--mat);
+    border-left: 2px solid var(--gold);
+    font-family: var(--sans-ui);
+    font-size: 0.9rem;
+}
+
+/* ================= Patička ================= */
+.site-footer {
+    margin-top: 110px;
+    padding: 56px 0 44px;
+    border-top: 1px solid var(--line);
+    background: var(--paper-deep);
+}
+
+.footer-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 26px;
+    text-align: center;
+}
+
+/* Autorův podpis jako opakující se motiv */
+.footer-signature img {
+    height: 62px;
+    width: auto;
+    opacity: 0.72;
+}
+
+.footer-years {
+    font-family: var(--sans-ui);
+    font-size: 0.7rem;
+    letter-spacing: 0.24em;
+    color: var(--gold-deep);
+    margin: 10px 0 0;
+}
+
+.footer-nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 28px;
+    font-family: var(--sans-ui);
+    font-size: 0.74rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+}
+
+.footer-nav a { color: var(--ink-soft); }
+
+.footer-note {
+    font-size: 0.85rem;
+    color: var(--muted);
+    margin: 0;
+}
+
+/* ================= Responzivita =================
+   Desktop je pro prohlížení galerie prioritní; níže se layout
+   zjednodušuje, ale pasparty a prostor kolem děl zůstávají. */
+@media (max-width: 1080px) {
+    .hero-inner { grid-template-columns: 320px 1fr; gap: 48px; }
+    .hero h1 { font-size: 3.2rem; }
+    .painting-detail-grid { grid-template-columns: 1fr; gap: 40px; }
+    .painting-info { position: static; }
+    .bio-layout { grid-template-columns: 1fr; gap: 44px; }
+    .bio-figures {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 24px;
+    }
+}
+
+@media (max-width: 860px) {
+    .wrap { padding: 0 24px; }
+    .page { padding: 48px 24px 64px; }
+    .section-links { padding: 48px 24px; }
+
+    .nav-toggle { display: flex; }
+    .header-inner { flex-wrap: wrap; }
+
+    .main-nav {
+        display: none;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 4px;
+        width: 100%;
+        padding: 18px 0 6px;
+        border-top: 1px solid var(--line-soft);
+        margin-top: 18px;
+    }
+
+    .main-nav.open { display: flex; }
+    .main-nav > a, .has-sub { width: 100%; }
+    .main-nav > a, .has-sub > a { display: block; padding: 10px 0; }
+
+    .submenu {
+        display: block;
+        position: static;
+        border: none;
+        box-shadow: none;
+        background: transparent;
+        padding: 0 0 8px 18px;
+        min-width: 0;
+    }
+
+    .submenu a { padding: 7px 0; }
+
+    .lang-switch {
+        padding: 14px 0 0;
+        border-left: none;
+        border-top: 1px solid var(--line-soft);
+        width: 100%;
+        margin-top: 10px;
+    }
+
+    .hero { padding: 56px 0 52px; }
+    .hero-inner { grid-template-columns: 1fr; gap: 36px; }
+    .hero-portrait { max-width: 300px; }
+    .hero h1 { font-size: 2.6rem; }
+    .hero-motto { font-size: 1.25rem; padding-left: 20px; }
+
+    h1 { font-size: 2.1rem; }
+
+    .gallery-grid {
+        grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+        gap: 40px 28px;
+    }
+
+    .gallery-item img { height: 240px; }
+    .gallery-item .frame { padding: 13px; }
+    .painting-image { padding: 16px; }
+    .prose p { text-align: left; }
+    .exhibitions li { flex-direction: column; gap: 4px; }
+}
+
+@media (max-width: 480px) {
+    .gallery-grid { grid-template-columns: 1fr; }
+    .gallery-item img { height: 300px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; scroll-behavior: auto !important; }
+    .tile:hover, .gallery-item:hover .frame { transform: none; }
+}
