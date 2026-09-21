@@ -811,11 +811,12 @@ p { margin: 0 0 1.2em; }
     text-align: center;
 }
 
-/* Autorův podpis jako opakující se motiv */
+/* Autorův podpis jako opakující se motiv. Zdrojem je fotografie podpisu
+   na kameni, proto nese jemné zrno — nižší krytí ho drží v pozadí. */
 .footer-signature img {
-    height: 62px;
+    height: 58px;
     width: auto;
-    opacity: 0.8;
+    opacity: 0.66;
 }
 
 .footer-years {
