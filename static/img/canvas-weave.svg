@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 8 8">
+  <!-- Tkanina plátna: osnova a útek se střídají, proto mají vlákna
+       různou sytost. Dlaždice 8x8 px se v CSS opakuje v pevné velikosti. -->
+  <g stroke="#6b5533" stroke-width="1" shape-rendering="crispEdges">
+    <path d="M0 .5h8" opacity=".55"/>
+    <path d="M0 4.5h8" opacity=".32"/>
+    <path d="M.5 0v8" opacity=".48"/>
+    <path d="M4.5 0v8" opacity=".28"/>
+  </g>
+  <g fill="#6b5533">
+    <rect x="0" y="0" width="1" height="1" opacity=".3"/>
+    <rect x="4" y="4" width="1" height="1" opacity=".3"/>
+  </g>
+</svg>

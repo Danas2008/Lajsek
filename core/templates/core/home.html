@@ -25,7 +25,8 @@
     <div class="wrap hero-inner">
         {% if hero_image %}
         <div class="hero-portrait">
-            <img src="{{ MEDIA_URL }}{{ hero_image.image }}" alt="{% trans 'Portrét Oldřicha Lajska' %}">
+            <img src="{{ MEDIA_URL }}{{ hero_image.image }}" alt="{% trans 'Portrét Oldřicha Lajska' %}"
+                 fetchpriority="high" decoding="async">
         </div>
         {% endif %}
 

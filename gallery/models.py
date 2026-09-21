@@ -1,7 +1,20 @@
+import os
+from functools import lru_cache
+
+from django.conf import settings
 from django.db import models
 from django.urls import reverse
 from django.utils.text import slugify
 from django.utils.translation import get_language
+
+# Šířky zmenšenin generovaných příkazem `make_thumbnails`.
+THUMB_WIDTHS = (400, 800, 1400)
+
+
+@lru_cache(maxsize=2048)
+def _thumb_exists(relative_path):
+    """Existenci náhledu stačí ověřit jednou za běh procesu."""
+    return os.path.exists(os.path.join(settings.MEDIA_ROOT, relative_path))
 
 
 class Category(models.Model):
@@ -96,3 +109,41 @@ class Painting(models.Model):
 
     def get_absolute_url(self):
         return reverse('gallery:painting_detail', args=[self.category.slug, self.slug])
+
+    # ------------------------------------------------------------------
+    # Zmenšeniny
+    # ------------------------------------------------------------------
+    def thumb_name(self, width):
+        """Cesta náhledu v MEDIA_ROOT: <složka>/thumbs/<soubor>-<šířka>.jpg"""
+        base, _ext = os.path.splitext(self.image.name)
+        directory, filename = os.path.split(base)
+        return f'{directory}/thumbs/{filename}-{width}.jpg'
+
+    def thumb_url(self, width):
+        """URL náhledu; když ještě nebyl vygenerován, vrátí originál."""
+        name = self.thumb_name(width)
+        if _thumb_exists(name):
+            return f'{settings.MEDIA_URL}{name}'
+        return self.image.url
+
+    @property
+    def thumb_small(self):
+        return self.thumb_url(400)
+
+    @property
+    def thumb_medium(self):
+        return self.thumb_url(800)
+
+    @property
+    def thumb_large(self):
+        return self.thumb_url(1400)
+
+    @property
+    def srcset_grid(self):
+        """srcset pro mřížku galerie."""
+        return f'{self.thumb_url(400)} 400w, {self.thumb_url(800)} 800w'
+
+    @property
+    def srcset_detail(self):
+        """srcset pro detail obrazu."""
+        return (f'{self.thumb_url(800)} 800w, {self.thumb_url(1400)} 1400w')

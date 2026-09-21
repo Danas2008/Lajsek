@@ -28,13 +28,12 @@ body.bg-body-tertiary,
     border-bottom: 1px solid rgba(176, 141, 87, 0.35);
 }
 
-/* Podpis autora je tmavý na průhledném pozadí — v tmavé liště
-   a na přihlašovací obrazovce se proto převrací do bílé. */
+/* Logo je podpis autora vykreslený rovnou ve světlé barvě na průhledném
+   pozadí (static/img/admin-logo.png), žádný filtr není potřeba. */
 #jazzy-logo .brand-image,
 .login-logo img,
 .login-box img {
-    filter: brightness(0) invert(1);
-    opacity: 0.92 !important;
+    opacity: 0.95 !important;
     max-height: 40px;
     width: auto;
 }

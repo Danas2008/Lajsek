@@ -35,7 +35,9 @@
 
     <div class="painting-detail-grid">
         <div class="painting-image">
-            <img src="{{ painting.image.url }}" alt="{{ painting.image_alt }}">
+            <img src="{{ painting.thumb_large }}" srcset="{{ painting.srcset_detail }}"
+                 sizes="(max-width: 1080px) 92vw, 780px"
+                 alt="{{ painting.image_alt }}" fetchpriority="high" decoding="async">
         </div>
 
         <div class="painting-info">
@@ -85,7 +87,9 @@
             {% for item in related %}
             <a class="gallery-item" href="{{ item.get_absolute_url }}">
                 <div class="frame">
-                    <img src="{{ item.image.url }}" alt="{{ item.image_alt }}" loading="lazy">
+                    <img src="{{ item.thumb_small }}" srcset="{{ item.srcset_grid }}"
+                         sizes="(max-width: 560px) 45vw, 220px"
+                         alt="{{ item.image_alt }}" loading="lazy" decoding="async">
                 </div>
                 <div class="gallery-item-info">
                     <h2>{{ item.public_title }}</h2>

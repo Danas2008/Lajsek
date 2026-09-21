@@ -27,7 +27,10 @@
         {% for painting in paintings %}
             <a class="gallery-item" href="{{ painting.get_absolute_url }}">
                 <div class="frame">
-                    <img src="{{ painting.image.url }}" alt="{{ painting.image_alt }}" loading="lazy">
+                    <img src="{{ painting.thumb_small }}" srcset="{{ painting.srcset_grid }}"
+                         sizes="(max-width: 560px) 92vw, (max-width: 860px) 45vw, 300px"
+                         alt="{{ painting.image_alt }}" decoding="async"
+                         {% if forloop.counter <= 3 %}fetchpriority="high"{% else %}loading="lazy"{% endif %}>
                 </div>
                 <div class="gallery-item-info">
                     <h2>{{ painting.public_title }}</h2>

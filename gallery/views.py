@@ -59,7 +59,7 @@ def painting_detail(request, category_slug, slug):
         ) % {'title': painting.public_title},
         'painting': painting,
         'related': related,
-        'og_image': painting.image,
+        'og_image_url': painting.thumb_large,
     }
     return render(request, 'gallery/painting_detail.html', context)
 
