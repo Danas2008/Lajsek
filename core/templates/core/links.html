@@ -7,11 +7,21 @@
     <p class="page-lead">{% trans "Galerie, katalogy a databáze, v nichž je dílo zastoupeno." %}</p>
 
     {% if links %}
-        <ul class="list-plain">
+        <ul class="link-list">
         {% for link in links %}
-            <li>
-                <a href="{{ link.url }}" target="_blank" rel="noopener">{{ link.title }}</a>
-                {% if link.description %}<p class="muted">{{ link.description }}</p>{% endif %}
+            <li class="link-item">
+                <a href="{{ link.url }}" target="_blank" rel="noopener noreferrer"
+                   class="{% cycle 'brush-a' 'brush-b' 'brush-c' %}">
+                    <span class="link-figure">
+                        {% include "icons/link-"|add:link.icon|add:".svg" %}
+                    </span>
+                    <span class="link-text">{{ link.title }}</span>
+                    <span class="link-arrow">
+                        {% include "icons/icon-external.svg" %}
+                        <span class="visually-hidden">{% trans "otevře se v novém okně" %}</span>
+                    </span>
+                </a>
+                {% if link.description %}<p class="muted link-desc">{{ link.description }}</p>{% endif %}
             </li>
         {% endfor %}
         </ul>

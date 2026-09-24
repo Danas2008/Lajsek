@@ -1,0 +1,7 @@
+{# Knihovna / muzeum — budova se sloupy #}
+<svg class="link-icon" viewBox="0 0 32 32" fill="none" aria-hidden="true"
+     stroke="currentColor" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M4 12.5 16 5.5l12 7"/>
+  <path d="M6.5 12.5v11M11.5 12.5v11M20.5 12.5v11M25.5 12.5v11"/>
+  <path d="M3.5 23.5h25M5 26.5h22"/>
+</svg>

@@ -2,7 +2,7 @@
 {% load i18n %}
 
 {% block content %}
-<section class="wrap page page-narrow">
+<section class="wrap page">
     <nav class="subnav" aria-label="{% trans 'O autorovi' %}">
         <a href="{% url 'core:life' %}">{% trans "Život" %}</a>
         <a href="{% url 'core:work' %}">{% trans "Dílo" %}</a>
@@ -10,14 +10,50 @@
     </nav>
 
     <h1 class="page-title">{% trans "Katalog" %}</h1>
-    <p class="page-lead">{% trans "Katalog děl Oldřicha Lajska ke stažení." %}</p>
+    <p class="page-lead">{% trans "Souhrnný přehled obrazů s uvedenými rozměry." %}</p>
 
-    <article class="prose" style="text-align:center">
-        <p>
+    <div class="catalog-layout">
+        {% if catalog.preview %}
+        <figure class="catalog-plate">
+            <img src="{{ MEDIA_URL }}{{ catalog.preview }}"
+                 alt="{% trans 'Ukázka stránky katalogu s reprodukcemi obrazů' %}"
+                 width="1200" height="904" decoding="async">
+        </figure>
+        {% endif %}
+
+        <div class="catalog-note">
+            <p>
+                {% blocktrans trimmed %}
+                    Katalog je souhrnným přehledem autorovy tvorby. Obrazy jsou
+                    v něm řazeny po kategoriích a u každého je uveden kód díla
+                    i jeho rozměr — tedy tentýž kód, který se uvádí při poptávce.
+                {% endblocktrans %}
+            </p>
+
+            {% if catalog.works_with_dimensions %}
+            <dl class="catalog-facts">
+                <div>
+                    <dt>{% trans "Zaznamenaných děl" %}</dt>
+                    <dd>{{ catalog.works_with_dimensions }}</dd>
+                </div>
+                <div>
+                    <dt>{% trans "Dvoustran" %}</dt>
+                    <dd>{{ catalog.spreads }}</dd>
+                </div>
+            </dl>
+            {% endif %}
+
+            <p class="catalog-hint">
+                {% blocktrans trimmed %}
+                    Zobrazená ukázka je jednou ze stran katalogu; celý přehled
+                    je ke stažení ve formátu PDF.
+                {% endblocktrans %}
+            </p>
+
             <a class="btn" href="{{ MEDIA_URL }}pages/Katalog.pdf" target="_blank" rel="noopener">
-                {% trans "Stáhnout katalog (PDF)" %}
+                {% trans "Prohlédnout katalog (PDF)" %}
             </a>
-        </p>
-    </article>
+        </div>
+    </div>
 </section>
 {% endblock %}

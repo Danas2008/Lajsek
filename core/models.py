@@ -65,7 +65,20 @@ class PressMention(models.Model):
 
 
 class ExternalLink(models.Model):
+    ICON_CHOICES = [
+        ('library', 'Knihovna / muzeum'),
+        ('wiki', 'Encyklopedie'),
+        ('catalog', 'Katalog / databáze děl'),
+        ('gallery', 'Galerie'),
+        ('generic', 'Neutrální (typ z názvu nevyplývá)'),
+    ]
+
     title = models.CharField('název', max_length=200)
+    icon = models.CharField(
+        'ikona', max_length=20, choices=ICON_CHOICES, default='generic',
+        help_text='Typ odhadnutý z názvu odkazu. Když si nejste jistí, '
+                  'nechte neutrální — nic se tím netvrdí o obsahu odkazu.',
+    )
     url = models.URLField('odkaz')
     description = models.CharField('popis', max_length=300, blank=True)
     order = models.PositiveIntegerField('pořadí', default=0)

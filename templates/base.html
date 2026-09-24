@@ -103,7 +103,7 @@
     <footer class="site-footer">
         <div class="wrap footer-inner">
             <div class="footer-signature">
-                <img src="{% static 'img/signature.png' %}" alt="{% trans 'Podpis Oldřicha Lajska' %}" width="537" height="186" loading="lazy">
+                <img src="{% static 'img/signature.svg' %}" alt="{% trans 'Podpis Oldřicha Lajska' %}" width="537" height="186" loading="lazy">
                 <p class="footer-years">1925 — 2001</p>
             </div>
 
@@ -119,5 +119,7 @@
             <p class="footer-note">&copy; {% now "Y" %} {% trans "dílo Oldřicha Lajska" %}</p>
         </div>
     </footer>
+
+    {% block scripts %}{% endblock %}
 </body>
 </html>

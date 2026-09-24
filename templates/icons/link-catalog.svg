@@ -1,0 +1,7 @@
+{# Katalog / databáze děl — rám obrazu s kartami #}
+<svg class="link-icon" viewBox="0 0 32 32" fill="none" aria-hidden="true"
+     stroke="currentColor" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round">
+  <rect x="5.5" y="6.5" width="21" height="16"/>
+  <path d="M9 18.5l4-5 2.6 3.3 2.6-3.9L23 18.5z"/>
+  <path d="M8.5 25.5h15M11 28h10"/>
+</svg>

@@ -1,31 +1,59 @@
 {% extends "base.html" %}
-{% load i18n lajsek_tags %}
+{% load static i18n lajsek_tags %}
 
 {% block content %}
-<section class="wrap page page-narrow">
+<section class="wrap page">
     <h1 class="page-title">{% trans "Výstavy" %}</h1>
     <p class="page-lead">{% trans "Samostatné i společné výstavy doma a v zahraničí." %}</p>
 
-    {% if exhibitions %}
-        {% regroup exhibitions by place as groups %}
-        {% for group in groups %}
-            {% if group.grouper %}<h2 class="section-heading">{{ group.grouper }}</h2>{% endif %}
-            <ul class="list-plain exhibitions">
-            {% for exhibition in group.list %}
-                <li>
-                    <span class="exhibition-year">{{ exhibition.year|default:"—" }}</span>
-                    <span>
-                        {{ exhibition.title }}
-                        {% if exhibition.description %}
-                            <br><span class="muted">{% translated exhibition 'description' %}</span>
-                        {% endif %}
-                    </span>
-                </li>
+    {% for group in timelines %}
+        {% if group.place %}
+            <h2 class="section-heading timeline-heading">{{ group.place }}</h2>
+        {% endif %}
+
+        <ol class="timeline">
+            <span class="timeline-marker" aria-hidden="true"></span>
+            {% for exhibition in group.items %}
+            <li class="timeline-item">
+                <span class="timeline-dot" aria-hidden="true"></span>
+                <div class="timeline-body">
+                    {% if exhibition.year %}
+                        <span class="timeline-year">{{ exhibition.year }}</span>
+                    {% endif %}
+                    <span class="timeline-place">{{ exhibition.title }}</span>
+                    {% if exhibition.description %}
+                        <p class="timeline-desc">{% translated exhibition 'description' %}</p>
+                    {% endif %}
+                </div>
+            </li>
             {% endfor %}
-            </ul>
-        {% endfor %}
-    {% else %}
+        </ol>
+    {% empty %}
         <p>{% trans "Zatím nejsou přidány žádné výstavy." %}</p>
+    {% endfor %}
+
+    {% if mentions %}
+    <aside class="exhibition-mentions">
+        <dl>
+            {% for group in mentions %}
+                {% for exhibition in group.items %}
+                <div>
+                    <dt>{{ group.place }}</dt>
+                    <dd>
+                        {% if exhibition.year %}{{ exhibition.year }} — {% endif %}{{ exhibition.title }}
+                        {% if exhibition.description %}
+                            <span class="muted">{% translated exhibition 'description' %}</span>
+                        {% endif %}
+                    </dd>
+                </div>
+                {% endfor %}
+            {% endfor %}
+        </dl>
+    </aside>
     {% endif %}
 </section>
+{% endblock %}
+
+{% block scripts %}
+<script src="{% static 'js/timeline-marker.js' %}" defer></script>
 {% endblock %}

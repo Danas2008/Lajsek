@@ -8,33 +8,51 @@
 
     {% if quotes %}
     <h2 class="section-heading">{% trans "Citáty" %}</h2>
-    {% for mention in quotes %}
-        {% is_untranslated mention 'text' as needs_translation %}
-        <blockquote class="quote">
-            <p>{% translated mention 'text' %}</p>
-            <footer>{{ mention.source }}</footer>
-            {% if needs_translation %}
-                <p class="translation-note">{% trans "The English version of this text is coming soon. Below is the Czech original." %}</p>
+
+    <div class="quotes">
+        {% for mention in quotes %}
+            {% is_untranslated mention 'text' as needs_translation %}
+            <figure class="quote">
+                <span class="quote-mark" aria-hidden="true">„</span>
+                <blockquote>{% translated mention 'text' %}</blockquote>
+                {% if needs_translation %}
+                    <p class="translation-note">{% trans "The English version of this text is coming soon. Below is the Czech original." %}</p>
+                {% endif %}
+                <figcaption>
+                    <span class="quote-rule" aria-hidden="true"></span>
+                    {{ mention.source }}
+                    {% if mention.link %}
+                        <a href="{{ mention.link }}" target="_blank" rel="noopener noreferrer">{% trans "Odkaz na zdroj" %}</a>
+                    {% endif %}
+                </figcaption>
+            </figure>
+
+            {# Po každé druhé citaci jemné nadechnutí, ne nová sekce. #}
+            {% if forloop.counter|divisibleby:2 and not forloop.last %}
+                <span class="quote-break {% cycle 'brush-a' 'brush-b' 'brush-c' %}" aria-hidden="true"></span>
             {% endif %}
-            {% if mention.link %}
-                <a href="{{ mention.link }}" target="_blank" rel="noopener">{% trans "Odkaz na zdroj" %}</a>
-            {% endif %}
-        </blockquote>
-    {% endfor %}
+        {% endfor %}
+    </div>
     {% endif %}
 
     {% if publications %}
     <h2 class="section-heading">{% trans "Publikace" %}</h2>
-    <ul class="list-plain publications">
-        {% for mention in publications %}
-        <li>
-            {% translated mention 'text' %}
-            {% if mention.link %}
-                <a href="{{ mention.link }}" target="_blank" rel="noopener">{% trans "Odkaz" %}</a>
-            {% endif %}
-        </li>
-        {% endfor %}
-    </ul>
+
+    <div class="publications">
+        <ul>
+            {% for mention in publications %}
+            <li>
+                <span class="pub-figure">{% include "icons/icon-publication.svg" %}</span>
+                <span class="pub-text">
+                    {% translated mention 'text' %}
+                    {% if mention.link %}
+                        <a href="{{ mention.link }}" target="_blank" rel="noopener noreferrer">{% trans "Odkaz" %}</a>
+                    {% endif %}
+                </span>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
     {% endif %}
 
     {% if not quotes and not publications %}

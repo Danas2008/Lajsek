@@ -1,3 +1,6 @@
+from itertools import groupby
+from operator import attrgetter
+
 from django.contrib import messages
 from django.shortcuts import redirect, render
 from django.urls import reverse
@@ -66,18 +69,31 @@ def catalog(request):
     context = {
         'meta_title': _('Katalog') + f' | {SITE}',
         'meta_description': _('Katalog děl Oldřicha Lajska ke stažení ve formátu PDF.'),
+        'catalog': content.catalog(),
     }
     return render(request, 'core/catalog.html', context)
 
 
 def exhibitions(request):
+    # Skupiny s jedinou výstavou nedávají jako samostatná „cesta“ smysl —
+    # zobrazí se pod hlavní timeline jako stručná zmínka. Jakmile by jich
+    # v některé skupině přibylo, vrátí se do timeline automaticky.
+    timelines, mentions = [], []
+    queryset = Exhibition.objects.order_by('place', 'order')
+    for place, group in groupby(queryset, key=attrgetter('place')):
+        items = list(group)
+        (timelines if len(items) > 1 else mentions).append(
+            {'place': place, 'items': items}
+        )
+
     context = {
         'meta_title': _('Výstavy') + f' | {SITE}',
         'meta_description': _(
             'Přehled samostatných i společných výstav Oldřicha Lajska '
             'v Česku i v zahraničí.'
         ),
-        'exhibitions': Exhibition.objects.order_by('place', 'order'),
+        'timelines': timelines,
+        'mentions': mentions,
     }
     return render(request, 'core/exhibitions.html', context)
 

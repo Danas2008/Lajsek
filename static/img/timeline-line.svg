@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 600" preserveAspectRatio="none" fill="none">
+  <!-- Mírně nepravidelná svislice v duchu štětcových oddělovačů:
+       tah se sotva znatelně vlní a v místech přítlaku houstne. -->
+  <path d="M6.2 2C5.1 52 6.8 102 6.1 152c-.7 50 .9 100 .2 150-.7 50 .8 100 .1 150-.4 50 .6 100 .3 146"
+        stroke="#b08d57" stroke-width="1.5" stroke-linecap="round" opacity=".7"/>
+  <path d="M6.4 86c-.5 40 .6 80 .1 120M6.2 330c-.4 46 .5 92 .2 138"
+        stroke="#8d6e41" stroke-width=".8" stroke-linecap="round" opacity=".38"/>
+</svg>

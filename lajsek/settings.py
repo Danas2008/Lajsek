@@ -154,10 +154,10 @@ JAZZMIN_SETTINGS = {
     'copyright': 'Rodina Lajskova',
 
     # Autorův podpis; v tmavé liště se převrací do bílé (viz admin.css).
-    'site_logo': 'img/admin-logo.png',
+    'site_logo': 'img/signature-light.svg',
     'site_logo_classes': 'img-size-50',
     'site_icon': 'img/favicon.png',
-    'login_logo': 'img/admin-logo.png',
+    'login_logo': 'img/signature.svg',
 
     'order_with_respect_to': [
         'gallery',

@@ -1,6 +1,8 @@
 from django.shortcuts import get_object_or_404, redirect, render
 from django.utils.translation import gettext as _
 
+from core import content
+
 from .models import Category, Painting
 
 
@@ -24,6 +26,9 @@ def _list_context(request, active_category=None):
         'categories': Category.objects.all(),
         'paintings': paintings,
         'active_category': active_category,
+        # Na webu je jen část díla — katalog eviduje řádově víc prací.
+        'shown_count': Painting.objects.count(),
+        'catalog': content.catalog(),
     }
 
 

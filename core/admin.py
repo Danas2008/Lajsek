@@ -120,7 +120,8 @@ class PressMentionAdmin(admin.ModelAdmin):
 
 @admin.register(ExternalLink)
 class ExternalLinkAdmin(admin.ModelAdmin):
-    list_display = ('title', 'url', 'order')
-    list_editable = ('order',)
+    list_display = ('title', 'icon', 'url', 'order')
+    list_editable = ('icon', 'order')
+    list_filter = ('icon',)
     search_fields = ('title', 'url')
     ordering = ('order',)

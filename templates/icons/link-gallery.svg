@@ -1,0 +1,7 @@
+{# Galerie — obraz na malířském stojanu #}
+<svg class="link-icon" viewBox="0 0 32 32" fill="none" aria-hidden="true"
+     stroke="currentColor" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round">
+  <rect x="7.5" y="5.5" width="17" height="13"/>
+  <path d="M10.5 15l3.4-4.2 2.2 2.8 2.2-3.2 3.2 4.6z"/>
+  <path d="M16 18.5v8M16 22.5 9.5 27.5M16 22.5l6.5 5"/>
+</svg>

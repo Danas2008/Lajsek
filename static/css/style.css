@@ -218,16 +218,24 @@ p { margin: 0 0 1.2em; }
     gap: 30px;
 }
 
+/* Odkazy uvnitř .has-sub nejsou flex položky, takže by zůstaly inline
+   a seděly o pár pixelů jinde než ostatní — proto explicitní blok. */
 .main-nav > a,
 .has-sub > a {
+    display: block;
     font-family: var(--sans-ui);
     font-size: 0.78rem;
+    line-height: 1.4;
     text-transform: uppercase;
     letter-spacing: 0.13em;
     color: var(--ink-soft);
     padding: 6px 0;
     border-bottom: 1px solid transparent;
 }
+
+.main-nav > a,
+.has-sub,
+.lang-switch { align-self: center; }
 
 .main-nav > a:hover,
 .has-sub > a:hover {
@@ -489,6 +497,87 @@ p { margin: 0 0 1.2em; }
     font-size: 0.95rem;
 }
 
+/* ================= Sály výstavy =================
+   Rozcestník na domovské stránce jako expoziční tabule: římské číslo
+   sálu na štítku, kresebná ikona a tenký bronzový rám v duchu rámu
+   kolem obsahu. */
+.halls {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 26px;
+    padding: 64px 40px 96px;
+    align-items: start;
+}
+
+.hall {
+    position: relative;
+    display: block;
+    padding: 46px 26px 30px;
+    background: rgba(255, 253, 249, 0.72);
+    border: 1px solid var(--line);
+    box-shadow: inset 0 0 0 3px var(--paper),
+                inset 0 0 0 4px rgba(176, 141, 87, 0.28);
+    transition: box-shadow 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
+}
+
+/* Salonní zavěšení: mírně nestejné výšky, žádný pravidelný vzorec. */
+.hall:nth-child(1) { transform: translateY(18px); }
+.hall:nth-child(2) { transform: translateY(-9px); }
+.hall:nth-child(3) { transform: translateY(26px); }
+.hall:nth-child(4) { transform: translateY(-3px); }
+
+.hall:hover {
+    border-color: var(--gold);
+    box-shadow: inset 0 0 0 3px var(--paper),
+                inset 0 0 0 4px rgba(176, 141, 87, 0.5),
+                var(--shadow-frame);
+}
+
+.hall:nth-child(1):hover { transform: translateY(14px); }
+.hall:nth-child(2):hover { transform: translateY(-13px); }
+.hall:nth-child(3):hover { transform: translateY(22px); }
+.hall:nth-child(4):hover { transform: translateY(-7px); }
+
+/* Číslo sálu jako muzejní štítek */
+.hall-num {
+    position: absolute;
+    top: 14px;
+    left: 14px;
+    width: 26px;
+    height: 26px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--serif-display);
+    font-size: 0.82rem;
+    letter-spacing: 0.06em;
+    color: var(--gold-deep);
+    border: 1px solid rgba(176, 141, 87, 0.45);
+}
+
+.hall-icon {
+    display: block;
+    width: 38px;
+    height: 38px;
+    margin: 0 0 18px;
+    color: var(--gold);
+    opacity: 0.9;
+}
+
+.hall:hover .hall-icon { opacity: 1; }
+
+.hall h2 {
+    font-size: 1.28rem;
+    margin: 0 0 10px;
+}
+
+.hall p {
+    margin: 0;
+    color: var(--muted);
+    font-size: 0.94rem;
+    line-height: 1.6;
+}
+
 /* ================= Galerie obrazů ================= */
 .filters {
     display: flex;
@@ -559,6 +648,28 @@ p { margin: 0 0 1.2em; }
     letter-spacing: 0.16em;
     text-transform: uppercase;
     color: var(--muted);
+}
+
+/* Upozornění, že web ukazuje jen část díla — zbytek eviduje katalog. */
+.gallery-note {
+    max-width: 660px;
+    margin: -22px auto 46px;
+    padding: 22px 28px;
+    text-align: center;
+    background: rgba(255, 253, 249, 0.6);
+    border-top: 1px solid rgba(176, 141, 87, 0.35);
+    border-bottom: 1px solid rgba(176, 141, 87, 0.35);
+}
+
+.gallery-note p {
+    margin: 0 0 16px;
+    color: var(--ink-soft);
+    font-size: 0.98rem;
+}
+
+.gallery-note .btn {
+    padding: 10px 24px;
+    font-size: 0.7rem;
 }
 
 /* ================= Detail obrazu ================= */
@@ -701,23 +812,124 @@ p { margin: 0 0 1.2em; }
     border-bottom-color: var(--gold);
 }
 
+/* ================= Katalog =================
+   Náhled leží na desce stolu: mírné natočení a měkký široký stín,
+   který se rozlévá pod objektem — ne stín zavěšeného obrazu. */
+.catalog-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1.15fr) minmax(280px, 0.85fr);
+    gap: 68px;
+    align-items: center;
+    margin-top: 22px;
+}
+
+.catalog-plate {
+    margin: 0;
+    padding: 14px;
+    background: var(--mat);
+    border: 1px solid var(--gold);
+    box-shadow: inset 0 0 0 3px var(--paper),
+                inset 0 0 0 4px rgba(176, 141, 87, 0.3),
+                0 18px 42px -14px rgba(60, 46, 28, 0.42);
+    transform: rotate(-2.4deg);
+    transform-origin: center;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.catalog-plate:hover {
+    transform: rotate(-1.2deg);
+    box-shadow: inset 0 0 0 3px var(--paper),
+                inset 0 0 0 4px rgba(176, 141, 87, 0.45),
+                0 22px 52px -14px rgba(60, 46, 28, 0.48);
+}
+
+.catalog-plate img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.catalog-note p {
+    color: var(--ink-soft);
+}
+
+.catalog-facts {
+    display: flex;
+    gap: 44px;
+    margin: 28px 0;
+    padding: 18px 0;
+    border-top: 1px solid var(--line-soft);
+    border-bottom: 1px solid var(--line-soft);
+}
+
+.catalog-facts div { display: block; }
+
+.catalog-facts dt {
+    font-family: var(--sans-ui);
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--muted);
+    margin-bottom: 6px;
+}
+
+.catalog-facts dd {
+    margin: 0;
+    font-family: var(--serif-display);
+    font-size: 1.9rem;
+    line-height: 1;
+    color: var(--gold-deep);
+}
+
+.catalog-hint {
+    font-size: 0.93rem;
+    color: var(--muted);
+    margin-bottom: 26px;
+}
+
 /* ================= Citáty a výstavy ================= */
+/* ================= Citáty ================= */
 .quote {
-    margin: 0 0 44px;
-    padding-left: 32px;
+    position: relative;
+    margin: 0 0 46px;
+    padding-left: 34px;
     border-left: 2px solid var(--gold);
 }
 
-.quote p {
+/* Velká uvozovka jako vodoznak za začátkem textu.
+   Glyf „ má inkoust u účaří, proto se posouvá o celou výšku nahoru,
+   aby seděl v horním rohu bloku a ne uprostřed textu. */
+.quote-mark {
+    position: absolute;
+    top: -0.78em;
+    left: 14px;
+    z-index: 0;
+    font-family: var(--serif-display);
+    font-size: 7rem;
+    line-height: 1;
+    color: var(--gold);
+    opacity: 0.2;
+    pointer-events: none;
+    user-select: none;
+}
+
+.quote blockquote {
+    position: relative;
+    z-index: 1;
+    margin: 0 0 14px;
     font-family: var(--serif-display);
     font-size: 1.32rem;
     font-style: italic;
     line-height: 1.6;
     color: var(--ink-soft);
-    margin-bottom: 14px;
 }
 
-.quote footer {
+/* Sudé citace mírně odsazené, ať nestojí v tuhé koloně */
+.quote:nth-of-type(even) { margin-left: 7%; }
+
+.quote figcaption {
+    position: relative;
+    z-index: 1;
     font-family: var(--sans-ui);
     font-size: 0.76rem;
     text-transform: uppercase;
@@ -725,21 +937,337 @@ p { margin: 0 0 1.2em; }
     color: var(--muted);
 }
 
-.publications li { font-size: 0.98rem; }
-
-.exhibitions li {
-    display: flex;
-    gap: 26px;
-    align-items: baseline;
-    padding: 14px 0;
+/* Podpisová čárka nad jménem autora */
+.quote-rule {
+    display: block;
+    width: 48px;
+    height: 6px;
+    margin-bottom: 11px;
+    background-image: url("../img/brush-thin-2.svg");
+    background-repeat: no-repeat;
+    background-size: 100% 6px;
+    opacity: 0.85;
 }
 
-.exhibition-year {
+/* Nadechnutí po každých dvou citacích — jemnější než předěl sekcí */
+.quote-break {
+    display: block;
+    height: 6px;
+    max-width: 210px;
+    margin: 4px auto 42px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100% 6px;
+    opacity: 0.5;
+}
+
+.quote-break.brush-a { background-image: url("../img/brush-thin-1.svg"); }
+.quote-break.brush-b { background-image: url("../img/brush-thin-2.svg"); }
+.quote-break.brush-c { background-image: url("../img/brush-thin-3.svg"); }
+
+/* ================= Publikace =================
+   Kompaktní bibliografie — záměrně tišší než citáty. */
+.publications {
+    padding: 26px 30px 10px;
+    background: rgba(255, 253, 249, 0.55);
+    border: 1px solid var(--line-soft);
+}
+
+.publications ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.publications li {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 0 0 18px;
+    font-size: 0.93rem;
+    line-height: 1.6;
+    color: var(--ink-soft);
+}
+
+.pub-figure {
+    flex: 0 0 auto;
+    color: var(--gold);
+    opacity: 0.85;
+}
+
+.pub-icon {
+    display: block;
+    width: 21px;
+    height: 21px;
+    margin-top: 2px;
+}
+
+/* ================= Odkazy ================= */
+.link-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.link-item { border-bottom: 1px solid var(--line-soft); }
+
+.link-item a {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 20px 4px;
+}
+
+.link-figure {
+    flex: 0 0 auto;
+    color: var(--gold);
+    opacity: 0.9;
+    transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.link-icon {
+    display: block;
+    width: 30px;
+    height: 30px;
+}
+
+.link-item a:hover .link-figure { opacity: 1; transform: translateY(-1px); }
+
+.link-text {
+    position: relative;
+    /* Nesmí vyplnit celý řádek — tah pod textem má kopírovat jeho šířku.
+       Šipku odsune doprava automatický margin. */
+    flex: 0 1 auto;
+    margin-right: auto;
+    padding-bottom: 5px;
+    color: var(--ink);
+    transition: color 0.25s ease;
+}
+
+.link-item a:hover .link-text { color: var(--gold-deep); }
+
+/* Štětcový tah místo podtržení: kreslí se zleva doprava. */
+.link-text::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -1px;
+    height: 6px;
+    background-repeat: no-repeat;
+    background-position: left bottom;
+    background-size: 0% 100%;
+    transition: background-size 280ms ease, opacity 280ms ease;
+}
+
+.link-item a.brush-a .link-text::after { background-image: url("../img/brush-thin-1.svg"); }
+.link-item a.brush-b .link-text::after { background-image: url("../img/brush-thin-2.svg"); }
+.link-item a.brush-c .link-text::after { background-image: url("../img/brush-thin-3.svg"); }
+
+.link-item a:hover .link-text::after,
+.link-item a:focus-visible .link-text::after { background-size: 100% 100%; }
+
+.link-arrow {
+    flex: 0 0 auto;
+    color: var(--gold);
+    opacity: 0.65;
+    transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.external-arrow {
+    display: block;
+    width: 15px;
+    height: 15px;
+}
+
+.link-item a:hover .link-arrow {
+    opacity: 1;
+    transform: translate(2px, -2px);
+}
+
+.link-desc { margin: -8px 0 16px 50px; font-size: 0.9rem; }
+
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+}
+
+/* Dotyková zařízení hover nemají — tah je vidět trvale, jen tlumeně,
+   a dotyk ho rozsvítí naplno. */
+@media (hover: none) {
+    .link-text::after { background-size: 100% 100%; opacity: 0.38; }
+    .link-item a:active .link-text::after { opacity: 1; }
+    .link-item a:active .link-text { color: var(--gold-deep); }
+}
+
+/* ================= Výstavy jako cesta =================
+   Každá kategorie má vlastní timeline; svislice je SVG s jemně
+   nepravidelným tahem, aby ladila se štětcovými oddělovači. */
+.timeline-heading { margin-top: 72px; }
+.timeline-heading:first-of-type { margin-top: 32px; }
+
+.timeline {
+    position: relative;
+    list-style: none;
+    max-width: 880px;
+    margin: 0 auto;
+    padding: 6px 0 10px;
+}
+
+/* Samotná linka — začíná u prvního a končí u posledního milníku. */
+.timeline::before {
+    content: "";
+    position: absolute;
+    top: 14px;
+    bottom: 14px;
+    left: 50%;
+    width: 12px;
+    margin-left: -6px;
+    background-image: url("../img/timeline-line.svg");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+/* Zmínka pod hlavní cestou: výstavy, kterých je ve skupině jen jedna
+   a samostatná timeline by pro ně byla příliš velké gesto. */
+.exhibition-mentions {
+    max-width: 880px;
+    margin: 72px auto 0;
+    padding-top: 26px;
+    background-image: url("../img/brush-2.svg");
+    background-repeat: no-repeat;
+    background-position: center top;
+    background-size: 100% 12px;
+}
+
+.exhibition-mentions dl {
+    margin: 0;
+    display: grid;
+    gap: 16px;
+}
+
+.exhibition-mentions div {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr);
+    gap: 10px 28px;
+    align-items: baseline;
+}
+
+.exhibition-mentions dt {
     font-family: var(--sans-ui);
-    font-size: 0.8rem;
-    letter-spacing: 0.1em;
+    font-size: 0.68rem;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--muted);
+    text-align: right;
+}
+
+.exhibition-mentions dd {
+    margin: 0;
+    font-size: 0.98rem;
+    color: var(--ink-soft);
+}
+
+/* Jediná položka nepotřebuje linku — zůstal by z ní jen pahýl. */
+.timeline-single::before { display: none; }
+
+.timeline-single .timeline-item {
+    width: 100%;
+    padding: 0;
+    text-align: center;
+}
+
+.timeline-single .timeline-dot {
+    position: static;
+    display: inline-block;
+    margin-right: 10px;
+    vertical-align: middle;
+}
+
+.timeline-item {
+    position: relative;
+    width: 50%;
+    padding: 0 46px 34px 0;
+    text-align: right;
+}
+
+/* Střídání stran oživuje cestu; na mobilu se ruší. */
+.timeline-item:nth-child(even) {
+    margin-left: 50%;
+    padding: 0 0 34px 46px;
+    text-align: left;
+}
+
+.timeline-item:last-child { padding-bottom: 6px; }
+
+/* Kompas putující po ose (pozici řídí JS přes transform).
+   Výchozí stav je skrytý, takže bez JS se nic neukáže. */
+.timeline-marker {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    z-index: 2;
+    width: 26px;
+    height: 26px;
+    opacity: 0;
+    pointer-events: none;
+    background-image: url("../img/compass.svg");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    transform: translate(-50%, -50%);
+    will-change: transform;
+    transition: opacity 0.4s ease;
+}
+
+.timeline-single .timeline-marker { display: none; }
+
+/* Milník: tenký kroužek, ne plná výplň */
+.timeline-dot {
+    position: absolute;
+    top: 7px;
+    right: -6px;
+    width: 11px;
+    height: 11px;
+    border: 1px solid var(--gold);
+    border-radius: 50%;
+    background: var(--paper);
+    transition: background 0.25s ease, border-color 0.25s ease, transform 0.25s ease;
+}
+
+.timeline-item:nth-child(even) .timeline-dot { right: auto; left: -6px; }
+
+.timeline-item:hover .timeline-dot {
+    background: var(--gold);
+    border-color: var(--gold-deep);
+    transform: scale(1.25);
+}
+
+.timeline-year {
+    display: block;
+    font-family: var(--sans-ui);
+    font-size: 0.72rem;
+    letter-spacing: 0.16em;
     color: var(--gold-deep);
-    min-width: 56px;
+    margin-bottom: 3px;
+}
+
+.timeline-place {
+    font-family: var(--serif-display);
+    font-size: 1.22rem;
+    color: var(--ink);
+    transition: color 0.25s ease;
+}
+
+.timeline-item:hover .timeline-place { color: var(--gold-deep); }
+
+.timeline-desc {
+    margin: 4px 0 0;
+    font-size: 0.93rem;
+    color: var(--muted);
 }
 
 /* ================= Formulář ================= */
@@ -811,12 +1339,11 @@ p { margin: 0 0 1.2em; }
     text-align: center;
 }
 
-/* Autorův podpis jako opakující se motiv. Zdrojem je fotografie podpisu
-   na kameni, proto nese jemné zrno — nižší krytí ho drží v pozadí. */
+/* Autorův podpis jako opakující se motiv. Vektorová stopa vytažená
+   z fotografie podpisu — plná barva, ostrá v každé velikosti. */
 .footer-signature img {
-    height: 58px;
+    height: 56px;
     width: auto;
-    opacity: 0.66;
 }
 
 .footer-years {
@@ -850,6 +1377,18 @@ p { margin: 0 0 1.2em; }
    Desktop je pro prohlížení galerie prioritní; níže se layout
    zjednodušuje, ale pasparty a prostor kolem děl zůstávají. */
 @media (max-width: 1080px) {
+    .catalog-layout { grid-template-columns: 1fr; gap: 44px; }
+    .catalog-plate { transform: rotate(-1.6deg); max-width: 640px; }
+    .catalog-plate:hover { transform: rotate(-0.8deg); }
+
+    .halls { grid-template-columns: repeat(2, 1fr); gap: 22px; padding-bottom: 72px; }
+    .hall:nth-child(1) { transform: translateY(12px); }
+    .hall:nth-child(2) { transform: translateY(-6px); }
+    .hall:nth-child(3) { transform: translateY(12px); }
+    .hall:nth-child(4) { transform: translateY(-6px); }
+    .hall:nth-child(1):hover, .hall:nth-child(3):hover { transform: translateY(8px); }
+    .hall:nth-child(2):hover, .hall:nth-child(4):hover { transform: translateY(-10px); }
+
     .hero-inner { grid-template-columns: 320px 1fr; gap: 48px; }
     .hero h1 { font-size: 3.2rem; }
     .painting-detail-grid { grid-template-columns: 1fr; gap: 40px; }
@@ -863,6 +1402,38 @@ p { margin: 0 0 1.2em; }
 }
 
 @media (max-width: 860px) {
+    /* Na úzké ploše natočení ruší a stín působí těžce — obojí utlumit. */
+    .catalog-plate {
+        transform: none;
+        padding: 9px;
+        box-shadow: inset 0 0 0 2px var(--paper),
+                    inset 0 0 0 3px rgba(176, 141, 87, 0.3),
+                    0 9px 20px -10px rgba(60, 46, 28, 0.34);
+    }
+
+    .catalog-plate:hover { transform: none; }
+    .catalog-layout { gap: 32px; }
+    .catalog-facts { gap: 32px; margin: 22px 0; }
+    .catalog-facts dd { font-size: 1.6rem; }
+
+    /* Pod sebou by salonní posun jen mátl — karty srovnat do řady. */
+    .halls {
+        grid-template-columns: 1fr;
+        gap: 18px;
+        padding: 44px 20px 64px;
+    }
+
+    .hall,
+    .hall:hover,
+    .hall:nth-child(1), .hall:nth-child(2),
+    .hall:nth-child(3), .hall:nth-child(4),
+    .hall:nth-child(1):hover, .hall:nth-child(2):hover,
+    .hall:nth-child(3):hover, .hall:nth-child(4):hover {
+        transform: none;
+    }
+
+    .hall { padding: 42px 22px 26px; }
+
     .wrap { padding: 0 20px; }
     .page { padding: 44px 20px 60px; }
     .section-links { padding: 44px 20px; gap: 20px; }
@@ -952,6 +1523,11 @@ p { margin: 0 0 1.2em; }
     .page-lead { margin-bottom: 40px; }
 
     /* Filtr kategorií: vodorovný posun místo rozbitého zalamování */
+    .gallery-note {
+        margin: -10px 0 34px;
+        padding: 18px 20px;
+    }
+
     .filters {
         flex-wrap: nowrap;
         overflow-x: auto;
@@ -978,9 +1554,55 @@ p { margin: 0 0 1.2em; }
     .related { margin-top: 64px; }
     .related .gallery-item img { height: 180px; }
 
-    .exhibitions li { flex-direction: column; gap: 2px; }
-    .quote { padding-left: 20px; }
-    .quote p { font-size: 1.15rem; }
+    /* Na úzké ploše vše vpravo od linky, žádné střídání stran. */
+    .timeline { max-width: none; }
+    .timeline::before { left: 5px; margin-left: 0; width: 9px; }
+
+    .timeline-item,
+    .timeline-item:nth-child(even) {
+        width: 100%;
+        margin-left: 0;
+        padding: 0 0 26px 30px;
+        text-align: left;
+    }
+
+    .timeline-dot,
+    .timeline-item:nth-child(even) .timeline-dot {
+        left: 1px;
+        right: auto;
+        top: 6px;
+        width: 9px;
+        height: 9px;
+    }
+
+    .timeline-heading { margin-top: 52px; }
+
+    /* Na mobilu je osa vlevo (left 5px, šířka 9px) — střed tedy 9.5px. */
+    .timeline-marker {
+        left: 9.5px;
+        width: 20px;
+        height: 20px;
+    }
+
+    .exhibition-mentions { margin-top: 52px; }
+    .exhibition-mentions div { grid-template-columns: 1fr; gap: 3px; }
+    .exhibition-mentions dt { text-align: left; }
+    .timeline-place { font-size: 1.1rem; }
+
+    .quote { padding-left: 20px; margin-bottom: 38px; }
+    .quote:nth-of-type(even) { margin-left: 0; }   /* žádné odsazení na mobilu */
+    .quote blockquote { font-size: 1.15rem; }
+    .quote-mark { font-size: 4.4rem; top: -0.74em; left: 8px; }
+    .quote-break { max-width: 150px; margin-bottom: 34px; }
+
+    .publications { padding: 20px 18px 6px; }
+    .publications li { gap: 11px; font-size: 0.9rem; }
+    .pub-icon { width: 18px; height: 18px; }
+
+    .link-item a { gap: 14px; padding: 16px 2px; }
+    .link-icon { width: 24px; height: 24px; }
+    .external-arrow { width: 13px; height: 13px; }
+    .link-desc { margin-left: 38px; }
 
     .site-footer { margin-top: 72px; padding: 44px 0 36px; }
     .footer-nav { gap: 18px 22px; }
@@ -1015,4 +1637,7 @@ p { margin: 0 0 1.2em; }
 @media (prefers-reduced-motion: reduce) {
     * { transition: none !important; scroll-behavior: auto !important; }
     .tile:hover, .gallery-item:hover .frame { transform: none; }
+    /* Putující kompas je čistá dekorace — při omezení pohybu mizí,
+       osa i milníky zůstávají beze změny. */
+    .timeline-marker { display: none !important; }
 }

@@ -44,20 +44,31 @@
     </div>
 </section>
 
-<section class="wrap section-links">
-    <a class="tile" href="{% url 'core:life' %}">
+<section class="wrap halls" aria-label="{% trans 'Sály výstavy' %}">
+    <a class="hall" href="{% url 'core:life' %}">
+        <span class="hall-num" aria-hidden="true">I</span>
+        {% include "icons/hall-zivot.svg" %}
         <h2>{% trans "Život" %}</h2>
         <p>{% trans "Osudy malíře od rodných Křesetic po pražskou Ořechovku." %}</p>
     </a>
-    <a class="tile" href="{% url 'gallery:painting_list' %}">
+
+    <a class="hall" href="{% url 'gallery:painting_list' %}">
+        <span class="hall-num" aria-hidden="true">II</span>
+        {% include "icons/hall-obrazy.svg" %}
         <h2>{% trans "Obrazy" %}</h2>
         <p>{% trans "Krajinomalba, abstrakce, realismus a květinová zátiší." %}</p>
     </a>
-    <a class="tile" href="{% url 'core:exhibitions' %}">
+
+    <a class="hall" href="{% url 'core:exhibitions' %}">
+        <span class="hall-num" aria-hidden="true">III</span>
+        {% include "icons/hall-vystavy.svg" %}
         <h2>{% trans "Výstavy" %}</h2>
         <p>{% trans "Přehled výstav doma i v zahraničí." %}</p>
     </a>
-    <a class="tile" href="{% url 'core:press' %}">
+
+    <a class="hall" href="{% url 'core:press' %}">
+        <span class="hall-num" aria-hidden="true">IV</span>
+        {% include "icons/hall-napsali.svg" %}
         <h2>{% trans "Napsali o něm" %}</h2>
         <p>{% trans "Citáty teoretiků umění a bibliografie." %}</p>
     </a>

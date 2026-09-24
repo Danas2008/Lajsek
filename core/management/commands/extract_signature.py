@@ -9,15 +9,23 @@ kamene. Proto se tahy nedají získat prostým prahováním jasu:
    co je *lokálně* tmavší než okolí, tedy tahy,
 3. hysterezní práh: slabé pixely projdou jen tam, kde navazují na
    jistá jádra tahu, což odstraní plošný závoj,
-4. zahodí se malé izolované skvrny a dlouhé tenké pruhy po hraně snímku.
+4. zahodí se malé izolované skvrny a dlouhé tenké pruhy po hraně snímku,
+5. maska se ztenčí na kostru, najdou se konce tahů a ty, které na sebe
+   směřují, se přemostí — doplní se tak tah ztracený v kameni,
+6. výsledek se vektorizuje (potrace), takže je ostrý v každé velikosti.
 
-Výstupy: static/img/signature.png (tmavý tah pro web),
-static/img/admin-logo.png (světlý pro tmavou lištu adminu),
+Výstupy: static/img/signature.svg (tmavý tah pro web),
+static/img/signature-light.svg (světlý do tmavé lišty adminu),
 static/img/favicon.png.
+
+Kroky 5–6 potřebují knihovny navíc (numpy, scikit-image, potracer).
+Bez nich příkaz skončí srozumitelnou hláškou; hotové SVG je ve verzi
+uložené v repozitáři, takže běh aplikace je nepotřebuje.
 
 Použití: python manage.py extract_signature
 """
 
+import math
 from collections import deque
 
 from django.conf import settings
@@ -116,6 +124,118 @@ def _tinted(alpha, rgb):
     return image
 
 
+# --- kostra, přemostění mezer a vektorizace -------------------------------
+BRIDGE_MAX_DIST = 64        # nejdelší mezera, kterou ještě spojíme (px)
+BRIDGE_MAX_ANGLE = 62       # tahy se musí mířit k sobě do tohoto úhlu
+BRIDGE_WIDTH = 7            # šířka doplněného můstku ~ šířka tahu
+
+
+def _skeleton_neighbours(sk, y, x):
+    height, width = sk.shape
+    found = []
+    for dy in (-1, 0, 1):
+        for dx in (-1, 0, 1):
+            if dy or dx:
+                ny, nx = y + dy, x + dx
+                if 0 <= ny < height and 0 <= nx < width and sk[ny, nx]:
+                    found.append((ny, nx))
+    return found
+
+
+def _stroke_ends(sk):
+    return [(y, x) for y, x in zip(*sk.nonzero())
+            if len(_skeleton_neighbours(sk, y, x)) == 1]
+
+
+def _tangent(sk, end, steps=8):
+    """Směr tahu v koncovém bodě — z chůze zpět po kostře."""
+    walked = [end]
+    previous, current = None, end
+    for _ in range(steps):
+        options = [n for n in _skeleton_neighbours(sk, *current) if n != previous]
+        if not options:
+            break
+        previous, current = current, options[0]
+        walked.append(current)
+    if len(walked) < 2:
+        return (0.0, 0.0)
+    dy = walked[0][0] - walked[-1][0]
+    dx = walked[0][1] - walked[-1][1]
+    length = math.hypot(dy, dx) or 1
+    return (dy / length, dx / length)
+
+
+def _vectorise(alpha):
+    """Doplní přerušené tahy a převede masku na SVG."""
+    import numpy as np
+    import potrace
+    from PIL import ImageDraw
+    from skimage.morphology import closing, disk, remove_small_objects, skeletonize
+
+    mask = closing(np.asarray(alpha) >= 100, disk(3))
+    mask = remove_small_objects(mask, min_size=180)
+
+    skeleton = skeletonize(mask)
+    ends = _stroke_ends(skeleton)
+    tangents = {e: _tangent(skeleton, e) for e in ends}
+
+    limit = math.cos(math.radians(BRIDGE_MAX_ANGLE))
+    candidates = []
+    for i in range(len(ends)):
+        for j in range(i + 1, len(ends)):
+            a, b = ends[i], ends[j]
+            vy, vx = b[0] - a[0], b[1] - a[1]
+            distance = math.hypot(vy, vx)
+            if distance < 4 or distance > BRIDGE_MAX_DIST:
+                continue
+            uy, ux = vy / distance, vx / distance
+            towards_b = tangents[a][0] * uy + tangents[a][1] * ux
+            towards_a = tangents[b][0] * -uy + tangents[b][1] * -ux
+            if towards_b > limit and towards_a > limit:
+                candidates.append((distance - 26 * (towards_a + towards_b), a, b))
+
+    used, bridges = set(), []
+    for _score, a, b in sorted(candidates, key=lambda item: item[0]):
+        if a in used or b in used:
+            continue
+        used.update((a, b))
+        bridges.append((a, b))
+
+    drawing = Image.new('L', (mask.shape[1], mask.shape[0]), 0)
+    pen = ImageDraw.Draw(drawing)
+    for a, b in bridges:
+        pen.line([(a[1], a[0]), (b[1], b[0])], fill=255, width=BRIDGE_WIDTH)
+
+    merged = mask | (np.asarray(drawing) > 127)
+    smoothed = (Image.fromarray((merged * 255).astype('uint8'))
+                .filter(ImageFilter.GaussianBlur(1.4))
+                .point(lambda v: 255 if v >= 125 else 0))
+
+    # potracer bere nulové hodnoty jako popředí, proto masku obracíme
+    path = potrace.Bitmap(np.asarray(smoothed) <= 127).trace(
+        turdsize=12, alphamax=1.2, opttolerance=0.25)
+
+    width, height = smoothed.size
+    shapes = []
+    for curve in path:
+        start = curve.start_point
+        parts = [f'M{start.x:.1f} {start.y:.1f}']
+        for segment in curve:
+            end = segment.end_point
+            if segment.is_corner:
+                parts.append(f'L{segment.c.x:.1f} {segment.c.y:.1f}'
+                             f'L{end.x:.1f} {end.y:.1f}')
+            else:
+                parts.append(f'C{segment.c1.x:.1f} {segment.c1.y:.1f} '
+                             f'{segment.c2.x:.1f} {segment.c2.y:.1f} '
+                             f'{end.x:.1f} {end.y:.1f}')
+        parts.append('Z')
+        shapes.append(''.join(parts))
+
+    return (f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {width} {height}" '
+            f'fill="#2b2620"><path fill-rule="evenodd" d="{"".join(shapes)}"/></svg>')
+
+
 class Command(BaseCommand):
     help = 'Vytvoří průhledné varianty autorova podpisu z fotografie.'
 
@@ -141,14 +261,19 @@ class Command(BaseCommand):
         ratio = OUT_HEIGHT / alpha.height
         alpha = alpha.resize((max(1, round(alpha.width * ratio)), OUT_HEIGHT), Image.LANCZOS)
 
+        try:
+            svg = _vectorise(alpha)
+        except ImportError as exc:
+            raise CommandError(
+                'Pro vektorizaci chybi knihovny: pip install numpy scikit-image potracer '
+                f'({exc})'
+            ) from exc
+
         img_dir = settings.BASE_DIR / 'static' / 'img'
         img_dir.mkdir(parents=True, exist_ok=True)
-
-        _tinted(alpha, (43, 38, 32)).save(img_dir / 'signature.png')
-        logo_ratio = 40 / alpha.height
-        light = _tinted(alpha, (247, 243, 236)).resize(
-            (max(1, round(alpha.width * logo_ratio)), 40), Image.LANCZOS)
-        light.save(img_dir / 'admin-logo.png')
+        (img_dir / 'signature.svg').write_text(svg, encoding='utf-8')
+        (img_dir / 'signature-light.svg').write_text(
+            svg.replace('fill="#2b2620"', 'fill="#f7f3ec"'), encoding='utf-8')
 
         favicon = Image.new('RGBA', (128, 128), (247, 243, 236, 255))
         dark = _tinted(alpha, (43, 38, 32))
@@ -158,6 +283,5 @@ class Command(BaseCommand):
         favicon.save(img_dir / 'favicon.png')
 
         self.stdout.write(self.style.SUCCESS(
-            f'Podpis hotov: {alpha.width}x{alpha.height} px, '
-            f'odstraneno skvrn: {removed}'
+            f'Podpis hotov: {alpha.width}x{alpha.height} px, odstraneno skvrn: {removed}'
         ))

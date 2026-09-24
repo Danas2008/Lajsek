@@ -40,6 +40,11 @@ def is_untranslated(page):
     return not _data().get('texts_en', {}).get(page)
 
 
+def catalog():
+    """Údaje o katalogu odečtené z PDF příkazem make_catalog_preview."""
+    return _data().get('catalog') or {}
+
+
 def page_images(page):
     """Obrázky dané stránky jako [{'caption', 'image'}] (cesty v MEDIA_URL)."""
     return _data().get('page_images', {}).get(page, [])

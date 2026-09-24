@@ -1,0 +1,257 @@
+{
+ "_popis": "Rozmery prevzate z Katalog.pdf. Kody webu a katalogu si neodpovidaji (web K1 = katalog R233), parovani proto vzniklo porovnanim reprodukci a KAZDY par byl zkontrolovan okem na kontaktnim archu. Pary, ktere kontrolu neprosly, tu zamerne nejsou.",
+ "parovani": [
+  {
+   "web": "A10",
+   "katalog": "A88",
+   "rozmer": "32×45 cm",
+   "skore": 0.0642
+  },
+  {
+   "web": "A11",
+   "katalog": "A74",
+   "rozmer": "61×45 cm",
+   "skore": 0.0892
+  },
+  {
+   "web": "A15",
+   "katalog": "A89",
+   "rozmer": "32×45 cm",
+   "skore": 0.0841
+  },
+  {
+   "web": "A18",
+   "katalog": "A103",
+   "rozmer": "29×32 cm",
+   "skore": 0.1512
+  },
+  {
+   "web": "A19",
+   "katalog": "A32",
+   "rozmer": "44×63 cm",
+   "skore": 0.1696
+  },
+  {
+   "web": "A3",
+   "katalog": "A11",
+   "rozmer": "80×100 cm",
+   "skore": 0.0913
+  },
+  {
+   "web": "A4",
+   "katalog": "R227",
+   "rozmer": "63×90 cm",
+   "skore": 0.1813
+  },
+  {
+   "web": "A6",
+   "katalog": "A31",
+   "rozmer": "44×63 cm",
+   "skore": 0.1278
+  },
+  {
+   "web": "A7",
+   "katalog": "A86",
+   "rozmer": "32×45 cm",
+   "skore": 0.0925
+  },
+  {
+   "web": "A8",
+   "katalog": "A79",
+   "rozmer": "61×45 cm",
+   "skore": 0.1112
+  },
+  {
+   "web": "K1",
+   "katalog": "R233",
+   "rozmer": "76×63 cm",
+   "skore": 0.1907
+  },
+  {
+   "web": "K10",
+   "katalog": "K153",
+   "rozmer": "58×45 cm",
+   "skore": 0.1085
+  },
+  {
+   "web": "K11",
+   "katalog": "K167",
+   "rozmer": "58×45 cm",
+   "skore": 0.1453
+  },
+  {
+   "web": "K13",
+   "katalog": "R10",
+   "rozmer": "32×32 cm",
+   "skore": 0.0792
+  },
+  {
+   "web": "K14",
+   "katalog": "R44",
+   "rozmer": "58×45 cm",
+   "skore": 0.0789
+  },
+  {
+   "web": "K15",
+   "katalog": "K70",
+   "rozmer": "31×45 cm",
+   "skore": 0.1178
+  },
+  {
+   "web": "K16",
+   "katalog": "R1",
+   "rozmer": "58×45 cm",
+   "skore": 0.0918
+  },
+  {
+   "web": "K17",
+   "katalog": "R50",
+   "rozmer": "58×45 cm",
+   "skore": 0.1125
+  },
+  {
+   "web": "K19",
+   "katalog": "R77",
+   "rozmer": "45×60 cm",
+   "skore": 0.0252
+  },
+  {
+   "web": "K2",
+   "katalog": "K601",
+   "rozmer": "80×100 cm",
+   "skore": 0.1165
+  },
+  {
+   "web": "K20",
+   "katalog": "R4",
+   "rozmer": "58×45 cm",
+   "skore": 0.1195
+  },
+  {
+   "web": "K21",
+   "katalog": "R55",
+   "rozmer": "58×45 cm",
+   "skore": 0.0739
+  },
+  {
+   "web": "K24",
+   "katalog": "R54",
+   "rozmer": "58×45 cm",
+   "skore": 0.0895
+  },
+  {
+   "web": "K27",
+   "katalog": "R38",
+   "rozmer": "31×45 cm",
+   "skore": 0.1204
+  },
+  {
+   "web": "K28",
+   "katalog": "K31",
+   "rozmer": "58×45 cm",
+   "skore": 0.1099
+  },
+  {
+   "web": "K29",
+   "katalog": "K40",
+   "rozmer": "58×45 cm",
+   "skore": 0.1085
+  },
+  {
+   "web": "K31",
+   "katalog": "K11",
+   "rozmer": "88×63 cm",
+   "skore": 0.0714
+  },
+  {
+   "web": "K6",
+   "katalog": "R186",
+   "rozmer": "89×63 cm",
+   "skore": 0.1114
+  },
+  {
+   "web": "R10",
+   "katalog": "K345",
+   "rozmer": "89×63 cm",
+   "skore": 0.0718
+  },
+  {
+   "web": "R13",
+   "katalog": "K42",
+   "rozmer": "58×45 cm",
+   "skore": 0.1504
+  },
+  {
+   "web": "R14",
+   "katalog": "K481",
+   "rozmer": "52×45 cm",
+   "skore": 0.178
+  },
+  {
+   "web": "R5",
+   "katalog": "R253",
+   "rozmer": "65×45 cm",
+   "skore": 0.1873
+  },
+  {
+   "web": "R6",
+   "katalog": "R204",
+   "rozmer": "89×63 cm",
+   "skore": 0.1215
+  },
+  {
+   "web": "V1",
+   "katalog": "KV40",
+   "rozmer": "32×45 cm",
+   "skore": 0.1815
+  },
+  {
+   "web": "V11",
+   "katalog": "KV14",
+   "rozmer": "32×32 cm",
+   "skore": 0.1119
+  },
+  {
+   "web": "V13",
+   "katalog": "KV10",
+   "rozmer": "32×32 cm",
+   "skore": 0.1844
+  },
+  {
+   "web": "V15",
+   "katalog": "KV11",
+   "rozmer": "32×32 cm",
+   "skore": 0.1522
+  },
+  {
+   "web": "V5",
+   "katalog": "KV33",
+   "rozmer": "32×45 cm",
+   "skore": 0.1273
+  },
+  {
+   "web": "V6",
+   "katalog": "KV27",
+   "rozmer": "32×45 cm",
+   "skore": 0.1596
+  },
+  {
+   "web": "V7",
+   "katalog": "KV2",
+   "rozmer": "32×45 cm",
+   "skore": 0.0816
+  },
+  {
+   "web": "V8",
+   "katalog": "KV31",
+   "rozmer": "32×45 cm",
+   "skore": 0.128
+  },
+  {
+   "web": "V9",
+   "katalog": "KV36",
+   "rozmer": "32×45 cm",
+   "skore": 0.1135
+  }
+ ]
+}

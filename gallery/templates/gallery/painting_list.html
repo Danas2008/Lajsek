@@ -14,6 +14,18 @@
         {% endblocktrans %}
     </p>
 
+    {% if catalog.works_with_dimensions %}
+    <aside class="gallery-note">
+        <p>
+            {% blocktrans trimmed with shown=shown_count total=catalog.works_with_dimensions %}
+                Na webu je {{ shown }} obrazů z autorovy pozůstalosti. Souhrnný
+                katalog jich eviduje {{ total }} — včetně rozměrů a kódů.
+            {% endblocktrans %}
+        </p>
+        <a class="btn btn-quiet" href="{% url 'core:catalog' %}">{% trans "Prohlédnout katalog" %}</a>
+    </aside>
+    {% endif %}
+
     <nav class="filters" aria-label="{% trans 'Kategorie obrazů' %}">
         <a href="{% url 'gallery:painting_list' %}" class="{% if not active_category %}active{% endif %}">{% trans "Vše" %}</a>
         {% for category in categories %}

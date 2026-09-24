@@ -277,7 +277,7 @@
      "image": "paintings/realismus/IMG_8860.jpg"
     },
     {
-     "title": "img_8832",
+     "title": "R11",
      "image": "paintings/realismus/IMG_8832.jpg"
     },
     {
@@ -655,5 +655,10 @@
   "katalog": [],
   "nabidka": [],
   "kontakt": []
+ },
+ "catalog": {
+  "spreads": 26,
+  "works_with_dimensions": 1053,
+  "preview": "pages/catalog-preview.jpg"
  }
 }

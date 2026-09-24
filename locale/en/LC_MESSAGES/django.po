@@ -276,3 +276,50 @@ msgstr "Footer"
 
 msgid "dílo Oldřicha Lajska"
 msgstr "the work of Oldřich Lajsek"
+
+msgid "Sály výstavy"
+msgstr "Exhibition halls"
+
+msgid "Souhrnný přehled obrazů s uvedenými rozměry."
+msgstr "A complete overview of the paintings, with their dimensions."
+
+msgid "Ukázka stránky katalogu s reprodukcemi obrazů"
+msgstr "A sample catalogue page with reproductions of the paintings"
+
+msgid "Zaznamenaných děl"
+msgstr "Works recorded"
+
+msgid "Dvoustran"
+msgstr "Double pages"
+
+msgid ""
+"Katalog je souhrnným přehledem autorovy tvorby. Obrazy jsou v něm řazeny po "
+"kategoriích a u každého je uveden kód díla i jeho rozměr — tedy tentýž kód, "
+"který se uvádí při poptávce."
+msgstr ""
+"The catalogue is a complete overview of the artist's work. The paintings are"
+" arranged by category and each one carries its work code and dimensions — "
+"the same code quoted when enquiring."
+
+msgid ""
+"Zobrazená ukázka je jednou ze stran katalogu; celý přehled je ke stažení ve "
+"formátu PDF."
+msgstr ""
+"The page shown is one spread from the catalogue; the full overview is "
+"available as a PDF download."
+
+msgid "Prohlédnout katalog (PDF)"
+msgstr "View the catalogue (PDF)"
+
+msgid "Prohlédnout katalog"
+msgstr "View the catalogue"
+
+msgid ""
+"Na webu je %(shown)s obrazů z autorovy pozůstalosti. Souhrnný katalog jich "
+"eviduje %(total)s — včetně rozměrů a kódů."
+msgstr ""
+"This site shows %(shown)s paintings from the artist's estate. The full "
+"catalogue records %(total)s of them, with dimensions and codes."
+
+msgid "otevře se v novém okně"
+msgstr "opens in a new window"

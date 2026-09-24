@@ -1,0 +1,7 @@
+{# Neutrální odkaz — kompas, když typ z názvu nevyplývá #}
+<svg class="link-icon" viewBox="0 0 32 32" fill="none" aria-hidden="true"
+     stroke="currentColor" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="16" cy="16" r="10.5"/>
+  <path d="m20.4 11.6-2.1 6.7-6.7 2.1 2.1-6.7z"/>
+  <circle cx="16" cy="16" r="1.1"/>
+</svg>

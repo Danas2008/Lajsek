@@ -1,0 +1,8 @@
+{# Publikace — drobná zavřená kniha #}
+<svg class="pub-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"
+     stroke="currentColor" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M6 3.8h11.2c.6 0 1 .4 1 1v14.4c0 .6-.4 1-1 1H6"/>
+  <path d="M6 3.8c-.9 0-1.6.7-1.6 1.6v13.2c0 .9.7 1.6 1.6 1.6"/>
+  <path d="M6 3.8v16.4"/>
+  <path d="M9.2 8.2h5.6M9.2 11.4h5.6M9.2 14.6h3.4"/>
+</svg>
