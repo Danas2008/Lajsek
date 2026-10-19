@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{# Stránka po odeslání formuláře: měří se jako konverze, do vyhledávačů nepatří. #}
+{% block robots %}<meta name="robots" content="noindex, follow">{% endblock %}
+
+{% block content %}
+<section class="wrap page page-narrow">
+    <h1 class="page-title">{% trans "Děkujeme za zprávu" %}</h1>
+    <p class="page-lead">{% trans "Zpráva byla odeslána, ozveme se vám co nejdříve." %}</p>
+
+    <p class="article-cta" style="justify-content:center">
+        <a class="btn" href="{% url 'gallery:painting_list' %}">{% trans "Prohlédnout další obrazy" %}</a>
+        <a class="btn btn-quiet" href="{% url 'core:article-jak-koupit' %}">{% trans "Jak koupit obraz" %}</a>
+    </p>
+</section>
+{% endblock %}

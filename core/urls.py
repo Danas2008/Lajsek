@@ -18,6 +18,7 @@ urlpatterns = [
     path('napsali-o-nem/', views.press, name='press'),
     path('odkazy/', views.links, name='links'),
     path('kontakt/', views.contact, name='contact'),
+    path('kontakt/dekujeme/', views.contact_thanks, name='contact_thanks'),
 
     # Obsahové stránky (core/articles.py): jméno URL „article-<slug>“.
     *[

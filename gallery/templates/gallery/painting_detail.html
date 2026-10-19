@@ -10,7 +10,10 @@
 
         <div class="painting-info">
             <h1>{{ painting.public_title }}</h1>
-            <p class="painting-category">{{ painting.category.display_name }}</p>
+            <p class="painting-category">
+                <a href="{{ painting.category.get_absolute_url }}">{{ painting.category.display_name }}</a>
+                &middot; {% trans "originál z pozůstalosti autora" %}
+            </p>
 
             <dl class="painting-meta">
                 <div>
@@ -26,9 +29,24 @@
                 {% if painting.technique_display %}
                 <div><dt>{% trans "Technika" %}</dt><dd>{{ painting.technique_display }}</dd></div>
                 {% endif %}
+                {% if painting.motif_display %}
+                <div><dt>{% trans "Motiv" %}</dt><dd>{{ painting.motif_display }}</dd></div>
+                {% endif %}
+                {% if painting.location_depicted %}
+                <div><dt>{% trans "Zobrazené místo" %}</dt><dd>{{ painting.location_depicted }}</dd></div>
+                {% endif %}
+                {% if painting.is_signed is not None %}
+                <div>
+                    <dt>{% trans "Signatura" %}</dt>
+                    <dd>{% if painting.is_signed %}{% trans "ano" %}{% if painting.signature_position %}, {{ painting.signature_position }}{% endif %}{% else %}{% trans "bez signatury" %}{% endif %}</dd>
+                </div>
+                {% endif %}
+                {% if painting.catalog_code %}
+                <div><dt>{% trans "Kód v souhrnném katalogu" %}</dt><dd>{{ painting.catalog_code }}</dd></div>
+                {% endif %}
                 <div>
                     <dt>{% trans "Dostupnost" %}</dt>
-                    <dd>{{ painting.get_availability_display }}</dd>
+                    <dd>{% if painting.availability == 'available' %}{% trans "K dispozici" %}{% elif painting.availability == 'sold' %}{% trans "Prodáno" %}{% else %}{% trans "Neprodejné" %}{% endif %}</dd>
                 </div>
             </dl>
 
@@ -40,30 +58,37 @@
                 <p>{% translated painting 'description' %}</p>
             {% endif %}
 
-            {% if painting.availability != 'not_for_sale' %}
+            {% if painting.is_for_sale %}
                 <a class="btn" href="{% url 'core:contact' %}?obraz={{ painting.title|urlencode }}">
-                    {% trans "Mám zájem" %}
+                    {% trans "Mám zájem o tento obraz" %}
                 </a>
+                <p class="cta-note">
+                    {% blocktrans trimmed with code=painting.title %}
+                        Formulář se otevře s předvyplněným kódem {{ code }}. Poptávka je nezávazná.
+                    {% endblocktrans %}
+                </p>
             {% endif %}
+
+            <p class="related-links">
+                <a href="{% url 'core:article-jak-koupit' %}">{% trans "Jak koupit obraz" %}</a> ·
+                <a href="{% url 'core:article-pravost-a-provenience' %}">{% trans "Pravost a provenience" %}</a> ·
+                <a href="{% url 'core:life' %}">{% trans "O autorovi" %}</a>
+            </p>
         </div>
     </div>
 
     {% if related %}
     <div class="related">
         <h2 class="section-heading">{% trans "Další díla z této kategorie" %}</h2>
-        <div class="gallery-grid">
-            {% for item in related %}
-            <a class="gallery-item" href="{{ item.get_absolute_url }}">
-                <div class="frame">
-                    {% include "gallery/_picture.html" with painting=item variant="grid" sizes="(max-width: 560px) 45vw, 220px" %}
-                </div>
-                <div class="gallery-item-info">
-                    <h3>{{ item.public_title }}</h3>
-                    <p class="gallery-item-code">{% trans "kód" %} {{ item.title }}</p>
-                </div>
-            </a>
-            {% endfor %}
-        </div>
+        {% include "gallery/_related_grid.html" with items=related %}
+        <p class="related-more"><a href="{{ painting.category.get_absolute_url }}">{% blocktrans with category=painting.category.display_name %}Všechny obrazy: {{ category }}{% endblocktrans %} &rarr;</a></p>
+    </div>
+    {% endif %}
+
+    {% if similar_size %}
+    <div class="related">
+        <h2 class="section-heading">{% trans "Podobné rozměry" %}</h2>
+        {% include "gallery/_related_grid.html" with items=similar_size show_size=True %}
     </div>
     {% endif %}
 </section>

@@ -1,0 +1,14 @@
+{% load i18n %}
+<div class="gallery-grid">
+    {% for item in items %}
+    <a class="gallery-item" href="{{ item.get_absolute_url }}">
+        <div class="frame">
+            {% include "gallery/_picture.html" with painting=item variant="grid" sizes="(max-width: 560px) 45vw, 220px" %}
+        </div>
+        <div class="gallery-item-info">
+            <h3>{{ item.public_title }}</h3>
+            <p class="gallery-item-code">{% trans "kód" %} {{ item.title }}{% if show_size and item.dimensions %} &middot; {{ item.dimensions_display }}{% endif %}</p>
+        </div>
+    </a>
+    {% endfor %}
+</div>

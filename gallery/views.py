@@ -78,6 +78,25 @@ def _painting_by_old_slug(slug):
     return matches[0] if len(matches) == 1 else None
 
 
+def _similar_size(painting, exclude, limit=4, tolerance=0.25):
+    """Obrazy s podobnou plochou (±25 %) — pro zájemce, kteří hledají obraz na konkrétní stěnu."""
+    size = painting.size_cm
+    if not size:
+        return []
+    area = size[0] * size[1]
+    candidates = []
+    for other in (Painting.objects.select_related('category')
+                  .exclude(dimensions='').exclude(pk__in=exclude)):
+        other_size = other.size_cm
+        if not other_size:
+            continue
+        ratio = other_size[0] * other_size[1] / area
+        if abs(ratio - 1) <= tolerance:
+            candidates.append((abs(ratio - 1), other.is_for_sale is False, other))
+    candidates.sort(key=lambda item: (item[1], item[0]))
+    return [other for _diff, _sold, other in candidates[:limit]]
+
+
 def painting_description(painting):
     """Meta description obrazu — jen z vyplněných údajů, vždy s kódem a dostupností."""
     text = _(
@@ -116,6 +135,8 @@ def painting_detail(request, category_slug, slug):
         .exclude(pk=painting.pk)[:4]
     )
 
+    similar_size = _similar_size(painting, exclude=[painting.pk, *(p.pk for p in related)])
+
     og_image = painting.og_image
     seo = PageMeta(
         title=fit_title(
@@ -135,6 +156,7 @@ def painting_detail(request, category_slug, slug):
         'seo': seo,
         'painting': painting,
         'related': related,
+        'similar_size': similar_size,
     }
     return render(request, 'gallery/painting_detail.html', context)
 

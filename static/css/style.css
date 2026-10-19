@@ -1779,3 +1779,20 @@ p { margin: 0 0 1.2em; }
     color: inherit;
     line-height: inherit;
 }
+
+/* Detail obrazu — konverzní prvky */
+.cta-note {
+    font-family: var(--sans-ui);
+    font-size: 0.78rem;
+    color: var(--muted);
+    margin: 10px 0 0;
+}
+
+.painting-info .related-links { margin-top: 28px; }
+
+.related-more {
+    font-family: var(--sans-ui);
+    font-size: 0.85rem;
+    text-align: right;
+    margin-top: 18px;
+}

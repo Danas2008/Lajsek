@@ -2,7 +2,6 @@ from itertools import groupby
 from operator import attrgetter
 
 from django.conf import settings
-from django.contrib import messages
 from django.http import HttpResponse
 from django.shortcuts import redirect, render
 from django.urls import reverse
@@ -208,8 +207,8 @@ def contact(request):
         form = ContactForm(request.POST)
         if form.is_valid():
             form.save()
-            messages.success(request, _('Děkujeme za zprávu, ozveme se vám co nejdříve.'))
-            return redirect(reverse('core:contact'))
+            # Samostatná adresa poděkování = měřitelná konverze v analytice.
+            return redirect(reverse('core:contact_thanks'))
     else:
         form = ContactForm(initial=initial)
 
@@ -229,6 +228,19 @@ def contact(request):
         'untranslated': content.is_untranslated('kontakt'),
     }
     return render(request, 'core/contact.html', context)
+
+
+def contact_thanks(request):
+    seo = PageMeta(
+        title=fit_title(_('Děkujeme za zprávu'), SUFFIX),
+        description=_(
+            'Děkujeme za zprávu. Na poptávky obrazů Oldřicha Lajska odpovídá syn malíře '
+            'JUDr. Jan Lajsek; mezitím si můžete prohlédnout další obrazy z pozůstalosti.'
+        ),
+        breadcrumbs=[(_('Kontakt'), reverse('core:contact')),
+                     (_('Děkujeme'), reverse('core:contact_thanks'))],
+    )
+    return render(request, 'core/contact_thanks.html', {'seo': seo})
 
 
 def robots_txt(request):
