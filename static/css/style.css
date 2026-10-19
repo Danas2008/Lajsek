@@ -338,6 +338,7 @@ p { margin: 0 0 1.2em; }
 
 .hero-portrait img {
     width: 100%;
+    height: auto;
     display: block;
 }
 
@@ -445,6 +446,77 @@ p { margin: 0 0 1.2em; }
     float: left;
     margin: 6px 10px 0 0;
     color: var(--gold-deep);
+}
+
+/* Drobečková navigace — nenápadná, ve stylu odkazu „zpět“ */
+.breadcrumbs {
+    padding-top: 28px;
+    font-family: var(--sans-ui);
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+}
+
+.breadcrumbs ol {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px 0;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.breadcrumbs li + li::before {
+    content: "/";
+    margin: 0 10px;
+    color: var(--line);
+}
+
+.breadcrumbs a { color: var(--muted); }
+.breadcrumbs a:hover { color: var(--gold-deep); }
+.breadcrumbs [aria-current] { color: var(--ink-soft); }
+
+.breadcrumbs + .page,
+.breadcrumbs + .hero { padding-top: 36px; }
+
+/* Obsah dlouhého textu (životopis, články) */
+.toc {
+    background: var(--paper-deep);
+    border-left: 2px solid var(--gold);
+    padding: 18px 24px 14px;
+    margin-bottom: 40px;
+}
+
+.toc-heading {
+    font-family: var(--sans-ui);
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin: 0 0 10px;
+}
+
+.toc ol { margin: 0; padding-left: 20px; }
+.toc li { margin-bottom: 6px; }
+
+.bio-section { scroll-margin-top: 24px; }
+
+.bio-heading {
+    font-size: 1.5rem;
+    margin: 44px 0 14px;
+}
+
+.bio-section:first-of-type .bio-heading { margin-top: 0; }
+
+/* Iniciála jen u prvního odstavce celého textu, ne u každé kapitoly */
+.bio-section:not(:first-of-type) p:first-of-type::first-letter {
+    font: inherit;
+    float: none;
+    margin: 0;
+    color: inherit;
+    line-height: inherit;
 }
 
 /* Poznámka u nepřeloženého obsahu */
@@ -636,7 +708,8 @@ p { margin: 0 0 1.2em; }
     text-align: center;
 }
 
-.gallery-item-info h2 {
+.gallery-item-info h2,
+.gallery-item-info h3 {
     font-size: 1.15rem;
     margin: 0 0 4px;
     font-weight: 400;
@@ -690,6 +763,7 @@ p { margin: 0 0 1.2em; }
 
 .painting-image img {
     width: 100%;
+    height: auto;
     max-height: 78vh;
     object-fit: contain;
     display: block;
@@ -774,6 +848,7 @@ p { margin: 0 0 1.2em; }
 
 .bio-figures img {
     width: 100%;
+    height: auto;
     display: block;
     background: var(--mat);
     padding: 10px;

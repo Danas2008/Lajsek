@@ -65,6 +65,7 @@ TEMPLATES = [
                 'django.template.context_processors.media',
                 'django.template.context_processors.i18n',
                 'core.context_processors.language_links',
+                'core.context_processors.site',
                 'gallery.context_processors.nav_categories',
             ],
         },
@@ -138,6 +139,20 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # Site settings used across templates / SEO
 SITE_NAME = 'Oldřich Lajsek'
 SITE_DOMAIN = os.environ.get('DJANGO_SITE_DOMAIN', 'lajsek.cz')
+# Kanonická adresa webu pro canonical, hreflang, og:url a JSON-LD. Nezávisí
+# na hlavičce Host ani na tom, zda nginx předává HTTPS.
+SITE_URL = os.environ.get('DJANGO_SITE_URL', f'https://{SITE_DOMAIN}')
+# Vydavatel webu ve strukturovaných datech (WebSite.publisher).
+# TODO(rodina): potvrďte, kdo web vydává — nyní syn malíře uvedený v kontaktu.
+SITE_PUBLISHER = os.environ.get('DJANGO_SITE_PUBLISHER', 'JUDr. Jan Lajsek')
+
+# Analytika bez cookies (Plausible / Umami) — nevyžaduje souhlasovou lištu.
+# Prázdné = nic se nevkládá. Zapnout až po odsouhlasení rodinou, např.:
+#   DJANGO_PLAUSIBLE_DOMAIN=lajsek.cz
+#   DJANGO_UMAMI_SRC=https://umami.example.cz/script.js  DJANGO_UMAMI_ID=<uuid>
+PLAUSIBLE_DOMAIN = os.environ.get('DJANGO_PLAUSIBLE_DOMAIN', '')
+UMAMI_SRC = os.environ.get('DJANGO_UMAMI_SRC', '')
+UMAMI_ID = os.environ.get('DJANGO_UMAMI_ID', '')
 
 
 # ---------------------------------------------------------------------------

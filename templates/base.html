@@ -1,39 +1,56 @@
-{% load static i18n %}<!DOCTYPE html>
+{% load static i18n lajsek_tags %}<!DOCTYPE html>
 <html lang="{{ current_language }}">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>{% block title %}{{ meta_title|default:"Oldřich Lajsek — český malíř (1925–2001)" }}{% endblock %}</title>
-    <meta name="description" content="{% block description %}{{ meta_description }}{% endblock %}">
+    {% with default_title=_("Oldřich Lajsek (1925–2001) – český malíř | obrazy z pozůstalosti") %}
+    <title>{% block title %}{{ seo.title|default:default_title }}{% endblock %}</title>
+    <meta name="description" content="{% block description %}{{ seo.description }}{% endblock %}">
+    {% block robots %}{% endblock %}
+    <link rel="canonical" href="{{ canonical_href }}">
 
-    {# Provázání jazykových verzí pro vyhledávače #}
-    {% for alt in language_alternates %}
-        <link rel="alternate" hreflang="{{ alt.code }}" href="{{ request.scheme }}://{{ request.get_host }}{{ alt.url }}">
-    {% endfor %}
-    <link rel="alternate" hreflang="x-default" href="{{ request.scheme }}://{{ request.get_host }}{% url 'core:home' %}">
-    <link rel="canonical" href="{{ request.scheme }}://{{ request.get_host }}{{ request.path }}">
+    {# hreflang: anglická verze se nabízí, jen když má stránka EN obsah #}
+    {% for alt in language_alternates %}{% if alt.code == 'cs' or seo.translated %}
+    <link rel="alternate" hreflang="{{ alt.code }}" href="{{ alt.href }}">
+    {% endif %}{% endfor %}
+    <link rel="alternate" hreflang="x-default" href="{{ x_default_href }}">
 
-    {# Open Graph #}
-    <meta property="og:type" content="{% block og_type %}website{% endblock %}">
+    {# Open Graph / Twitter #}
+    <meta property="og:type" content="{{ seo.og_type|default:'website' }}">
     <meta property="og:site_name" content="Oldřich Lajsek">
     <meta property="og:locale" content="{% if current_language == 'en' %}en_GB{% else %}cs_CZ{% endif %}">
-    <meta property="og:title" content="{{ meta_title|default:'Oldřich Lajsek' }}">
-    <meta property="og:description" content="{{ meta_description }}">
-    <meta property="og:url" content="{{ request.scheme }}://{{ request.get_host }}{{ request.path }}">
-    {% if og_image_url %}
-        <meta property="og:image" content="{{ request.scheme }}://{{ request.get_host }}{{ og_image_url }}">
-        <meta name="twitter:card" content="summary_large_image">
-    {% else %}
-        <meta name="twitter:card" content="summary">
+    {% if seo.translated %}<meta property="og:locale:alternate" content="{% if current_language == 'en' %}cs_CZ{% else %}en_GB{% endif %}">{% endif %}
+    <meta property="og:title" content="{{ seo.title|default:default_title }}">
+    <meta property="og:description" content="{{ seo.description }}">
+    <meta property="og:url" content="{{ canonical_href }}">
+    {% if seo.image %}
+    <meta property="og:image" content="{{ seo.image.url }}">
+    {% if seo.image.width %}<meta property="og:image:width" content="{{ seo.image.width }}">
+    <meta property="og:image:height" content="{{ seo.image.height }}">{% endif %}
+    <meta property="og:image:alt" content="{{ seo.image.alt }}">
+    <meta name="twitter:image" content="{{ seo.image.url }}">
+    <meta name="twitter:image:alt" content="{{ seo.image.alt }}">
     {% endif %}
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{{ seo.title|default:default_title }}">
+    <meta name="twitter:description" content="{{ seo.description }}">
+    {% endwith %}
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=Inter:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 
+    {% jsonld seo.schema %}
     {% block structured_data %}{% endblock %}
+
+    {# Analytika bez cookies — vloží se jen, když je nastavená v prostředí (settings.py). #}
+    {% if PLAUSIBLE_DOMAIN %}
+    <script defer data-domain="{{ PLAUSIBLE_DOMAIN }}" src="https://plausible.io/js/script.js"></script>
+    {% elif UMAMI_SRC and UMAMI_ID %}
+    <script defer src="{{ UMAMI_SRC }}" data-website-id="{{ UMAMI_ID }}"></script>
+    {% endif %}
 </head>
 <body{% if is_home %} class="is-home"{% endif %}>
     <a class="skip-link" href="#obsah">{% trans "Přejít k obsahu" %}</a>
@@ -96,6 +113,15 @@
     <div class="frame-shell">
         <span class="frame-corners" aria-hidden="true"></span>
         <main id="obsah">
+            {% if seo.breadcrumb_items %}
+            <nav class="wrap breadcrumbs" aria-label="{% trans 'Drobečková navigace' %}">
+                <ol>
+                    {% for name, url in seo.breadcrumb_items %}
+                    <li>{% if forloop.last %}<span aria-current="page">{{ name }}</span>{% else %}<a href="{{ url }}">{{ name }}</a>{% endif %}</li>
+                    {% endfor %}
+                </ol>
+            </nav>
+            {% endif %}
             {% block content %}{% endblock %}
         </main>
     </div>

@@ -1,32 +1,14 @@
 {% extends "base.html" %}
 {% load static i18n lajsek_tags %}
 
-{% block structured_data %}
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Person",
-  "name": "Oldřich Lajsek",
-  "birthDate": "1925-02-08",
-  "deathDate": "2001-10-02",
-  "birthPlace": {"@type": "Place", "name": "Křesetice"},
-  "deathPlace": {"@type": "Place", "name": "Praha"},
-  "nationality": {"@type": "Country", "name": "Česká republika"},
-  "jobTitle": {% if current_language == 'en' %}"Painter"{% else %}"Malíř"{% endif %},
-  "description": {% if current_language == 'en' %}"Czech painter, graphic artist, designer and teacher (1925–2001)."{% else %}"Český malíř, grafik, designér a pedagog (1925–2001)."{% endif %},
-  "url": "{{ request.scheme }}://{{ request.get_host }}{% url 'core:home' %}"{% if hero_image %},
-  "image": "{{ request.scheme }}://{{ request.get_host }}{{ MEDIA_URL }}{{ hero_image.image }}"{% endif %}
-}
-</script>
-{% endblock %}
-
 {% block content %}
 <section class="hero">
     <div class="wrap hero-inner">
         {% if hero_image %}
         <div class="hero-portrait">
+            {% media_size hero_image.image as size %}
             <img src="{{ MEDIA_URL }}{{ hero_image.image }}" alt="{% trans 'Portrét Oldřicha Lajska' %}"
-                 fetchpriority="high" decoding="async">
+                 {% if size %}width="{{ size.0 }}" height="{{ size.1 }}"{% endif %} fetchpriority="high" decoding="async">
         </div>
         {% endif %}
 

@@ -1,30 +1,51 @@
 from django.http import Http404
 from django.shortcuts import get_object_or_404, redirect, render
+from django.urls import reverse
 from django.utils.text import slugify
 from django.utils.translation import gettext as _
 
-from core import content
+from core import content, schema
+from core.images import scaled_size
+from core.seo import PageMeta, absolute, fit_title
 
 from .models import Category, Painting
+
+SUFFIX_ARTIST = ' – Oldřich Lajsek'
+
+
+def _gallery_crumb():
+    return (_('Obrazy'), reverse('gallery:painting_list'))
 
 
 def _list_context(request, active_category=None):
     paintings = Painting.objects.select_related('category').all()
     if active_category:
         paintings = paintings.filter(category=active_category)
-        title = f'{active_category.display_name} | Oldřich Lajsek'
-        description = _(
-            'Obrazy z kategorie %(category)s v díle českého malíře Oldřicha Lajska.'
-        ) % {'category': active_category.display_name}
+        name = active_category.display_name
+        count = paintings.count()
+        seo = PageMeta(
+            title=fit_title(
+                _('%(category)s – obrazy Oldřicha Lajska') % {'category': name},
+                _(' | originály k prodeji'),
+            ),
+            description=_(
+                '%(category)s Oldřicha Lajska (1925–2001): %(count)s originálních obrazů '
+                'z pozůstalosti autora. Prohlédněte si nabídku a pošlete nezávaznou '
+                'poptávku s kódem díla.'
+            ) % {'category': name, 'count': count},
+            breadcrumbs=[_gallery_crumb(), (name, active_category.get_absolute_url())],
+        )
     else:
-        title = _('Nabídka obrazů') + ' | Oldřich Lajsek'
-        description = _(
-            'Přehled obrazů Oldřicha Lajska — krajinomalba, abstrakce, '
-            'realismus a květinová zátiší.'
+        seo = PageMeta(
+            title=fit_title(_('Obrazy Oldřicha Lajska'), _(' – originály z pozůstalosti k prodeji')),
+            description=_(
+                'Originální obrazy Oldřicha Lajska z pozůstalosti: krajinomalba, abstrakce, '
+                'realismus a květinová zátiší. Vyberte si dílo a pošlete poptávku s kódem.'
+            ),
+            breadcrumbs=[_gallery_crumb()],
         )
     return {
-        'meta_title': title,
-        'meta_description': description,
+        'seo': seo,
         'categories': Category.objects.all(),
         'paintings': paintings,
         'active_category': active_category,
@@ -58,6 +79,27 @@ def _painting_by_old_slug(slug):
     return matches[0] if len(matches) == 1 else None
 
 
+def painting_description(painting):
+    """Meta description obrazu — jen z vyplněných údajů, vždy s kódem a dostupností."""
+    text = _(
+        '%(title)s – originální obraz českého malíře Oldřicha Lajska (1925–2001) '
+        'z pozůstalosti autora.'
+    ) % {'title': painting.public_title}
+    details = [value for value in (painting.technique_display,
+                                   painting.dimensions_display,
+                                   painting.year_display) if value]
+    if details:
+        joined = ', '.join(details)
+        text += ' ' + joined[:1].upper() + joined[1:] + '.'
+    if painting.availability == 'available':
+        text += ' ' + _('Kód %(code)s, k prodeji – pošlete nezávaznou poptávku.')
+    elif painting.availability == 'sold':
+        text += ' ' + _('Kód %(code)s, prodáno.')
+    else:
+        text += ' ' + _('Kód %(code)s, není na prodej.')
+    return text % {'code': painting.title}
+
+
 def painting_detail(request, category_slug, slug):
     painting = Painting.objects.select_related('category').filter(slug=slug).first()
     if painting is None:
@@ -74,14 +116,32 @@ def painting_detail(request, category_slug, slug):
         .filter(category=painting.category)
         .exclude(pk=painting.pk)[:4]
     )
+
+    image_url = painting.thumb_large
+    size = scaled_size(painting.image.name, 1400)
+    seo = PageMeta(
+        title=fit_title(
+            painting.public_title, SUFFIX_ARTIST, _(' | originál z pozůstalosti'),
+        ),
+        description=painting_description(painting),
+        image={
+            'url': absolute(image_url),
+            'width': size[0] if size else None,
+            'height': size[1] if size else None,
+            'alt': painting.alt_text,
+        },
+        breadcrumbs=[
+            _gallery_crumb(),
+            (painting.category.display_name, painting.category.get_absolute_url()),
+            (painting.public_title, painting.get_absolute_url()),
+        ],
+        schema=[schema.visual_artwork(painting, image_url)],
+        og_type='article',
+    )
     context = {
-        'meta_title': f'{painting.public_title} | Oldřich Lajsek',
-        'meta_description': painting.description[:160] if painting.description else _(
-            'Obraz %(title)s od českého malíře Oldřicha Lajska (1925–2001).'
-        ) % {'title': painting.public_title},
+        'seo': seo,
         'painting': painting,
         'related': related,
-        'og_image_url': painting.thumb_large,
     }
     return render(request, 'gallery/painting_detail.html', context)
 

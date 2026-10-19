@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% load i18n %}
+{% load i18n lajsek_tags %}
 
 {% block content %}
 <section class="wrap page">
@@ -9,7 +9,7 @@
         <a href="{% url 'core:catalog' %}">{% trans "Katalog" %}</a>
     </nav>
 
-    <h1 class="page-title">{% trans "Život" %}</h1>
+    <h1 class="page-title">{% trans "Život Oldřicha Lajska" %}</h1>
     <p class="page-lead">1925 — 2001</p>
 
     {% if untranslated %}
@@ -18,14 +18,32 @@
 
     <div class="bio-layout">
         <article class="prose">
-            {% for paragraph in paragraphs %}<p>{{ paragraph }}</p>{% endfor %}
+            {% if sections|length > 1 %}
+            <nav class="toc" aria-labelledby="toc-heading">
+                <h2 class="toc-heading" id="toc-heading">{% trans "Obsah" %}</h2>
+                <ol>
+                    {% for section in sections %}
+                    <li><a href="#{{ section.id }}">{% trans section.heading %}</a></li>
+                    {% endfor %}
+                </ol>
+            </nav>
+            {% endif %}
+
+            {% for section in sections %}
+            <section class="bio-section" id="{{ section.id }}" aria-labelledby="{{ section.id }}-h">
+                <h2 class="bio-heading" id="{{ section.id }}-h">{% trans section.heading %}</h2>
+                {% for paragraph in section.paragraphs %}<p>{{ paragraph }}</p>{% endfor %}
+            </section>
+            {% endfor %}
         </article>
 
         {% if images %}
         <aside class="bio-figures">
             {% for image in images %}
+            {% media_size image.image as size %}
             <figure>
-                <img src="{{ MEDIA_URL }}{{ image.image }}" alt="{{ image.caption }}" loading="lazy">
+                <img src="{{ MEDIA_URL }}{{ image.image }}" alt="{{ image.caption|default:_('Oldřich Lajsek') }}"
+                     {% if size %}width="{{ size.0 }}" height="{{ size.1 }}"{% endif %} loading="lazy" decoding="async">
                 {% if image.caption %}<figcaption>{{ image.caption }}</figcaption>{% endif %}
             </figure>
             {% endfor %}

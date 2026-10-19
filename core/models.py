@@ -80,6 +80,12 @@ class ExternalLink(models.Model):
                   'nechte neutrální — nic se tím netvrdí o obsahu odkazu.',
     )
     url = models.URLField('odkaz')
+    is_profile = models.BooleanField(
+        'profil autora', default=False,
+        help_text='Zaškrtněte u stránek, které jsou celé o Oldřichu Lajskovi '
+                  '(např. Wikipedie). Vyhledávače je propojí s autorem; '
+                  'katalogy knihoven a galerií nezaškrtávejte.',
+    )
     description = models.CharField('popis', max_length=300, blank=True)
     order = models.PositiveIntegerField('pořadí', default=0)
 
