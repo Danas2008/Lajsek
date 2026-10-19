@@ -75,7 +75,8 @@ def person(image_path=None, same_as=()):
         'memberOf': [
             {'@type': 'Organization',
              'name': 'Svaz československých výtvarných umělců'},
-            {'@type': 'Organization', 'name': 'Směr (Skupina osmi výtvarníků)'},
+            {'@type': 'Organization', 'name': 'Směr (Skupina osmi výtvarníků)',
+             'url': _abs(reverse('core:article-skupina-smer'))},
             {'@type': 'Organization', 'name': 'Spolek Štursa'},
             {'@type': 'Organization', 'name': 'Český svaz bojovníků za svobodu'},
         ],

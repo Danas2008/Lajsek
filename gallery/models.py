@@ -50,6 +50,15 @@ class Category(models.Model):
     )
     slug = models.SlugField('slug', unique=True)
     order = models.PositiveIntegerField('pořadí', default=0)
+    intro = models.TextField(
+        'úvodní text', blank=True,
+        help_text='Text nad obrazy na stránce kategorie (alespoň ~150 slov kvůli vyhledávačům). '
+                  'Odstavce oddělte prázdným řádkem. Uvádějte jen ověřená fakta.',
+    )
+    intro_en = models.TextField(
+        'úvodní text (EN)', blank=True,
+        help_text='Nepovinné. Prázdné = v anglické verzi se zobrazí český text.',
+    )
 
     class Meta:
         verbose_name = 'kategorie'
@@ -68,6 +77,15 @@ class Category(models.Model):
 
     def get_absolute_url(self):
         return reverse('gallery:category_detail', args=[self.slug])
+
+    @property
+    def intro_paragraphs(self):
+        text = self.intro_en if _is_en() and self.intro_en else self.intro
+        return [part.strip() for part in re.split(r'\n\s*\n', text) if part.strip()]
+
+    @property
+    def intro_untranslated(self):
+        return _is_en() and bool(self.intro) and not self.intro_en
 
 
 class Painting(models.Model):

@@ -2,6 +2,7 @@ from django.urls import path
 from django.views.generic import RedirectView
 
 from . import views
+from .articles import ARTICLES
 
 app_name = 'core'
 
@@ -17,6 +18,12 @@ urlpatterns = [
     path('napsali-o-nem/', views.press, name='press'),
     path('odkazy/', views.links, name='links'),
     path('kontakt/', views.contact, name='contact'),
+
+    # Obsahové stránky (core/articles.py): jméno URL „article-<slug>“.
+    *[
+        path(article['path'], views.article, {'slug': slug}, name=f'article-{slug}')
+        for slug, article in ARTICLES.items()
+    ],
 
     # Původní adresy ze starší verze webu — trvalé přesměrování, ať se
     # nerozbijí už rozeslané odkazy ani indexace.

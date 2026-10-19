@@ -8,10 +8,14 @@ from django.shortcuts import redirect, render
 from django.urls import reverse
 from django.utils.translation import gettext as _
 
-from . import content, schema
+from gallery.models import Category
+
+from . import articles, content, schema
 from .forms import ContactForm
+from .images import image_size
 from .models import Exhibition, ExternalLink, PressMention
-from .seo import PageMeta, fit_title
+from .seo import PageMeta, absolute, fit_title
+from .seo import default_image as seo_default_image
 
 SUFFIX = ' – Oldřich Lajsek'
 
@@ -74,9 +78,26 @@ def life(request):
         translated=content.has_translation('zivot'),
         og_type='profile',
     )
+    # Z kapitol životopisu vedou odkazy na související články a obrazy.
+    section_links = {
+        'detstvi-a-kutna-hora': [(_('Oldřich Lajsek a Kutná Hora'), reverse('core:article-kutna-hora'))],
+        'odboj': [(_('Odboj – organizace Pěst'), reverse('core:article-odboj-pest'))],
+        'pedagog-a-sups': [(_('Skupina Směr'), reverse('core:article-skupina-smer'))],
+        'skupina-smer': [
+            (_('Skupina Směr'), reverse('core:article-skupina-smer')),
+            (_('Abstrakce'), reverse('gallery:category_detail', args=['abstrakce'])),
+        ],
+        'pozdni-tvorba': [
+            (_('Dílo'), reverse('core:work')),
+            (_('Obrazy z pozůstalosti'), reverse('gallery:painting_list')),
+        ],
+    }
+    sections = content.biography_sections()
+    for section in sections:
+        section['links'] = section_links.get(section['id'], [])
     context = {
         'seo': seo,
-        'sections': content.biography_sections(),
+        'sections': sections,
         'untranslated': content.is_untranslated('zivot'),
         'images': content.page_images('zivot'),
     }
@@ -95,6 +116,7 @@ def work(request):
     )
     context = {
         'seo': seo,
+        'categories': Category.objects.all(),
         'paragraphs': content.paragraphs('dilo'),
         'untranslated': content.is_untranslated('dilo'),
         'images': content.page_images('dilo'),
@@ -219,3 +241,78 @@ def robots_txt(request):
         '',
     ]
     return HttpResponse('\n'.join(lines), content_type='text/plain; charset=utf-8')
+
+
+def article(request, slug):
+    """Obsahová stránka z core/articles.py (Jak koupit, Pravost, Kutná Hora…)."""
+    meta, text = articles.localized(slug)
+    url = reverse(f'core:article-{slug}')
+    # Neověřené odstavce (TODO) vidí jen přihlášený správce — jako výzvu k doplnění.
+    show_todo = request.user.is_staff
+
+    sections = []
+    for section in text['sections']:
+        paragraphs = [
+            {'text': paragraph, 'todo': articles.is_todo(paragraph)}
+            for paragraph in section['paragraphs']
+            if show_todo or not articles.is_todo(paragraph)
+        ]
+        if not paragraphs:
+            continue
+        sections.append({
+            'id': section['id'],
+            'heading': section['heading'],
+            'paragraphs': paragraphs,
+            'links': [(label, reverse(name, args=args))
+                      for label, name, args in section.get('links', [])],
+        })
+
+    faq = [
+        {'question': question, 'answer': answer, 'todo': articles.is_todo(answer)}
+        for question, answer in text.get('faq', [])
+        if show_todo or not articles.is_todo(answer)
+    ]
+    public_faq = [(item['question'], item['answer']) for item in faq if not item['todo']]
+
+    crumbs = []
+    if meta['parent'] == 'biography':
+        crumbs.append((_('O autorovi'), reverse('core:biography')))
+    crumbs.append((text['title'], url))
+
+    image = None
+    figure = meta.get('image')
+    if figure:
+        size = image_size(figure['path'])
+        image = {
+            'url': absolute(settings.MEDIA_URL + figure['path']),
+            'width': size[0] if size else None,
+            'height': size[1] if size else None,
+            'alt': figure['caption'],
+        }
+
+    seo_schema = []
+    if meta['schema'] == 'faq' and public_faq:
+        seo_schema.append(schema.faq_page(public_faq))
+    else:
+        seo_schema.append(schema.article(
+            text['title'], text['description'], url,
+            image['url'] if image else seo_default_image()['url'],
+        ))
+
+    seo = PageMeta(
+        title=text['meta_title'],
+        description=text['description'],
+        image=image,
+        breadcrumbs=crumbs,
+        schema=seo_schema,
+        og_type='article',
+    )
+    context = {
+        'seo': seo,
+        'article': text,
+        'sections': sections,
+        'faq': faq,
+        'figure': figure,
+        'show_signature': meta.get('show_signature', False),
+    }
+    return render(request, 'core/article.html', context)

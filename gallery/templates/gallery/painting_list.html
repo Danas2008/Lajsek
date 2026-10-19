@@ -14,6 +14,22 @@
         {% endblocktrans %}
     </p>
 
+    {% if active_category.intro_paragraphs %}
+    <div class="category-intro prose">
+        {% if active_category.intro_untranslated %}
+            <p class="translation-note">{% trans "The English version of this text is coming soon. Below is the Czech original." %}</p>
+        {% endif %}
+        {% for paragraph in active_category.intro_paragraphs %}<p>{{ paragraph }}</p>{% endfor %}
+        <p class="related-links">
+            <span>{% trans "Související:" %}</span>
+            <a href="{% url 'core:work' %}">{% trans "Dílo Oldřicha Lajska" %}</a> ·
+            {% if active_category.slug == 'krajinomalba' %}<a href="{% url 'core:article-kutna-hora' %}">{% trans "Oldřich Lajsek a Kutná Hora" %}</a> ·{% endif %}
+            <a href="{% url 'core:article-jak-koupit' %}">{% trans "Jak koupit obraz" %}</a> ·
+            <a href="{% url 'core:article-pravost-a-provenience' %}">{% trans "Pravost a provenience" %}</a>
+        </p>
+    </div>
+    {% endif %}
+
     {% if catalog.works_with_dimensions %}
     <aside class="gallery-note">
         <p>

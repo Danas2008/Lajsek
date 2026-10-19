@@ -33,6 +33,12 @@
             <section class="bio-section" id="{{ section.id }}" aria-labelledby="{{ section.id }}-h">
                 <h2 class="bio-heading" id="{{ section.id }}-h">{% trans section.heading %}</h2>
                 {% for paragraph in section.paragraphs %}<p>{{ paragraph }}</p>{% endfor %}
+                {% if section.links %}
+                <p class="related-links">
+                    <span>{% trans "Související:" %}</span>
+                    {% for label, url in section.links %}<a href="{{ url }}">{{ label }}</a>{% if not forloop.last %} · {% endif %}{% endfor %}
+                </p>
+                {% endif %}
             </section>
             {% endfor %}
         </article>

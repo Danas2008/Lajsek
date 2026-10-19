@@ -74,6 +74,9 @@
                         <a href="{% url 'core:life' %}">{% trans "Život" %}</a>
                         <a href="{% url 'core:work' %}">{% trans "Dílo" %}</a>
                         <a href="{% url 'core:catalog' %}">{% trans "Katalog" %}</a>
+                        <a href="{% url 'core:article-kutna-hora' %}">{% trans "Kutná Hora" %}</a>
+                        <a href="{% url 'core:article-skupina-smer' %}">{% trans "Skupina Směr" %}</a>
+                        <a href="{% url 'core:article-odboj-pest' %}">{% trans "Odboj" %}</a>
                     </div>
                 </div>
 
@@ -83,6 +86,8 @@
                         {% for category in nav_categories %}
                             <a href="{{ category.get_absolute_url }}">{{ category.display_name }}</a>
                         {% endfor %}
+                        <a href="{% url 'core:article-jak-koupit' %}">{% trans "Jak koupit obraz" %}</a>
+                        <a href="{% url 'core:article-pravost-a-provenience' %}">{% trans "Pravost a provenience" %}</a>
                     </div>
                 </div>
 
@@ -137,6 +142,8 @@
                 <a href="{% url 'core:life' %}">{% trans "Život" %}</a>
                 <a href="{% url 'core:work' %}">{% trans "Dílo" %}</a>
                 <a href="{% url 'gallery:painting_list' %}">{% trans "Obrazy" %}</a>
+                <a href="{% url 'core:article-jak-koupit' %}">{% trans "Jak koupit" %}</a>
+                <a href="{% url 'core:article-pravost-a-provenience' %}">{% trans "Pravost" %}</a>
                 <a href="{% url 'core:exhibitions' %}">{% trans "Výstavy" %}</a>
                 <a href="{% url 'core:links' %}">{% trans "Odkazy" %}</a>
                 <a href="{% url 'core:contact' %}">{% trans "Kontakt" %}</a>

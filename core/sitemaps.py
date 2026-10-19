@@ -13,6 +13,7 @@ from django.db.models import Max
 from django.urls import reverse
 
 from core import content
+from core.articles import ARTICLES
 from core.models import PressMention
 from gallery.models import Category, Painting
 
@@ -73,6 +74,17 @@ class StaticViewSitemap(CanonicalSitemap):
         return 0.6
 
 
+class ArticleSitemap(CanonicalSitemap):
+    changefreq = 'monthly'
+    priority = 0.7
+
+    def items(self):
+        return list(ARTICLES)
+
+    def location(self, item):
+        return reverse(f'core:article-{item}')
+
+
 class CategorySitemap(CanonicalSitemap):
     changefreq = 'weekly'
     priority = 0.8
@@ -97,6 +109,7 @@ class PaintingSitemap(CanonicalSitemap):
 
 SITEMAPS = {
     'static': StaticViewSitemap,
+    'articles': ArticleSitemap,
     'categories': CategorySitemap,
     'paintings': PaintingSitemap,
 }

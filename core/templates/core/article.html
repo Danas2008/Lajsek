@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+{% load static i18n lajsek_tags %}
+
+{% block content %}
+<section class="wrap page">
+    <h1 class="page-title">{{ article.title }}</h1>
+    <p class="page-lead">{{ article.lead }}</p>
+
+    <div class="bio-layout">
+        <article class="prose">
+            {% if sections|length > 2 %}
+            <nav class="toc" aria-labelledby="toc-heading">
+                <h2 class="toc-heading" id="toc-heading">{% trans "Obsah" %}</h2>
+                <ol>
+                    {% for section in sections %}<li><a href="#{{ section.id }}">{{ section.heading }}</a></li>{% endfor %}
+                    {% if faq %}<li><a href="#faq">{% trans "Časté otázky" %}</a></li>{% endif %}
+                </ol>
+            </nav>
+            {% endif %}
+
+            {% for section in sections %}
+            <section class="bio-section" id="{{ section.id }}" aria-labelledby="{{ section.id }}-h">
+                <h2 class="bio-heading" id="{{ section.id }}-h">{{ section.heading }}</h2>
+                {% for paragraph in section.paragraphs %}
+                    {# TODO(rodina) vidí jen přihlášený správce; veřejnosti se nezobrazí. #}
+                    <p{% if paragraph.todo %} class="todo-note"{% endif %}>{{ paragraph.text }}</p>
+                {% endfor %}
+                {% if section.id == "signatura" and show_signature %}
+                    <figure class="signature-figure">
+                        <img src="{% static 'img/signature.svg' %}" alt="{% trans 'Podpis Oldřicha Lajska' %}" width="518" height="186" loading="lazy">
+                    </figure>
+                {% endif %}
+                {% if section.links %}
+                <p class="related-links">
+                    <span>{% trans "Související:" %}</span>
+                    {% for label, url in section.links %}<a href="{{ url }}">{{ label }}</a>{% if not forloop.last %} · {% endif %}{% endfor %}
+                </p>
+                {% endif %}
+            </section>
+            {% endfor %}
+
+            {% if faq %}
+            <section class="bio-section faq" id="faq" aria-labelledby="faq-h">
+                <h2 class="bio-heading" id="faq-h">{% trans "Časté otázky" %}</h2>
+                {% for item in faq %}
+                <div class="faq-item{% if item.todo %} todo-note{% endif %}">
+                    <h3>{{ item.question }}</h3>
+                    <p>{{ item.answer }}</p>
+                </div>
+                {% endfor %}
+            </section>
+            {% endif %}
+
+            <p class="article-cta">
+                <a class="btn" href="{% url 'gallery:painting_list' %}">{% trans "Prohlédnout obrazy" %}</a>
+                <a class="btn btn-quiet" href="{% url 'core:contact' %}">{% trans "Napsat poptávku" %}</a>
+            </p>
+        </article>
+
+        {% if figure %}
+        <aside class="bio-figures">
+            {% media_size figure.path as size %}
+            <figure>
+                <img src="{{ MEDIA_URL }}{{ figure.path }}" alt="{{ figure.caption }}"
+                     {% if size %}width="{{ size.0 }}" height="{{ size.1 }}"{% endif %} loading="lazy" decoding="async">
+                <figcaption>{{ figure.caption }}</figcaption>
+            </figure>
+        </aside>
+        {% endif %}
+    </div>
+</section>
+{% endblock %}

@@ -28,6 +28,7 @@ class CategoryAdmin(admin.ModelAdmin):
     list_editable = ('order',)
     prepopulated_fields = {'slug': ('name',)}
     ordering = ('order',)
+    fields = ('name', 'name_en', 'slug', 'order', 'intro', 'intro_en')
 
     def get_queryset(self, request):
         return super().get_queryset(request).annotate(_painting_count=Count('paintings'))

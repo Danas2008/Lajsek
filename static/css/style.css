@@ -1731,3 +1731,51 @@ p { margin: 0 0 1.2em; }
     font-family: var(--sans-ui);
     font-size: 0.9rem;
 }
+
+/* ================= Obsahové stránky (Jak koupit, Pravost, …) ================= */
+.related-links {
+    font-family: var(--sans-ui);
+    font-size: 0.85rem;
+    color: var(--muted);
+}
+
+.related-links span { margin-right: 6px; }
+
+.faq-item h3 {
+    font-size: 1.15rem;
+    margin: 26px 0 6px;
+}
+
+.faq-item p { margin-top: 0; }
+
+.signature-figure { margin: 8px 0 18px; }
+.signature-figure img { height: 72px; width: auto; }
+
+.article-cta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-top: 48px;
+}
+
+/* Neověřený text pro rodinu — vidí ho jen přihlášený správce */
+.todo-note {
+    background: #fff4d6;
+    border-left: 3px solid #d39b2a;
+    padding: 8px 14px;
+    font-family: var(--sans-ui);
+    font-size: 0.85rem;
+}
+
+/* Úvodní text kategorie — čitelná šířka nad mřížkou obrazů */
+.category-intro {
+    max-width: 760px;
+    margin: -24px auto 48px;
+}
+.category-intro p:first-of-type::first-letter {
+    font: inherit;
+    float: none;
+    margin: 0;
+    color: inherit;
+    line-height: inherit;
+}
