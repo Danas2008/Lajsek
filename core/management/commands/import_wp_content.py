@@ -35,7 +35,6 @@ class Command(BaseCommand):
                     category=category,
                     defaults={
                         'image': item['image'],
-                        'image_alt': f"Oldřich Lajsek — {cat['name'].lower()}, obraz {item['title']}",
                         'availability': 'available',
                         'order': order,
                     },

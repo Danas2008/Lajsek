@@ -1,4 +1,6 @@
+from django.http import Http404
 from django.shortcuts import get_object_or_404, redirect, render
+from django.utils.text import slugify
 from django.utils.translation import gettext as _
 
 from core import content
@@ -46,12 +48,27 @@ def category_detail(request, category_slug):
     return render(request, 'gallery/painting_list.html', _list_context(request, category))
 
 
+def _painting_by_old_slug(slug):
+    """Obraz podle kódu na konci slugu — slug se mění po doplnění názvu."""
+    code = slug.rsplit('-', 1)[-1]
+    matches = [
+        painting for painting in Painting.objects.select_related('category')
+        if slugify(painting.title) == code
+    ]
+    return matches[0] if len(matches) == 1 else None
+
+
 def painting_detail(request, category_slug, slug):
-    painting = get_object_or_404(
-        Painting.objects.select_related('category'),
-        slug=slug,
-        category__slug=category_slug,
-    )
+    painting = Painting.objects.select_related('category').filter(slug=slug).first()
+    if painting is None:
+        # Stará adresa (před doplněním názvu nebo změnou kategorie) → 301.
+        painting = _painting_by_old_slug(slug)
+        if painting is None:
+            raise Http404
+        return redirect(painting.get_absolute_url(), permanent=True)
+    if painting.category.slug != category_slug:
+        return redirect(painting.get_absolute_url(), permanent=True)
+
     related = (
         Painting.objects.select_related('category')
         .filter(category=painting.category)

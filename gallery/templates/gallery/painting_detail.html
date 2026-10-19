@@ -37,7 +37,7 @@
         <div class="painting-image">
             <img src="{{ painting.thumb_large }}" srcset="{{ painting.srcset_detail }}"
                  sizes="(max-width: 1080px) 92vw, 780px"
-                 alt="{{ painting.image_alt }}" fetchpriority="high" decoding="async">
+                 alt="{{ painting.alt_text }}" fetchpriority="high" decoding="async">
         </div>
 
         <div class="painting-info">
@@ -50,13 +50,13 @@
                     <dd>{{ painting.title }}</dd>
                 </div>
                 {% if painting.year %}
-                <div><dt>{% trans "Rok vzniku" %}</dt><dd>{{ painting.year }}</dd></div>
+                <div><dt>{% trans "Rok vzniku" %}</dt><dd>{{ painting.year_display }}</dd></div>
                 {% endif %}
                 {% if painting.dimensions %}
-                <div><dt>{% trans "Rozměry" %}</dt><dd>{{ painting.dimensions }}</dd></div>
+                <div><dt>{% trans "Rozměry" %}</dt><dd>{{ painting.dimensions_display }}</dd></div>
                 {% endif %}
-                {% if painting.technique %}
-                <div><dt>{% trans "Technika" %}</dt><dd>{{ painting.technique }}</dd></div>
+                {% if painting.technique_display %}
+                <div><dt>{% trans "Technika" %}</dt><dd>{{ painting.technique_display }}</dd></div>
                 {% endif %}
                 <div>
                     <dt>{% trans "Dostupnost" %}</dt>
@@ -89,7 +89,7 @@
                 <div class="frame">
                     <img src="{{ item.thumb_small }}" srcset="{{ item.srcset_grid }}"
                          sizes="(max-width: 560px) 45vw, 220px"
-                         alt="{{ item.image_alt }}" loading="lazy" decoding="async">
+                         alt="{{ item.alt_text }}" loading="lazy" decoding="async">
                 </div>
                 <div class="gallery-item-info">
                     <h2>{{ item.public_title }}</h2>

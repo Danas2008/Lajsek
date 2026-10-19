@@ -1,4 +1,4 @@
-"""Doplní obrazům rozměry převzaté z Katalog.pdf.
+"""Doplní obrazům rozměry a kód v souhrnném katalogu převzaté z Katalog.pdf.
 
 Pozor na past: kódy na webu a v katalogu si NEODPOVÍDAJÍ. Obraz, který má
 na webu kód K1, je v katalogu veden jako R233. Přiřadit rozměry podle
@@ -45,7 +45,8 @@ class Command(BaseCommand):
                 self.stderr.write(f"chybi obraz s kodem {pair['web']}")
                 missing += 1
                 continue
-            if painting.dimensions == pair['rozmer']:
+            if (painting.dimensions == pair['rozmer']
+                    and painting.catalog_code == pair['katalog']):
                 skipped += 1
                 continue
             self.stdout.write(
@@ -53,7 +54,8 @@ class Command(BaseCommand):
             )
             if not options['dry_run']:
                 painting.dimensions = pair['rozmer']
-                painting.save(update_fields=['dimensions'])
+                painting.catalog_code = pair['katalog']
+                painting.save(update_fields=['dimensions', 'catalog_code'])
             updated += 1
 
         total = Painting.objects.count()

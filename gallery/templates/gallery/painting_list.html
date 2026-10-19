@@ -41,13 +41,13 @@
                 <div class="frame">
                     <img src="{{ painting.thumb_small }}" srcset="{{ painting.srcset_grid }}"
                          sizes="(max-width: 560px) 92vw, (max-width: 860px) 45vw, 300px"
-                         alt="{{ painting.image_alt }}" decoding="async"
+                         alt="{{ painting.alt_text }}" decoding="async"
                          {% if forloop.counter <= 3 %}fetchpriority="high"{% else %}loading="lazy"{% endif %}>
                 </div>
                 <div class="gallery-item-info">
                     <h2>{{ painting.public_title }}</h2>
                     <p class="gallery-item-code">
-                        {% trans "kód" %} {{ painting.title }}{% if painting.year %} &middot; {{ painting.year }}{% endif %}
+                        {% trans "kód" %} {{ painting.title }}{% if painting.year %} &middot; {{ painting.year_display }}{% endif %}
                     </p>
                 </div>
             </a>

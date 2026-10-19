@@ -46,16 +46,22 @@ class PaintingAdmin(admin.ModelAdmin):
     )
     list_display_links = ('thumbnail_preview', 'code')
     list_editable = ('display_title', 'category', 'availability', 'order')
-    list_filter = ('category', 'availability', HasRealTitleFilter)
-    search_fields = ('display_title', 'title', 'description')
+    list_filter = ('category', 'availability', HasRealTitleFilter, 'technique', 'is_signed')
+    search_fields = (
+        'display_title', 'display_title_en', 'title', 'catalog_code',
+        'motif', 'location_depicted', 'description',
+    )
     list_per_page = 50
     ordering = ('category', 'order')
     save_on_top = True
-    readonly_fields = ('slug', 'large_preview', 'created_at', 'updated_at')
+    readonly_fields = ('slug', 'large_preview', 'alt_preview', 'created_at', 'updated_at')
 
     fieldsets = (
-        ('Obraz', {
-            'fields': ('large_preview', 'image', 'title', 'display_title', 'slug', 'category'),
+        ('Základní údaje', {
+            'fields': (
+                'large_preview', 'image', 'title', 'catalog_code', 'category',
+                'display_title', 'display_title_en', 'slug',
+            ),
             'description': (
                 'Kód obrazu je označení z autorova katalogu (např. K1) — '
                 'zájemci ho uvádějí při poptávce, proto ho neměňte. '
@@ -63,22 +69,29 @@ class PaintingAdmin(admin.ModelAdmin):
                 'web zobrazuje „kategorie + kód“, tedy např. „Krajinomalba K1“.'
             ),
         }),
-        ('Popis', {
-            'fields': ('image_alt', 'description', 'description_en'),
+        ('Údaje o díle', {
+            'fields': (
+                'year', 'year_approx', 'technique', 'technique_detail', 'dimensions',
+                'motif', 'motif_en', 'location_depicted', 'is_signed', 'signature_position',
+            ),
             'description': (
-                'Alt text popisuje obraz nevidomým návštěvníkům a vyhledávačům. '
-                'Anglický popis je nepovinný — když zůstane prázdný, '
-                'anglická verze webu ukáže český text s poznámkou.'
+                'Vyplňujte jen to, co je jisté. Co nevíte, nechte prázdné — '
+                'web daný údaj nezobrazí a vyhledávačům ho neposílá.'
             ),
         }),
-        ('Údaje o díle', {
-            'fields': ('year', 'dimensions', 'technique'),
-            'description': 'Nepovinné. Co nevíte, nechte prázdné — web daný řádek nezobrazí.',
+        ('Popis a SEO', {
+            'fields': ('description', 'description_en', 'alt_preview', 'alt_text_cs', 'alt_text_en'),
+            'description': (
+                'Popis se zobrazí u obrazu a jeho začátek použijí vyhledávače. '
+                'Alt text popisuje obrázek nevidomým a vyhledávačům; když ho '
+                'nevyplníte, web ho složí sám z údajů výše. '
+                'Anglické texty jsou nepovinné — prázdné = použije se čeština.'
+            ),
         }),
-        ('Dostupnost a řazení', {
+        ('Prodej', {
             'fields': ('availability', 'order'),
             'description': (
-                'Dostupnost: „K dispozici“ zobrazí u obrazu tlačítko „Mám zájem“. '
+                'Dostupnost: „K dispozici“ zobrazí u obrazu tlačítko „Mám zájem o tento obraz“. '
                 '„Prodáno“ a „Neprodejné“ tlačítko skryjí. '
                 'Pořadí určuje umístění v galerii — nižší číslo je dřív.'
             ),
@@ -88,6 +101,12 @@ class PaintingAdmin(admin.ModelAdmin):
             'classes': ('collapse',),
         }),
     )
+
+    @admin.display(description='Automatický alt text')
+    def alt_preview(self, obj):
+        if not obj.pk:
+            return 'Zobrazí se po uložení.'
+        return obj.alt_text
 
     @admin.display(description='Náhled')
     def thumbnail_preview(self, obj):
