@@ -5,7 +5,7 @@ from django.utils.text import slugify
 from django.utils.translation import gettext as _
 
 from core import content, schema
-from core.seo import DESCRIPTION_LIMIT, PageMeta, absolute, fit_title
+from core.seo import DESCRIPTION_LIMIT, PageMeta, absolute, clip, fit_title
 
 from .models import Category, Painting
 
@@ -130,7 +130,9 @@ def painting_description(painting):
     for text in candidates:
         if len(text) <= DESCRIPTION_LIMIT:
             return text
-    return candidates[-1]
+    # Extrémně dlouhý název: zkrátí se název, kód a dostupnost zůstanou.
+    tail = f' – Oldřich Lajsek. {closing}'
+    return clip(painting.public_title, DESCRIPTION_LIMIT - len(tail)) + tail
 
 
 def painting_detail(request, category_slug, slug):

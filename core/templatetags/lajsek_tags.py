@@ -15,6 +15,9 @@ from core.images import image_size
 
 register = template.Library()
 
+# Uvnitř <script> nesmí být „<“, „>“ ani „&“ doslova — JSON je zapíše jako < atd.
+_JSON_SCRIPT_ESCAPES = {ord('<'): '\\u003c', ord('>'): '\\u003e', ord('&'): '\\u0026'}
+
 
 @register.simple_tag
 def translated(obj, field):
@@ -47,7 +50,7 @@ def jsonld(*items):
             if not data:
                 continue
             payload = json.dumps(data, ensure_ascii=False, indent=2)
-            payload = payload.replace('<', '\u003c').replace('>', '\u003e').replace('&', '\u0026')
+            payload = payload.translate(_JSON_SCRIPT_ESCAPES)
             blocks.append(f'<script type="application/ld+json">\n{payload}\n</script>')
     return mark_safe('\n'.join(blocks))
 
