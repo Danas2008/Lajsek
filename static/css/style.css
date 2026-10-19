@@ -1716,3 +1716,15 @@ p { margin: 0 0 1.2em; }
        osa i milníky zůstávají beze změny. */
     .timeline-marker { display: none !important; }
 }
+
+/* ================= Chybové stránky (404/500) ================= */
+.error-links {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 12px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 28px;
+    font-family: var(--sans-ui);
+    font-size: 0.9rem;
+}

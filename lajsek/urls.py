@@ -6,6 +6,7 @@ from django.contrib.sitemaps.views import sitemap
 from django.urls import include, path
 
 from core.sitemaps import SITEMAPS
+from core.views import robots_txt
 
 # Mimo i18n_patterns — nemají jazykovou variantu.
 urlpatterns = [
@@ -13,6 +14,7 @@ urlpatterns = [
     path('i18n/', include('django.conf.urls.i18n')),
     path('sitemap.xml', sitemap, {'sitemaps': SITEMAPS},
          name='django.contrib.sitemaps.views.sitemap'),
+    path('robots.txt', robots_txt, name='robots_txt'),
 ]
 
 # Čeština zůstává bez prefixu, angličtina běží na /en/...

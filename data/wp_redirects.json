@@ -1,0 +1,616 @@
+{
+ "_popis": "Adresy původního WordPress webu (zjištěno z archivu web.archive.org, 2026-10). Používá je core.middleware.LegacyRedirectMiddleware pro trvalá přesměrování (301). Přílohy 161, 179 a 183 byly obrazy, které na nový web nepřešly — vedou na kategorii, ve které byly v původní galerii. Příloha 168 se z archivu nepodařilo zjistit, vede na výpis obrazů.",
+ "pages": {
+  "2": "core:biography",
+  "13": "gallery:painting_list",
+  "15": "core:exhibitions",
+  "32": "core:press",
+  "38": "core:links",
+  "60": "core:work",
+  "62": "core:life",
+  "67": "core:contact",
+  "228": "core:catalog",
+  "131": "category:krajinomalba",
+  "143": "category:abstrakce",
+  "175": "category:realismus",
+  "196": "category:kvetinova-zatisi"
+ },
+ "attachments": {
+  "93": {
+   "painting": "K33"
+  },
+  "94": {
+   "painting": "K32"
+  },
+  "95": {
+   "painting": "K31"
+  },
+  "96": {
+   "painting": "K30"
+  },
+  "97": {
+   "painting": "K29"
+  },
+  "98": {
+   "painting": "K28"
+  },
+  "99": {
+   "painting": "K27"
+  },
+  "100": {
+   "painting": "K26"
+  },
+  "101": {
+   "painting": "K25"
+  },
+  "102": {
+   "painting": "K24"
+  },
+  "103": {
+   "painting": "K23"
+  },
+  "104": {
+   "painting": "K22"
+  },
+  "105": {
+   "painting": "K21"
+  },
+  "106": {
+   "painting": "K20"
+  },
+  "107": {
+   "painting": "K19"
+  },
+  "108": {
+   "painting": "K18"
+  },
+  "109": {
+   "painting": "K17"
+  },
+  "110": {
+   "painting": "K16"
+  },
+  "111": {
+   "painting": "K15"
+  },
+  "112": {
+   "painting": "K14"
+  },
+  "113": {
+   "painting": "K13"
+  },
+  "114": {
+   "painting": "K12"
+  },
+  "115": {
+   "painting": "K11"
+  },
+  "116": {
+   "painting": "K10"
+  },
+  "117": {
+   "painting": "K9"
+  },
+  "118": {
+   "painting": "K8"
+  },
+  "119": {
+   "painting": "K7"
+  },
+  "120": {
+   "painting": "K6"
+  },
+  "121": {
+   "painting": "K5"
+  },
+  "122": {
+   "painting": "K4"
+  },
+  "123": {
+   "painting": "K3"
+  },
+  "124": {
+   "painting": "K2"
+  },
+  "125": {
+   "painting": "K1"
+  },
+  "133": {
+   "painting": "K35"
+  },
+  "134": {
+   "painting": "K34"
+  },
+  "144": {
+   "painting": "A20"
+  },
+  "145": {
+   "painting": "A19"
+  },
+  "146": {
+   "painting": "A18"
+  },
+  "147": {
+   "painting": "A17"
+  },
+  "148": {
+   "painting": "A16"
+  },
+  "151": {
+   "painting": "A15"
+  },
+  "152": {
+   "painting": "A14"
+  },
+  "154": {
+   "painting": "A13"
+  },
+  "155": {
+   "painting": "A12"
+  },
+  "156": {
+   "painting": "A11"
+  },
+  "159": {
+   "painting": "A10"
+  },
+  "160": {
+   "painting": "A9"
+  },
+  "164": {
+   "painting": "A8"
+  },
+  "165": {
+   "painting": "A7"
+  },
+  "166": {
+   "painting": "A6"
+  },
+  "167": {
+   "painting": "A5"
+  },
+  "169": {
+   "painting": "A4"
+  },
+  "170": {
+   "painting": "A3"
+  },
+  "171": {
+   "painting": "A2"
+  },
+  "172": {
+   "painting": "A1"
+  },
+  "176": {
+   "painting": "R13"
+  },
+  "177": {
+   "painting": "R12"
+  },
+  "178": {
+   "painting": "R11"
+  },
+  "180": {
+   "painting": "R10"
+  },
+  "182": {
+   "painting": "R9"
+  },
+  "184": {
+   "painting": "R14"
+  },
+  "185": {
+   "painting": "R8"
+  },
+  "186": {
+   "painting": "R7"
+  },
+  "187": {
+   "painting": "R6"
+  },
+  "188": {
+   "painting": "R5"
+  },
+  "189": {
+   "painting": "R4"
+  },
+  "190": {
+   "painting": "R3"
+  },
+  "191": {
+   "painting": "R2"
+  },
+  "192": {
+   "painting": "R1"
+  },
+  "193": {
+   "painting": "R15"
+  },
+  "197": {
+   "painting": "V20"
+  },
+  "198": {
+   "painting": "V19"
+  },
+  "199": {
+   "painting": "V18"
+  },
+  "200": {
+   "painting": "V17"
+  },
+  "201": {
+   "painting": "V16"
+  },
+  "202": {
+   "painting": "V15"
+  },
+  "203": {
+   "painting": "V14"
+  },
+  "204": {
+   "painting": "V13"
+  },
+  "205": {
+   "painting": "V12"
+  },
+  "206": {
+   "painting": "V11"
+  },
+  "207": {
+   "painting": "V10"
+  },
+  "208": {
+   "painting": "V9"
+  },
+  "209": {
+   "painting": "V8"
+  },
+  "210": {
+   "painting": "V7"
+  },
+  "211": {
+   "painting": "V6"
+  },
+  "212": {
+   "painting": "V5"
+  },
+  "213": {
+   "painting": "V4"
+  },
+  "214": {
+   "painting": "V3"
+  },
+  "215": {
+   "painting": "V2"
+  },
+  "216": {
+   "painting": "V1"
+  },
+  "161": {
+   "category": "abstrakce"
+  },
+  "168": {
+   "url_name": "gallery:painting_list"
+  },
+  "179": {
+   "category": "realismus"
+  },
+  "183": {
+   "category": "realismus"
+  }
+ },
+ "uploads": {
+  "IMG_9761": {
+   "painting_image": "K1"
+  },
+  "IMG_9760": {
+   "painting_image": "K2"
+  },
+  "IMG_9741": {
+   "painting_image": "K3"
+  },
+  "IMG_9354": {
+   "painting_image": "K4"
+  },
+  "IMG_9351": {
+   "painting_image": "K5"
+  },
+  "IMG_9349": {
+   "painting_image": "K6"
+  },
+  "IMG_9141": {
+   "painting_image": "K7"
+  },
+  "IMG_9078": {
+   "painting_image": "K8"
+  },
+  "IMG_9036": {
+   "painting_image": "K9"
+  },
+  "IMG_9002": {
+   "painting_image": "K10"
+  },
+  "IMG_8998": {
+   "painting_image": "K11"
+  },
+  "IMG_8950": {
+   "painting_image": "K12"
+  },
+  "IMG_8938": {
+   "painting_image": "K13"
+  },
+  "IMG_8931": {
+   "painting_image": "K14"
+  },
+  "IMG_8924": {
+   "painting_image": "K15"
+  },
+  "IMG_8922": {
+   "painting_image": "K16"
+  },
+  "IMG_8918": {
+   "painting_image": "K17"
+  },
+  "IMG_8889": {
+   "painting_image": "K18"
+  },
+  "IMG_8886": {
+   "painting_image": "K19"
+  },
+  "IMG_8864": {
+   "painting_image": "K20"
+  },
+  "IMG_8856": {
+   "painting_image": "K21"
+  },
+  "IMG_8851": {
+   "painting_image": "K22"
+  },
+  "IMG_8848": {
+   "painting_image": "K23"
+  },
+  "IMG_8845": {
+   "painting_image": "K24"
+  },
+  "IMG_8844": {
+   "painting_image": "K25"
+  },
+  "IMG_8838": {
+   "painting_image": "K26"
+  },
+  "IMG_8835": {
+   "painting_image": "K27"
+  },
+  "IMG_8828": {
+   "painting_image": "K28"
+  },
+  "IMG_8819": {
+   "painting_image": "K29"
+  },
+  "IMG_8814": {
+   "painting_image": "K30"
+  },
+  "IMG_8795": {
+   "painting_image": "K31"
+  },
+  "IMG_8794": {
+   "painting_image": "K32"
+  },
+  "IMG_8792": {
+   "painting_image": "K33"
+  },
+  "Krkonoše-2": {
+   "painting_image": "K34"
+  },
+  "Ještěd": {
+   "painting_image": "K35"
+  },
+  "IMG_9893": {
+   "painting_image": "A1"
+  },
+  "IMG_9775": {
+   "painting_image": "A2"
+  },
+  "IMG_9774": {
+   "painting_image": "A3"
+  },
+  "IMG_9773": {
+   "painting_image": "A4"
+  },
+  "IMG_9743": {
+   "painting_image": "A5"
+  },
+  "IMG_9152": {
+   "painting_image": "A6"
+  },
+  "IMG_9115": {
+   "painting_image": "A7"
+  },
+  "IMG_9114": {
+   "painting_image": "A8"
+  },
+  "IMG_9111": {
+   "painting_image": "A9"
+  },
+  "IMG_9107": {
+   "painting_image": "A10"
+  },
+  "IMG_9105": {
+   "painting_image": "A11"
+  },
+  "IMG_9102": {
+   "painting_image": "A12"
+  },
+  "IMG_9101": {
+   "painting_image": "A13"
+  },
+  "IMG_9100": {
+   "painting_image": "A14"
+  },
+  "IMG_9099": {
+   "painting_image": "A15"
+  },
+  "IMG_9096": {
+   "painting_image": "A16"
+  },
+  "IMG_9095": {
+   "painting_image": "A17"
+  },
+  "IMG_8970-1": {
+   "painting_image": "A18"
+  },
+  "IMG_8810": {
+   "painting_image": "A19"
+  },
+  "IMG_8807": {
+   "painting_image": "A20"
+  },
+  "IMG_9886": {
+   "painting_image": "R1"
+  },
+  "IMG_9691": {
+   "painting_image": "R2"
+  },
+  "IMG_9690": {
+   "painting_image": "R3"
+  },
+  "IMG_9689": {
+   "painting_image": "R4"
+  },
+  "IMG_9687": {
+   "painting_image": "R5"
+  },
+  "IMG_9613": {
+   "painting_image": "R6"
+  },
+  "IMG_9611": {
+   "painting_image": "R7"
+  },
+  "IMG_9600": {
+   "painting_image": "R8"
+  },
+  "IMG_9532": {
+   "painting_image": "R9"
+  },
+  "IMG_8860": {
+   "painting_image": "R10"
+  },
+  "IMG_8832": {
+   "painting_image": "R11"
+  },
+  "IMG_8822": {
+   "painting_image": "R12"
+  },
+  "IMG_8821": {
+   "painting_image": "R13"
+  },
+  "IMG_9559": {
+   "painting_image": "R14"
+  },
+  "IMG_8884": {
+   "painting_image": "R15"
+  },
+  "IMG_9883": {
+   "painting_image": "V1"
+  },
+  "IMG_9768": {
+   "painting_image": "V2"
+  },
+  "IMG_9543": {
+   "painting_image": "V3"
+  },
+  "IMG_9427": {
+   "painting_image": "V4"
+  },
+  "IMG_9426": {
+   "painting_image": "V5"
+  },
+  "IMG_9406": {
+   "painting_image": "V6"
+  },
+  "IMG_9405": {
+   "painting_image": "V7"
+  },
+  "IMG_9393": {
+   "painting_image": "V8"
+  },
+  "IMG_9341": {
+   "painting_image": "V9"
+  },
+  "IMG_9209": {
+   "painting_image": "V10"
+  },
+  "IMG_8946": {
+   "painting_image": "V11"
+  },
+  "IMG_8945": {
+   "painting_image": "V12"
+  },
+  "IMG_8944": {
+   "painting_image": "V13"
+  },
+  "IMG_8943": {
+   "painting_image": "V14"
+  },
+  "IMG_8942": {
+   "painting_image": "V15"
+  },
+  "IMG_8941": {
+   "painting_image": "V16"
+  },
+  "IMG_8940": {
+   "painting_image": "V17"
+  },
+  "IMG_8939": {
+   "painting_image": "V18"
+  },
+  "IMG_8932": {
+   "painting_image": "V19"
+  },
+  "IMG_8802": {
+   "painting_image": "V20"
+  },
+  "Oldřich-Lajsek": {
+   "media": "pages/Oldřich-Lajsek.jpg"
+  },
+  "OL_1": {
+   "media": "pages/OL_1.jpg"
+  },
+  "Křesetice": {
+   "media": "pages/Křesetice.jpg"
+  },
+  "scvu": {
+   "media": "pages/scvu.jpg"
+  },
+  "peďák": {
+   "media": "pages/peďák.jpg"
+  },
+  "80a56281c8308b3df1a2a05144e58926_640x478": {
+   "media": "pages/80a56281c8308b3df1a2a05144e58926_640x478.jpg"
+  },
+  "2904-01": {
+   "media": "pages/2904-01.jpg"
+  },
+  "Mánes": {
+   "media": "pages/Mánes.jpg"
+  },
+  "Oldřich-Lajsek-Ráno-v-Praze": {
+   "media": "pages/Oldřich-Lajsek-Ráno-v-Praze.jpg"
+  },
+  "Zrcadlo-1": {
+   "media": "pages/Zrcadlo-1.jpg"
+  },
+  "IMG_9817": {
+   "media": "pages/IMG_9817.jpg"
+  },
+  "Katalog": {
+   "media": "pages/Katalog.pdf"
+  },
+  "Signatura-2": {
+   "media": "pages/Signatura-2.png"
+  },
+  "cropped-Krkonoše-2": {
+   "painting_image": "K34"
+  }
+ }
+}

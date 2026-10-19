@@ -1,0 +1,27 @@
+{% load static %}<!DOCTYPE html>
+{# Samostatná stránka bez base.html: při chybě serveru nesmí nic dalšího selhat (nemá ani kontext). #}
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex">
+    <title>Chyba serveru – Oldřich Lajsek</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <main class="wrap page page-narrow error-page">
+        <h1 class="page-title">Omlouváme se, něco se pokazilo</h1>
+        <p class="page-lead">Stránku se teď nepodařilo zobrazit. Zkuste to prosím za chvíli znovu.<br>
+            <span lang="en">Sorry, something went wrong. Please try again in a moment.</span></p>
+        <ul class="error-links">
+            <li><a href="/">Úvod</a></li>
+            <li><a href="/obrazy/">Obrazy</a></li>
+            <li><a href="/obrazy/krajinomalba/">Krajinomalba</a></li>
+            <li><a href="/obrazy/abstrakce/">Abstrakce</a></li>
+            <li><a href="/obrazy/realismus/">Realismus</a></li>
+            <li><a href="/obrazy/kvetinova-zatisi/">Květinová zátiší</a></li>
+            <li><a href="/kontakt/">Kontakt</a></li>
+        </ul>
+    </main>
+</body>
+</html>

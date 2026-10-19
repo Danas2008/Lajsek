@@ -269,6 +269,12 @@ class Painting(models.Model):
     def get_absolute_url(self):
         return reverse('gallery:painting_detail', args=[self.category.slug, self.slug])
 
+    @property
+    def sitemap_images(self):
+        """Obrázky stránky pro <image:image> v sitemapě (originál v plném rozlišení)."""
+        from core.seo import absolute
+        return [absolute(self.image.url)]
+
     # ------------------------------------------------------------------
     # Zmenšeniny
     # ------------------------------------------------------------------

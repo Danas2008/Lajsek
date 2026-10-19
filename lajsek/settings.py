@@ -41,6 +41,9 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    # Staré adresy WordPressu a velká písmena v URL → 301 (core/middleware.py).
+    'core.middleware.LegacyRedirectMiddleware',
+    'core.middleware.LowercaseRedirectMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',

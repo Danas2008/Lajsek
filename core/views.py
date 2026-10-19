@@ -3,6 +3,7 @@ from operator import attrgetter
 
 from django.conf import settings
 from django.contrib import messages
+from django.http import HttpResponse
 from django.shortcuts import redirect, render
 from django.urls import reverse
 from django.utils.translation import gettext as _
@@ -206,3 +207,15 @@ def contact(request):
         'untranslated': content.is_untranslated('kontakt'),
     }
     return render(request, 'core/contact.html', context)
+
+
+def robots_txt(request):
+    lines = [
+        'User-agent: *',
+        'Disallow: /admin/',
+        'Disallow: /i18n/',
+        '',
+        f'Sitemap: {settings.SITE_URL.rstrip("/")}/sitemap.xml',
+        '',
+    ]
+    return HttpResponse('\n'.join(lines), content_type='text/plain; charset=utf-8')
