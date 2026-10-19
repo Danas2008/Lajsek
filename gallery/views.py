@@ -5,7 +5,7 @@ from django.utils.text import slugify
 from django.utils.translation import gettext as _
 
 from core import content, schema
-from core.seo import PageMeta, absolute, fit_title
+from core.seo import DESCRIPTION_LIMIT, PageMeta, absolute, fit_title
 
 from .models import Category, Painting
 
@@ -98,24 +98,39 @@ def _similar_size(painting, exclude, limit=4, tolerance=0.25):
 
 
 def painting_description(painting):
-    """Meta description obrazu — jen z vyplněných údajů, vždy s kódem a dostupností."""
-    text = _(
-        '%(title)s – originální obraz českého malíře Oldřicha Lajska (1925–2001) '
-        'z pozůstalosti autora.'
-    ) % {'title': painting.public_title}
-    details = [value for value in (painting.technique_display,
-                                   painting.dimensions_display,
-                                   painting.year_display) if value]
-    if details:
-        joined = ', '.join(details)
-        text += ' ' + joined[:1].upper() + joined[1:] + '.'
+    """Meta description obrazu — jen z vyplněných údajů, vždy s kódem a dostupností.
+
+    Když se plná verze nevejde do 160 znaků, zkrátí se úvodní věta a pak
+    se postupně vynechá rok a technika; kód a dostupnost zůstávají vždy.
+    """
+    title = {'title': painting.public_title}
+    openings = [
+        _('%(title)s – originální obraz českého malíře Oldřicha Lajska (1925–2001) '
+          'z pozůstalosti autora.') % title,
+        _('%(title)s – originální obraz Oldřicha Lajska (1925–2001) z pozůstalosti.') % title,
+    ]
     if painting.availability == 'available':
-        text += ' ' + _('Kód %(code)s, k prodeji – pošlete nezávaznou poptávku.')
+        closing = _('Kód %(code)s, k prodeji – pošlete nezávaznou poptávku.')
     elif painting.availability == 'sold':
-        text += ' ' + _('Kód %(code)s, prodáno.')
+        closing = _('Kód %(code)s, prodáno.')
     else:
-        text += ' ' + _('Kód %(code)s, není na prodej.')
-    return text % {'code': painting.title}
+        closing = _('Kód %(code)s, není na prodej.')
+    closing = closing % {'code': painting.title}
+
+    detail_sets = [
+        (painting.technique_display, painting.dimensions_display, painting.year_display),
+        (painting.technique_display, painting.dimensions_display),
+        (painting.dimensions_display,),
+    ]
+    candidates = []
+    for details in detail_sets:
+        joined = ', '.join(value for value in details if value)
+        middle = f' {joined[:1].upper()}{joined[1:]}.' if joined else ''
+        candidates += [f'{opening}{middle} {closing}' for opening in openings]
+    for text in candidates:
+        if len(text) <= DESCRIPTION_LIMIT:
+            return text
+    return candidates[-1]
 
 
 def painting_detail(request, category_slug, slug):

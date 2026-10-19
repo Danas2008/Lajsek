@@ -431,8 +431,8 @@ ARTICLES = {
             'title': 'The resistance – the Pěst organisation',
             'meta_title': 'The resistance – Pěst | Oldřich Lajsek in the war',
             'description': (
-                'During the Second World War Oldřich Lajsek joined the resistance organisation '
-                'Pěst, secretly copying weapon drawings for partisans. Discovered, he escaped execution.'
+                'In the Second World War Oldřich Lajsek joined the resistance group Pěst, secretly '
+                'copying weapon drawings for partisans. Discovered, he escaped execution.'
             ),
             'lead': (
                 'During the Second World War Oldřich Lajsek took an active part in the resistance '

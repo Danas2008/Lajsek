@@ -29,72 +29,26 @@ msgstr "Your e-mail"
 msgid "Vaše zpráva"
 msgstr "Your message"
 
-msgid "Oldřich Lajsek — český malíř (1925–2001)"
-msgstr "Oldřich Lajsek — Czech painter (1925–2001)"
-
-msgid ""
-"Prezentace celoživotního díla českého malíře Oldřicha Lajska (1925–2001). "
-"Krajinomalba, abstrakce, realismus a květinová zátiší."
-msgstr ""
-"A presentation of the life's work of Czech painter Oldřich Lajsek "
-"(1925–2001). Landscape painting, abstraction, realism and floral still "
-"lifes."
-
 msgid "O autorovi"
 msgstr "About the artist"
-
-msgid "Život, dílo a katalog malíře Oldřicha Lajska."
-msgstr "The life, work and catalogue of the painter Oldřich Lajsek."
 
 msgid "Život"
 msgstr "Life"
 
-msgid ""
-"Životopis českého malíře Oldřicha Lajska (1925–2001) — od rodných Křesetic "
-"po pražskou Ořechovku."
-msgstr ""
-"A biography of the Czech painter Oldřich Lajsek (1925–2001) — from his "
-"native Křesetice to the Ořechovka quarter of Prague."
-
 msgid "Dílo"
 msgstr "Work"
-
-msgid "Tvorba, žánry a umělecký rukopis malíře Oldřicha Lajska."
-msgstr ""
-"The work, genres and artistic signature of the painter Oldřich Lajsek."
 
 msgid "Katalog"
 msgstr "Catalogue"
 
-msgid "Katalog děl Oldřicha Lajska ke stažení ve formátu PDF."
-msgstr ""
-"The catalogue of works by Oldřich Lajsek, available as a PDF download."
-
 msgid "Výstavy"
 msgstr "Exhibitions"
-
-msgid ""
-"Přehled samostatných i společných výstav Oldřicha Lajska v Česku i v "
-"zahraničí."
-msgstr ""
-"An overview of solo and group exhibitions of Oldřich Lajsek in Czechia and "
-"abroad."
 
 msgid "Napsali o něm"
 msgstr "What was written about him"
 
-msgid "Citáty výtvarných teoretiků a bibliografie k dílu Oldřicha Lajska."
-msgstr ""
-"Quotations by art theorists and a bibliography of the work of Oldřich "
-"Lajsek."
-
 msgid "Odkazy"
 msgstr "Links"
-
-msgid ""
-"Galerie, katalogy a databáze, v nichž je dílo Oldřicha Lajska zastoupeno."
-msgstr ""
-"Galleries, catalogues and databases holding the work of Oldřich Lajsek."
 
 msgid ""
 "Dobrý den,\n"
@@ -103,18 +57,8 @@ msgstr ""
 "Hello,\n"
 "I am interested in the painting with the code “%(code)s”. Please send me further information."
 
-msgid "Děkujeme za zprávu, ozveme se vám co nejdříve."
-msgstr ""
-"Thank you for your message, we will get back to you as soon as possible."
-
 msgid "Kontakt"
 msgstr "Contact"
-
-msgid ""
-"Kontakt pro zájemce o dílo Oldřicha Lajska — syn malíře JUDr. Jan Lajsek."
-msgstr ""
-"Contact for those interested in the work of Oldřich Lajsek — the painter's "
-"son, JUDr. Jan Lajsek."
 
 msgid "Oldřich Lajsek — český malíř, grafik, designér a pedagog."
 msgstr "Oldřich Lajsek — Czech painter, graphic artist, designer and teacher."
@@ -129,12 +73,6 @@ msgstr "His work, genres and artistic signature."
 
 msgid "Katalog děl ke stažení v PDF."
 msgstr "The catalogue of works, available as a PDF download."
-
-msgid "Katalog děl Oldřicha Lajska ke stažení."
-msgstr "The catalogue of works by Oldřich Lajsek, available for download."
-
-msgid "Stáhnout katalog (PDF)"
-msgstr "Download the catalogue (PDF)"
 
 msgid ""
 "The English version of this text is coming soon. Below is the Czech "
@@ -200,24 +138,8 @@ msgstr "There are no mentions here yet."
 msgid "Zhruba 3000 malířských a grafických děl"
 msgstr "Roughly 3,000 paintings and prints"
 
-msgid "Obrazy z kategorie %(category)s v díle českého malíře Oldřicha Lajska."
-msgstr ""
-"Paintings from the %(category)s category in the work of the Czech painter "
-"Oldřich Lajsek."
-
 msgid "Nabídka obrazů"
 msgstr "Paintings for sale"
-
-msgid ""
-"Přehled obrazů Oldřicha Lajska — krajinomalba, abstrakce, realismus a "
-"květinová zátiší."
-msgstr ""
-"An overview of paintings by Oldřich Lajsek — landscape painting, "
-"abstraction, realism and floral still lifes."
-
-msgid "Obraz %(title)s od českého malíře Oldřicha Lajska (1925–2001)."
-msgstr ""
-"The painting %(title)s by the Czech painter Oldřich Lajsek (1925–2001)."
 
 msgid "Kód díla"
 msgstr "Work code"
@@ -233,9 +155,6 @@ msgstr "Technique"
 
 msgid "Dostupnost"
 msgstr "Availability"
-
-msgid "Mám zájem"
-msgstr "I am interested"
 
 msgid "Další díla z této kategorie"
 msgstr "More works from this category"
@@ -293,15 +212,6 @@ msgid "Dvoustran"
 msgstr "Double pages"
 
 msgid ""
-"Katalog je souhrnným přehledem autorovy tvorby. Obrazy jsou v něm řazeny po "
-"kategoriích a u každého je uveden kód díla i jeho rozměr — tedy tentýž kód, "
-"který se uvádí při poptávce."
-msgstr ""
-"The catalogue is a complete overview of the artist's work. The paintings are"
-" arranged by category and each one carries its work code and dimensions — "
-"the same code quoted when enquiring."
-
-msgid ""
 "Zobrazená ukázka je jednou ze stran katalogu; celý přehled je ke stažení ve "
 "formátu PDF."
 msgstr ""
@@ -323,3 +233,440 @@ msgstr ""
 
 msgid "otevře se v novém okně"
 msgstr "opens in a new window"
+
+msgid "Stránka nenalezena"
+msgstr "Page not found"
+
+msgid ""
+"Hledaná stránka na webu Oldřicha Lajska neexistuje. Pokračujte na obrazy, "
+"životopis nebo kontakt."
+msgstr ""
+"The page you are looking for does not exist on the Oldřich Lajsek website. "
+"Continue to the paintings, the biography or the contact page."
+
+msgid ""
+"Tato adresa na webu neexistuje — možná pochází ze starší verze stránek. "
+"Obrazy i texty o autorovi najdete níže."
+msgstr ""
+"This address does not exist — it may come from an older version of the "
+"website. You will find the paintings and texts about the artist below."
+
+msgid "Obrazy podle kategorií"
+msgstr "Paintings by category"
+
+msgid "Všechny obrazy"
+msgstr "All paintings"
+
+msgid "Kutná Hora"
+msgstr "Kutná Hora"
+
+msgid "Skupina Směr"
+msgstr "The Směr group"
+
+msgid "Odboj"
+msgstr "The resistance"
+
+msgid "Jak koupit obraz"
+msgstr "How to buy a painting"
+
+msgid "Pravost a provenience"
+msgstr "Authenticity and provenance"
+
+msgid "Drobečková navigace"
+msgstr "Breadcrumb"
+
+msgid "Jak koupit"
+msgstr "How to buy"
+
+msgid "Pravost"
+msgstr "Provenance"
+
+msgid "Obsah"
+msgstr "Contents"
+
+msgid "Časté otázky"
+msgstr "Frequently asked questions"
+
+msgid "Související:"
+msgstr "Related:"
+
+msgid "Prohlédnout obrazy"
+msgstr "Browse the paintings"
+
+msgid "Napsat poptávku"
+msgstr "Send an enquiry"
+
+msgid ""
+"Katalog je souhrnným přehledem autorovy tvorby. Obrazy jsou v něm řazeny po "
+"kategoriích a u každého je uveden katalogový kód i rozměr. Katalogové kódy "
+"se od kódů na webu liší — při poptávce uveďte kód ze stránky obrazu."
+msgstr ""
+"The catalogue is a comprehensive overview of the artist's work. The "
+"paintings are ordered by category, each with its catalogue code and "
+"dimensions. Catalogue codes differ from the codes on this website — in your "
+"enquiry, please use the code from the painting page."
+
+msgid "Děkujeme za zprávu"
+msgstr "Thank you for your message"
+
+msgid "Zpráva byla odeslána, ozveme se vám co nejdříve."
+msgstr ""
+"Your message has been sent. We will get back to you as soon as possible."
+
+msgid "Prohlédnout další obrazy"
+msgstr "Browse more paintings"
+
+msgid "Život Oldřicha Lajska"
+msgstr "Life of Oldřich Lajsek"
+
+msgid "Obrazy z pozůstalosti podle žánru"
+msgstr "Paintings from the estate by genre"
+
+msgid "originál z pozůstalosti autora"
+msgstr "original from the artist's estate"
+
+msgid "Motiv"
+msgstr "Subject"
+
+msgid "Zobrazené místo"
+msgstr "Place depicted"
+
+msgid "Signatura"
+msgstr "Signature"
+
+msgid "ano"
+msgstr "yes"
+
+msgid "bez signatury"
+msgstr "unsigned"
+
+msgid "Kód v souhrnném katalogu"
+msgstr "Code in the catalogue"
+
+msgid "K dispozici"
+msgstr "Available"
+
+msgid "Prodáno"
+msgstr "Sold"
+
+msgid "Neprodejné"
+msgstr "Not for sale"
+
+msgid "Mám zájem o tento obraz"
+msgstr "I am interested in this painting"
+
+#, python-format
+msgid ""
+"Formulář se otevře s předvyplněným kódem %(code)s. Poptávka je nezávazná."
+msgstr ""
+"The form opens with the code %(code)s already filled in. The enquiry is non-"
+"binding."
+
+#, python-format
+msgid "Všechny obrazy: %(category)s"
+msgstr "All paintings: %(category)s"
+
+msgid "Podobné rozměry"
+msgstr "Similar size"
+
+msgid "Dílo Oldřicha Lajska"
+msgstr "Work of Oldřich Lajsek"
+
+msgid "Oldřich Lajsek a Kutná Hora"
+msgstr "Oldřich Lajsek and Kutná Hora"
+
+msgid "Dětství a Kutná Hora"
+msgstr "Childhood and Kutná Hora"
+
+msgid "Po válce a studia"
+msgstr "After the war and studies"
+
+msgid "Pedagog a SUPŠ"
+msgstr "Teacher at the School of Applied Arts"
+
+msgid "Pozdní tvorba"
+msgstr "Late work"
+
+msgid "Úvod"
+msgstr "Home"
+
+msgid "Oldřich Lajsek (1925–2001) – český malíř | obrazy z pozůstalosti"
+msgstr "Oldřich Lajsek (1925–2001) – Czech painter | estate paintings"
+
+msgid ""
+"Oldřich Lajsek (1925–2001), český malíř, grafik a pedagog. Krajinomalba, "
+"abstrakce, realismus a květinová zátiší – originální obrazy z pozůstalosti."
+msgstr ""
+"Oldřich Lajsek (1925–2001), Czech painter, graphic artist and teacher. "
+"Landscapes, abstraction, realism and floral still lifes – original works "
+"from his estate."
+
+msgid ""
+"Oldřich Lajsek (1925–2001) – český malíř, grafik, designér a pedagog. "
+"Životopis od Křesetic u Kutné Hory po Prahu, přehled díla a katalog obrazů."
+msgstr ""
+"Oldřich Lajsek (1925–2001) – Czech painter, graphic artist, designer and "
+"teacher. Biography from Křesetice near Kutná Hora to Prague, his work and "
+"catalogue."
+
+msgid ""
+"Životopis malíře Oldřicha Lajska (1925–2001): dětství v Kutné Hoře, odboj v "
+"organizaci Pěst, studia u Karla Lidického, SUPŠ v Praze a skupina Směr."
+msgstr ""
+"Biography of Oldřich Lajsek (1925–2001): childhood in Kutná Hora, the Pěst "
+"resistance group, studies under Karel Lidický, teaching and the Směr group."
+
+msgid ""
+"Tvorba Oldřicha Lajska: zhruba 3000 maleb a grafik, krajinomalba "
+"Kutnohorska, Polabí a Českého středohoří, abstrakce 60. let, realismus a "
+"květinová zátiší."
+msgstr ""
+"Oldřich Lajsek's work: some 3,000 paintings and prints – landscapes of the "
+"Kutná Hora region and Elbe lowlands, 1960s abstraction, realism and still "
+"lifes."
+
+msgid ""
+"Výstavy malíře Oldřicha Lajska od roku 1956: Kutná Hora, Praha, Pražské "
+"salony v Jízdárně Pražského hradu i zahraničí – Lodž, Katovice a Paříž."
+msgstr ""
+"Exhibitions of Oldřich Lajsek since 1956: Kutná Hora, Prague, the Prague "
+"Salons at the Prague Castle Riding School and abroad – Łódź, Katowice and "
+"Paris."
+
+msgid ""
+"Co o malíři Oldřichu Lajskovi napsali teoretici umění a kritici – citáty o "
+"jeho krajinomalbě, tvorbě a osobnosti a bibliografie publikací o jeho díle."
+msgstr ""
+"What art theorists and critics wrote about the painter Oldřich Lajsek – "
+"quotations on his landscapes, work and personality, and a bibliography of "
+"publications."
+
+msgid ""
+"Dílo Oldřicha Lajska v galeriích a databázích: Východočeská galerie v "
+"Pardubicích, Galerie výtvarného umění v Ostravě, knihovna UPM a Wikipedie."
+msgstr ""
+"Oldřich Lajsek in galleries and databases: East Bohemian Gallery in "
+"Pardubice, Gallery of Fine Arts in Ostrava, Museum of Decorative Arts "
+"library, Wikipedia."
+
+msgid ""
+"Máte zájem o obraz Oldřicha Lajska z pozůstalosti? Napište nám přes formulář"
+" a uveďte kód díla (např. K1). Odpovídá syn malíře JUDr. Jan Lajsek."
+msgstr ""
+"Interested in a painting from Oldřich Lajsek's estate? Write via the form "
+"with the code of the work (e.g. K1). The painter's son JUDr. Jan Lajsek will"
+" reply."
+
+msgid ""
+"Děkujeme za zprávu. Na poptávky obrazů Oldřicha Lajska odpovídá syn malíře "
+"JUDr. Jan Lajsek; mezitím si můžete prohlédnout další obrazy z pozůstalosti."
+msgstr ""
+"Thank you for your message. Enquiries are answered by the painter's son, "
+"JUDr. Jan Lajsek; meanwhile you can browse more paintings from the estate."
+
+msgid ", malíř, grafik a pedagog"
+msgstr ", painter, graphic artist and teacher"
+
+msgid "Životopis"
+msgstr "Biography"
+
+msgid ", český malíř"
+msgstr ", Czech painter"
+
+msgid "Odboj – organizace Pěst"
+msgstr "The resistance – the Pěst organisation"
+
+msgid "Abstrakce"
+msgstr "Abstraction"
+
+msgid "Obrazy z pozůstalosti"
+msgstr "Paintings from the estate"
+
+msgid " – krajinomalba, abstrakce, zátiší"
+msgstr " – landscapes, abstraction, still lifes"
+
+msgid "Katalog děl"
+msgstr "Catalogue of works"
+
+msgid " | obrazy s rozměry"
+msgstr " | paintings with dimensions"
+
+msgid ""
+"Souhrnný katalog díla Oldřicha Lajska s kódy děl a rozměry, řazený po "
+"kategoriích. Ke stažení zdarma ve formátu PDF."
+msgstr ""
+"The catalogue of the work of Oldřich Lajsek with codes and dimensions of the"
+" works, ordered by category. Free to download as a PDF."
+
+msgid " | Kutná Hora, Praha, zahraničí"
+msgstr " | Kutná Hora, Prague, abroad"
+
+msgid " | citáty a bibliografie"
+msgstr " | quotes and bibliography"
+
+msgid " v galeriích a databázích"
+msgstr " in galleries and databases"
+
+msgid " – poptávka obrazů Oldřicha Lajska"
+msgstr " – enquiries about paintings by Oldřich Lajsek"
+
+#, python-format
+msgid ""
+"Souhrnný katalog díla malíře Oldřicha Lajska: %(total)s obrazů řazených po "
+"kategoriích, u každého kód díla a rozměr. Ke stažení zdarma ve formátu PDF."
+msgstr ""
+"The catalogue of the painter Oldřich Lajsek: %(total)s paintings ordered by "
+"category, each with its code and dimensions. Free to download as a PDF."
+
+msgid "Děkujeme"
+msgstr "Thank you"
+
+#, python-format
+msgid ""
+"%(title)s – originální obraz českého malíře Oldřicha Lajska (1925–2001) z "
+"pozůstalosti autora."
+msgstr ""
+"%(title)s – an original painting by the Czech painter Oldřich Lajsek "
+"(1925–2001) from the artist's estate."
+
+#, python-format
+msgid "Kód %(code)s, k prodeji – pošlete nezávaznou poptávku."
+msgstr "Code %(code)s, for sale – send a non-binding enquiry."
+
+msgid ""
+"Originální obrazy Oldřicha Lajska z pozůstalosti: krajinomalba, abstrakce, "
+"realismus a květinová zátiší. Vyberte si dílo a pošlete poptávku s kódem."
+msgstr ""
+"Original paintings by Oldřich Lajsek from his estate: landscapes, "
+"abstraction, realism and floral still lifes. Choose a work and send an "
+"enquiry with its code."
+
+#, python-format
+msgid "Kód %(code)s, prodáno."
+msgstr "Code %(code)s, sold."
+
+#, python-format
+msgid "Kód %(code)s, není na prodej."
+msgstr "Code %(code)s, not for sale."
+
+msgid " | originál z pozůstalosti"
+msgstr " | original from the estate"
+
+msgid " | originály k prodeji"
+msgstr " | originals for sale"
+
+#, python-format
+msgid ""
+"%(category)s Oldřicha Lajska (1925–2001): %(count)s originálních obrazů z "
+"pozůstalosti autora. Prohlédněte si nabídku a pošlete nezávaznou poptávku s "
+"kódem díla."
+msgstr ""
+"%(category)s by Oldřich Lajsek (1925–2001): %(count)s original paintings "
+"from his estate. Browse them and send a non-binding enquiry with the code."
+
+msgid "Obrazy Oldřicha Lajska"
+msgstr "Paintings by Oldřich Lajsek"
+
+msgid " – originály z pozůstalosti k prodeji"
+msgstr " – originals from the estate for sale"
+
+#, python-format
+msgid "%(category)s – obrazy Oldřicha Lajska"
+msgstr "%(category)s – paintings by Oldřich Lajsek"
+
+#, python-format
+msgid ""
+"%(title)s – originální obraz Oldřicha Lajska (1925–2001) z pozůstalosti."
+msgstr ""
+"%(title)s – an original painting by Oldřich Lajsek (1925–2001) from his "
+"estate."
+
+#~ msgid "Oldřich Lajsek — český malíř (1925–2001)"
+#~ msgstr "Oldřich Lajsek — Czech painter (1925–2001)"
+
+#~ msgid ""
+#~ "Prezentace celoživotního díla českého malíře Oldřicha Lajska (1925–2001). "
+#~ "Krajinomalba, abstrakce, realismus a květinová zátiší."
+#~ msgstr ""
+#~ "A presentation of the life's work of Czech painter Oldřich Lajsek "
+#~ "(1925–2001). Landscape painting, abstraction, realism and floral still "
+#~ "lifes."
+
+#~ msgid "Život, dílo a katalog malíře Oldřicha Lajska."
+#~ msgstr "The life, work and catalogue of the painter Oldřich Lajsek."
+
+#~ msgid ""
+#~ "Životopis českého malíře Oldřicha Lajska (1925–2001) — od rodných Křesetic "
+#~ "po pražskou Ořechovku."
+#~ msgstr ""
+#~ "A biography of the Czech painter Oldřich Lajsek (1925–2001) — from his "
+#~ "native Křesetice to the Ořechovka quarter of Prague."
+
+#~ msgid "Tvorba, žánry a umělecký rukopis malíře Oldřicha Lajska."
+#~ msgstr ""
+#~ "The work, genres and artistic signature of the painter Oldřich Lajsek."
+
+#~ msgid "Katalog děl Oldřicha Lajska ke stažení ve formátu PDF."
+#~ msgstr ""
+#~ "The catalogue of works by Oldřich Lajsek, available as a PDF download."
+
+#~ msgid ""
+#~ "Přehled samostatných i společných výstav Oldřicha Lajska v Česku i v "
+#~ "zahraničí."
+#~ msgstr ""
+#~ "An overview of solo and group exhibitions of Oldřich Lajsek in Czechia and "
+#~ "abroad."
+
+#~ msgid "Citáty výtvarných teoretiků a bibliografie k dílu Oldřicha Lajska."
+#~ msgstr ""
+#~ "Quotations by art theorists and a bibliography of the work of Oldřich "
+#~ "Lajsek."
+
+#~ msgid ""
+#~ "Galerie, katalogy a databáze, v nichž je dílo Oldřicha Lajska zastoupeno."
+#~ msgstr ""
+#~ "Galleries, catalogues and databases holding the work of Oldřich Lajsek."
+
+#~ msgid "Děkujeme za zprávu, ozveme se vám co nejdříve."
+#~ msgstr ""
+#~ "Thank you for your message, we will get back to you as soon as possible."
+
+#~ msgid ""
+#~ "Kontakt pro zájemce o dílo Oldřicha Lajska — syn malíře JUDr. Jan Lajsek."
+#~ msgstr ""
+#~ "Contact for those interested in the work of Oldřich Lajsek — the painter's "
+#~ "son, JUDr. Jan Lajsek."
+
+#~ msgid "Katalog děl Oldřicha Lajska ke stažení."
+#~ msgstr "The catalogue of works by Oldřich Lajsek, available for download."
+
+#~ msgid "Stáhnout katalog (PDF)"
+#~ msgstr "Download the catalogue (PDF)"
+
+#~ msgid "Obrazy z kategorie %(category)s v díle českého malíře Oldřicha Lajska."
+#~ msgstr ""
+#~ "Paintings from the %(category)s category in the work of the Czech painter "
+#~ "Oldřich Lajsek."
+
+#~ msgid ""
+#~ "Přehled obrazů Oldřicha Lajska — krajinomalba, abstrakce, realismus a "
+#~ "květinová zátiší."
+#~ msgstr ""
+#~ "An overview of paintings by Oldřich Lajsek — landscape painting, "
+#~ "abstraction, realism and floral still lifes."
+
+#~ msgid "Obraz %(title)s od českého malíře Oldřicha Lajska (1925–2001)."
+#~ msgstr ""
+#~ "The painting %(title)s by the Czech painter Oldřich Lajsek (1925–2001)."
+
+#~ msgid "Mám zájem"
+#~ msgstr "I am interested"
+
+#~ msgid ""
+#~ "Katalog je souhrnným přehledem autorovy tvorby. Obrazy jsou v něm řazeny po "
+#~ "kategoriích a u každého je uveden kód díla i jeho rozměr — tedy tentýž kód, "
+#~ "který se uvádí při poptávce."
+#~ msgstr ""
+#~ "The catalogue is a complete overview of the artist's work. The paintings are"
+#~ " arranged by category and each one carries its work code and dimensions — "
+#~ "the same code quoted when enquiring."
