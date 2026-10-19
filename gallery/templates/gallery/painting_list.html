@@ -39,10 +39,12 @@
         {% for painting in paintings %}
             <a class="gallery-item" href="{{ painting.get_absolute_url }}">
                 <div class="frame">
-                    <img src="{{ painting.thumb_small }}" srcset="{{ painting.srcset_grid }}"
-                         sizes="(max-width: 560px) 92vw, (max-width: 860px) 45vw, 300px"
-                         alt="{{ painting.alt_text }}" decoding="async"
-                         {% if forloop.counter <= 3 %}fetchpriority="high"{% else %}loading="lazy"{% endif %}>
+                    {# První řada je nad ohybem: bez lazy loadingu, první obraz s vysokou prioritou. #}
+                    {% if forloop.counter <= 3 %}
+                        {% include "gallery/_picture.html" with variant="grid" sizes="(max-width: 560px) 92vw, (max-width: 860px) 45vw, 300px" priority=forloop.first eager=True %}
+                    {% else %}
+                        {% include "gallery/_picture.html" with variant="grid" sizes="(max-width: 560px) 92vw, (max-width: 860px) 45vw, 300px" %}
+                    {% endif %}
                 </div>
                 <div class="gallery-item-info">
                     <h2>{{ painting.public_title }}</h2>

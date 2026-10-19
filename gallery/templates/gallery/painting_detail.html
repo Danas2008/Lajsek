@@ -5,9 +5,7 @@
 <section class="wrap page painting-detail">
     <div class="painting-detail-grid">
         <div class="painting-image">
-            <img src="{{ painting.thumb_large }}" srcset="{{ painting.srcset_detail }}"
-                 sizes="(max-width: 1080px) 92vw, 780px"
-                 alt="{{ painting.alt_text }}" fetchpriority="high" decoding="async">
+            {% include "gallery/_picture.html" with variant="detail" sizes="(max-width: 1080px) 92vw, 780px" priority=True %}
         </div>
 
         <div class="painting-info">
@@ -57,9 +55,7 @@
             {% for item in related %}
             <a class="gallery-item" href="{{ item.get_absolute_url }}">
                 <div class="frame">
-                    <img src="{{ item.thumb_small }}" srcset="{{ item.srcset_grid }}"
-                         sizes="(max-width: 560px) 45vw, 220px"
-                         alt="{{ item.alt_text }}" loading="lazy" decoding="async">
+                    {% include "gallery/_picture.html" with painting=item variant="grid" sizes="(max-width: 560px) 45vw, 220px" %}
                 </div>
                 <div class="gallery-item-info">
                     <h3>{{ item.public_title }}</h3>

@@ -5,7 +5,6 @@ from django.utils.text import slugify
 from django.utils.translation import gettext as _
 
 from core import content, schema
-from core.images import scaled_size
 from core.seo import PageMeta, absolute, fit_title
 
 from .models import Category, Painting
@@ -117,25 +116,19 @@ def painting_detail(request, category_slug, slug):
         .exclude(pk=painting.pk)[:4]
     )
 
-    image_url = painting.thumb_large
-    size = scaled_size(painting.image.name, 1400)
+    og_image = painting.og_image
     seo = PageMeta(
         title=fit_title(
             painting.public_title, SUFFIX_ARTIST, _(' | originál z pozůstalosti'),
         ),
         description=painting_description(painting),
-        image={
-            'url': absolute(image_url),
-            'width': size[0] if size else None,
-            'height': size[1] if size else None,
-            'alt': painting.alt_text,
-        },
+        image={**og_image, 'url': absolute(og_image['url']), 'alt': painting.alt_text},
         breadcrumbs=[
             _gallery_crumb(),
             (painting.category.display_name, painting.category.get_absolute_url()),
             (painting.public_title, painting.get_absolute_url()),
         ],
-        schema=[schema.visual_artwork(painting, image_url)],
+        schema=[schema.visual_artwork(painting, painting.thumb_large)],
         og_type='article',
     )
     context = {

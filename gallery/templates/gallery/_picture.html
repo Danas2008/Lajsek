@@ -1,0 +1,21 @@
+{% comment %}
+Obrázek obrazu jako <picture>: WebP pro moderní prohlížeče, JPEG jako záloha.
+Parametry: painting, variant ("grid" | "detail"), sizes, priority (True = nad
+ohybem: fetchpriority="high" a bez lazy loadingu), eager (bez lazy loadingu).
+width/height drží poměr stran ještě před načtením (CLS).
+{% endcomment %}
+{% if variant == "detail" %}
+<picture>
+    {% if painting.srcset_detail_webp %}<source type="image/webp" srcset="{{ painting.srcset_detail_webp }}" sizes="{{ sizes }}">{% endif %}
+    <img src="{{ painting.thumb_large }}"{% if painting.srcset_detail %} srcset="{{ painting.srcset_detail }}" sizes="{{ sizes }}"{% endif %}
+         {% with size=painting.size_large %}{% if size %}width="{{ size.0 }}" height="{{ size.1 }}"{% endif %}{% endwith %}
+         alt="{{ painting.alt_text }}" decoding="async"{% if priority %} fetchpriority="high"{% elif not eager %} loading="lazy"{% endif %}>
+</picture>
+{% else %}
+<picture>
+    {% if painting.srcset_grid_webp %}<source type="image/webp" srcset="{{ painting.srcset_grid_webp }}" sizes="{{ sizes }}">{% endif %}
+    <img src="{{ painting.thumb_small }}"{% if painting.srcset_grid %} srcset="{{ painting.srcset_grid }}" sizes="{{ sizes }}"{% endif %}
+         {% with size=painting.size_small %}{% if size %}width="{{ size.0 }}" height="{{ size.1 }}"{% endif %}{% endwith %}
+         alt="{{ painting.alt_text }}" decoding="async"{% if priority %} fetchpriority="high"{% elif not eager %} loading="lazy"{% endif %}>
+</picture>
+{% endif %}

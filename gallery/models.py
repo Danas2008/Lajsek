@@ -10,6 +10,8 @@ from django.utils.translation import get_language
 
 # Šířky zmenšenin generovaných příkazem `make_thumbnails`.
 THUMB_WIDTHS = (400, 800, 1400)
+# Obrázek pro sdílení na sociálních sítích (og:image).
+OG_SIZE = (1200, 630)
 
 # Techniky: klíč v DB → český a anglický název, médium a podložka pro
 # schema.org. Podložka se uvádí jen tam, kde ji název techniky sám říká.
@@ -276,13 +278,19 @@ class Painting(models.Model):
         return [absolute(self.image.url)]
 
     # ------------------------------------------------------------------
-    # Zmenšeniny
+    # Zmenšeniny (generuje příkaz make_thumbnails)
     # ------------------------------------------------------------------
-    def thumb_name(self, width):
-        """Cesta náhledu v MEDIA_ROOT: <složka>/thumbs/<soubor>-<šířka>.jpg"""
+    def _thumb_base(self):
         base, _ext = os.path.splitext(self.image.name)
         directory, filename = os.path.split(base)
-        return f'{directory}/thumbs/{filename}-{width}.jpg'
+        return f'{directory}/thumbs/{filename}'
+
+    def thumb_name(self, width, ext='jpg'):
+        """Cesta náhledu v MEDIA_ROOT: <složka>/thumbs/<soubor>-<šířka>.<ext>"""
+        return f'{self._thumb_base()}-{width}.{ext}'
+
+    def og_name(self):
+        return f'{self._thumb_base()}-og.jpg'
 
     def thumb_url(self, width):
         """URL náhledu; když ještě nebyl vygenerován, vrátí originál."""
@@ -290,6 +298,13 @@ class Painting(models.Model):
         if _thumb_exists(name):
             return f'{settings.MEDIA_URL}{name}'
         return self.image.url
+
+    def _srcset(self, widths, ext):
+        """srcset z náhledů; prázdný, dokud nejsou vygenerované všechny šířky."""
+        names = [(self.thumb_name(width, ext), width) for width in widths]
+        if not all(_thumb_exists(name) for name, _w in names):
+            return ''
+        return ', '.join(f'{settings.MEDIA_URL}{name} {width}w' for name, width in names)
 
     @property
     def thumb_small(self):
@@ -305,10 +320,42 @@ class Painting(models.Model):
 
     @property
     def srcset_grid(self):
-        """srcset pro mřížku galerie."""
-        return f'{self.thumb_url(400)} 400w, {self.thumb_url(800)} 800w'
+        return self._srcset((400, 800), 'jpg')
+
+    @property
+    def srcset_grid_webp(self):
+        return self._srcset((400, 800), 'webp')
 
     @property
     def srcset_detail(self):
-        """srcset pro detail obrazu."""
-        return (f'{self.thumb_url(800)} 800w, {self.thumb_url(1400)} 1400w')
+        return self._srcset((800, 1400), 'jpg')
+
+    @property
+    def srcset_detail_webp(self):
+        return self._srcset((800, 1400), 'webp')
+
+    def display_size(self, width):
+        """(šířka, výška) náhledu dané šířky — pro atributy width/height."""
+        from core.images import scaled_size
+        return scaled_size(self.image.name, width)
+
+    @property
+    def size_small(self):
+        return self.display_size(400)
+
+    @property
+    def size_large(self):
+        return self.display_size(1400)
+
+    @property
+    def og_image(self):
+        """Obrázek pro sdílení: 1200×630, jinak velký náhled se skutečným rozměrem."""
+        name = self.og_name()
+        if _thumb_exists(name):
+            return {'url': f'{settings.MEDIA_URL}{name}', 'width': OG_SIZE[0], 'height': OG_SIZE[1]}
+        size = self.size_large
+        return {
+            'url': self.thumb_large,
+            'width': size[0] if size else None,
+            'height': size[1] if size else None,
+        }

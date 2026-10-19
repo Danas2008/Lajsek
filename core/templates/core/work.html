@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% load i18n %}
+{% load i18n lajsek_tags %}
 
 {% block content %}
 <section class="wrap page">
@@ -24,8 +24,10 @@
         {% if images %}
         <aside class="bio-figures">
             {% for image in images %}
+            {% media_size image.image as size %}
             <figure>
-                <img src="{{ MEDIA_URL }}{{ image.image }}" alt="{{ image.caption }}" loading="lazy">
+                <img src="{{ MEDIA_URL }}{{ image.image }}" alt="{{ image.caption }}"
+                     {% if size %}width="{{ size.0 }}" height="{{ size.1 }}"{% endif %} loading="lazy" decoding="async">
                 {% if image.caption %}<figcaption>{{ image.caption }}</figcaption>{% endif %}
             </figure>
             {% endfor %}

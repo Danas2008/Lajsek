@@ -34,6 +34,9 @@
 
 * { box-sizing: border-box; }
 
+/* <picture> jen vybírá formát (WebP/JPEG); rozvržení řídí vnořený <img>. */
+picture { display: contents; }
+
 html { scroll-behavior: smooth; }
 
 body {
