@@ -174,7 +174,8 @@ JAZZMIN_SETTINGS = {
     # Autorův podpis; v tmavé liště se převrací do bílé (viz admin.css).
     'site_logo': 'img/signature-light.svg',
     'site_logo_classes': 'img-size-50',
-    'site_icon': 'img/favicon.png',
+    # Jazzmin vkládá ikonu s type="image/png", proto PNG, ne favicon.svg.
+    'site_icon': 'img/icon-192.png',
     'login_logo': 'img/signature.svg',
 
     'order_with_respect_to': [

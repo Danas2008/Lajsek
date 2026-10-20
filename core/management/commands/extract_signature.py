@@ -10,8 +10,8 @@ na bílém podkladu, takže stačí:
    v každé velikosti.
 
 Výstupy: static/img/signature.svg (tmavý tah pro web),
-static/img/signature-light.svg (světlý do tmavé lišty adminu),
-static/img/favicon.png.
+static/img/signature-light.svg (světlý do tmavé lišty adminu).
+Favicony se z podpisu generují zvlášť skriptem scripts/make_favicons.py.
 
 Vektorizace potřebuje knihovny navíc (numpy, potracer). Bez nich příkaz
 skončí srozumitelnou hláškou; hotové SVG je ve verzi uložené
@@ -102,13 +102,6 @@ class Command(BaseCommand):
         (img_dir / 'signature.svg').write_text(svg, encoding='utf-8')
         (img_dir / 'signature-light.svg').write_text(
             svg.replace('fill="#2b2620"', 'fill="#f7f3ec"'), encoding='utf-8')
-
-        favicon = Image.new('RGBA', (128, 128), (247, 243, 236, 255))
-        dark = Image.new('RGBA', ink.size, (43, 38, 32, 0))
-        dark.putalpha(ink)
-        small = dark.resize((116, max(1, round(dark.height * 116 / dark.width))), Image.LANCZOS)
-        favicon.paste(small, ((128 - small.width) // 2, (128 - small.height) // 2), small)
-        favicon.save(img_dir / 'favicon.png')
 
         self.stdout.write(self.style.SUCCESS(
             f'Podpis hotov: {width}x{OUT_HEIGHT} (viewBox)'
